@@ -25,6 +25,10 @@
 </script>
 
 <style lang="scss">
+
+.content {
+  height: calc(100vh - 44px - 40px);
+}
   
 </style>
 
