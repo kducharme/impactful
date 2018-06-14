@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    organization: 'Appalachia Service Project',
+    organization: 1,
     organizationUsers: [],
 
     programs: [],
@@ -23,9 +23,18 @@ export default new Vuex.Store({
     projectActiveUsers: []
   },
   mutations: {
-
+    SET_PROGRAMS: (state, programs) => { 
+      console.log(state.programs)
+      state.programs = programs;
+    }
   },
   actions: {
-
+    getPrograms(context,  state) {
+      fetch(`http://localhost:3000/programs?organization=${this.state.organization}`)
+        .then(r => r.json())
+        .then(programs => {
+          context.commit('SET_PROGRAMS', programs)
+      });
+    }
   }
 })
