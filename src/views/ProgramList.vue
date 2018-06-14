@@ -11,12 +11,11 @@
                   <input type="checkbox" checked={this.state.checked} />
                   <span class="select__checkbox" />
                 </span>
-                <button 
-                  class='card__button card__hover--button button__primary'
-                  to=''
-                  >
-                    View program
+                <router-link :to="'/programs/' + program.id" class='card__button'>
+                <button class='card__hover--button button__primary'>
+                  View program
                 </button>
+                </router-link>
               </span>
         <div class="card__overview">
           <h4>{{ program.name }}</h4>
@@ -94,13 +93,13 @@
   };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
   @import "../styles/variables";
   @import "../styles/mixins";
   .content {
     height: calc(100vh - 44px - 40px);
     @include display-flex(flex-start, flex-start, row);
-    padding-top: 30px;
+    padding: 30px 100px 0 100px;
     .card {
       @include display-flex(flex-start, flex-start, column);
       position: relative;
