@@ -1,7 +1,7 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from "vue";
+import Vuex from "vuex";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
@@ -23,36 +23,48 @@ export default new Vuex.Store({
     projectActiveUsers: []
   },
   mutations: {
-    SET_PROGRAMS: (state, programs) => { 
+    SET_PROGRAMS: (state, programs) => {
       state.programs = programs;
     },
-    SET_ACTIVE_PROGRAM: (state, id) => { 
+    SET_ACTIVE_PROGRAM: (state, id) => {
       state.programActive = id;
     },
-    SET_PROJECTS: (state, projects) => { 
-      state.projects = projects;
+    SET_ACTIVE_PROGRAM_NAME: (state, name) => {
+      console.log(name);
+      state.programActiveName = name;
     },
+    SET_PROJECTS: (state, projects) => {
+      state.projects = projects;
+    }
   },
   actions: {
-    getPrograms(context,  state) {
-      fetch(`http://localhost:3000/programs?organization=${this.state.organization}`)
+    getPrograms(context, state) {
+      fetch(
+        `http://localhost:3000/programs?organization=${this.state.organization}`
+      )
         .then(r => r.json())
         .then(programs => {
-          context.commit('SET_PROGRAMS', programs)
-      });
+          context.commit("SET_PROGRAMS", programs);
+        });
     },
-    getProjects(context,  state) {
-      console.log(this.state.programActive)
-      fetch(`http://localhost:3000/projects?program=${this.state.programActive}`)
+    getProjects(context, state) {
+      fetch(
+        `http://localhost:3000/projects?program=${this.state.programActive}`
+      )
         .then(r => r.json())
         .then(projects => {
-          console.log(projects)
-          context.commit('SET_PROJECTS', projects)
-      });
+          context.commit("SET_PROJECTS", projects);
+        });
     },
     getActiveProgram(context, e) {
       const id = e.currentTarget.parentNode.parentNode.parentNode.id;
-      context.commit('SET_ACTIVE_PROGRAM', id)
+      context.commit("SET_ACTIVE_PROGRAM", id);
+
+      fetch(`http://localhost:3000/programs?id=${id}`)
+        .then(r => r.json())
+        .then(program => {
+          context.commit("SET_ACTIVE_PROGRAM_NAME", program[0].name);
+        });
     }
   }
-})
+});
