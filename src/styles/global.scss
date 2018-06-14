@@ -19,6 +19,15 @@ button {
     border: none;
 }
 
+.button__primary {
+    background-color: #3B60E4;
+    border-radius: 3px;
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: .3px;
+}
+
 // Inputs and buttons
 button:hover, button:active, button:focus, a:hover, a:focus, input:focus, input:active {
     cursor: pointer;
