@@ -4,7 +4,7 @@
       <SubNavigation />
     </div>
     <div class="content">
-      <div class='card' v-on:mouseover="showOverlay" v-on:mouseleave="hideOverlay"  v-for="program in programs" :key="program.id" >
+      <div class='card' v-on:mouseover="showOverlay" v-on:mouseleave="hideOverlay"  v-for="program in programs" :key="program.id"  :id="program.id">
 
         <span class="card__hover hide">
                 <span class="select__container">
@@ -12,7 +12,7 @@
                   <span class="select__checkbox" />
                 </span>
                 <router-link :to="'/programs/' + program.id" class='card__button'>
-                <button class='card__hover--button button__primary'>
+                <button class='card__hover--button button__primary' v-on:click="getActiveProgramData">
                   View program
                 </button>
                 </router-link>
@@ -67,10 +67,14 @@
     },
     methods: {
       ...mapActions([
-          "getPrograms"
+          "getPrograms",
+          "getActiveProgram"
       ]),
       getProgramData: function() {
         this.getPrograms();
+      },
+      getActiveProgramData: function(e) {
+        this.getActiveProgram(e);
       },
       showOverlay: function(e) {
         const overlay = e.currentTarget.children[0];

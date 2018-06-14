@@ -19,7 +19,7 @@ export default new Router({
       name: 'programs',
       component: ProgramList
     },
-    {
+  {
       path: '/settings',
       name: 'settings',
       component: Settings

@@ -24,9 +24,14 @@ export default new Vuex.Store({
   },
   mutations: {
     SET_PROGRAMS: (state, programs) => { 
-      console.log(state.programs)
       state.programs = programs;
-    }
+    },
+    SET_ACTIVE_PROGRAM: (state, id) => { 
+      state.programActive = id;
+    },
+    SET_PROJECTS: (state, projects) => { 
+      state.projects = projects;
+    },
   },
   actions: {
     getPrograms(context,  state) {
@@ -35,6 +40,19 @@ export default new Vuex.Store({
         .then(programs => {
           context.commit('SET_PROGRAMS', programs)
       });
+    },
+    getProjects(context,  state) {
+      console.log(this.state.programActive)
+      fetch(`http://localhost:3000/projects?program=${this.state.programActive}`)
+        .then(r => r.json())
+        .then(projects => {
+          console.log(projects)
+          context.commit('SET_PROJECTS', projects)
+      });
+    },
+    getActiveProgram(context, e) {
+      const id = e.currentTarget.parentNode.parentNode.parentNode.id;
+      context.commit('SET_ACTIVE_PROGRAM', id)
     }
   }
 })
