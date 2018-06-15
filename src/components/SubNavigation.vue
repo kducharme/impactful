@@ -44,7 +44,7 @@
             </svg>
             <router-link 
                 v-bind:class="[programActive && projectActive ? 'sub__active' : 'sub__hide']"
-                to=''>{{ projectActive }}
+                to=''>{{ projectActiveName }}
             </router-link>
         </div>
     </div>
@@ -70,7 +70,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(["programActive", "projectActive", "programActiveName"])
+    ...mapState(["programActive", "projectActive", "programActiveName", "projectActiveName"])
   }
 };
 </script>

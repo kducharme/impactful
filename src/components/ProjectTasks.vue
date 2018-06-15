@@ -1,6 +1,8 @@
 <template>
     <div class="tasks">
-        project tasks
+                <div class="feature__title">
+            <h4>To-do's</h4>
+        </div>
     </div>
 </template>
 
@@ -11,6 +13,7 @@ export default {
   name: "tasks",
   data() {
     return {
+
     };
   },
   computed: {

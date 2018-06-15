@@ -33,11 +33,14 @@ export default {
     ProjectMedia,
   },
   methods: {
-    ...mapActions(["getProjects", "setActiveProgramOnLoad"])
+    ...mapActions(["getProjects", "setActiveProgramOnLoad", "setActiveProjectOnLoad"])
   },
   beforeMount() {
-    let id = window.location.href.split("programs/")[1].split("/")[0];
-    this.setActiveProgramOnLoad(id);
+    const programId = window.location.href.split("programs/")[1].split("/")[0];
+    this.setActiveProgramOnLoad(programId);
+
+    const projectId = window.location.href.split("programs/")[1].split("/")[1];
+    this.setActiveProjectOnLoad(projectId);
   }
 };
 </script>
@@ -50,18 +53,17 @@ export default {
   height: calc(100vh - 44px - 40px);
   @include display-flex(center, flex-start, row);
   padding: 30px 75px 0 75px;
-  text-align: center;
   .col1 {
-      width: 25%;
-      height: calc(100vh - 44px - 40px - 30px - 30px);
+      width: 23%;
+      height: 500px;
       margin-right: 20px;
   }
   .col2 {
-      width: 50%;
+      width: 54%;
       height: 100%;
   }
   .col3 {
-      width: 25%;
+      width: 23%;
       height: calc(100vh - 44px - 40px - 30px - 30px);
       margin-left: 20px;
   }

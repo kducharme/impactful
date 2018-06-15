@@ -1,0 +1,17 @@
+@import "variables";
+@import "mixins";
+
+.feature__title {
+    @include display-flex(flex-start, center, row);
+    padding-left: 20px;
+    height: 50px;
+    width: 100%;
+    border-bottom: 1px solid $grayBorder;
+    h4 {
+        font-size: 13px;
+        font-weight: $weightMedium;
+        span {
+            color: $colorAccent;
+        }
+    }
+}

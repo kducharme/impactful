@@ -23,21 +23,33 @@ export default new Vuex.Store({
     projectActiveUsers: []
   },
   mutations: {
+    // Project-related mutations
     SET_PROGRAMS: (state, programs) => {
       state.programs = programs;
     },
     SET_ACTIVE_PROGRAM: (state, id) => {
       state.programActive = id;
     },
-    RESET_ACTIVE_PROGRAM: (state) => {
-      state.programActive = null;
-    },
     SET_ACTIVE_PROGRAM_NAME: (state, name) => {
       state.programActiveName = name;
     },
+    RESET_ACTIVE_PROGRAM: state => {
+      state.programActive = null;
+    },
+    // Project-related mutations
     SET_PROJECTS: (state, projects) => {
       state.projects = projects;
-    }
+    },
+    SET_ACTIVE_PROJECT: (state, id) => {
+      state.projectActive = id;
+    },
+    SET_ACTIVE_PROJECT_NAME: (state, project) => {
+      state.projectActiveName = project.name;
+      state.projectActiveManager = project.manager;
+    },
+    RESET_ACTIVE_PROJECT: state => {
+      state.projectActive = null;
+    },
   },
   actions: {
     getPrograms(context, state) {
@@ -50,17 +62,15 @@ export default new Vuex.Store({
         });
     },
     getProjects(context, id) {
-      fetch(
-        `http://localhost:3000/projects?program=${id}`
-      )
+      fetch(`http://localhost:3000/projects?program=${id}`)
         .then(r => r.json())
         .then(projects => {
           context.commit("SET_PROJECTS", projects);
         });
     },
     getActiveProgram(context, e) {
-        let id = e.currentTarget.parentNode.parentNode.parentNode.id;
-        context.commit("SET_ACTIVE_PROGRAM", id);
+      let id = e.currentTarget.parentNode.parentNode.parentNode.id;
+      context.commit("SET_ACTIVE_PROGRAM", id);
 
       fetch(`http://localhost:3000/programs?id=${id}`)
         .then(r => r.json())
@@ -69,7 +79,7 @@ export default new Vuex.Store({
         });
     },
     resetActiveProgram(context) {
-      context.commit('RESET_ACTIVE_PROGRAM', null)
+      context.commit("RESET_ACTIVE_PROGRAM", null);
     },
     setActiveProgramOnLoad(context, id) {
       context.commit("SET_ACTIVE_PROGRAM", id);
@@ -78,6 +88,15 @@ export default new Vuex.Store({
         .then(r => r.json())
         .then(program => {
           context.commit("SET_ACTIVE_PROGRAM_NAME", program[0].name);
+        });
+    },
+    setActiveProjectOnLoad(context, id) {
+      context.commit("SET_ACTIVE_PROJECT", id);
+
+      fetch(`http://localhost:3000/projects?id=${id}`)
+        .then(r => r.json())
+        .then(project => {
+          context.commit("SET_ACTIVE_PROJECT_NAME", project[0]);
         });
     }
   }
