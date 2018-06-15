@@ -7,10 +7,11 @@
   background-color: white;
   border: 1px solid $grayBorder;
   border-radius: 10px;
-  height: 320px;
-  width: 220px;
-  margin-right: 15px;
-  margin-bottom: 20px;
+  height: 300px;
+  width: 30%;
+  min-width: 230px;
+  max-width: 300px;
+  margin: 0 2% 2% 0;
   .card__overview {
     position: absolute;
     z-index: 998;
