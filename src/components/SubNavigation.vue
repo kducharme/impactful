@@ -23,6 +23,7 @@
                 />
             </svg>
             <router-link
+                @click.native="resetActiveProject"
                 v-bind:class="[programActive ? 'sub__active' : 'sub__hide']"
                 to=''>{{ programActiveName }}
             </router-link>
@@ -63,10 +64,15 @@ export default {
   },
   methods: {
     ...mapActions([
-        "resetActiveProgram"
+        "resetActiveProgram",
+        "resetActiveProject",
     ]),
     resetActive: function() {
       this.resetActiveProgram();
+      this.resetActiveProject();
+    },
+    resetActiveProject: function() {
+      this.resetActiveProject();
     }
   },
   computed: {

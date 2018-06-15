@@ -35,6 +35,7 @@ export default new Vuex.Store({
     },
     RESET_ACTIVE_PROGRAM: state => {
       state.programActive = null;
+      state.programActiveName = null;
     },
     // Project-related mutations
     SET_PROJECTS: (state, projects) => {
@@ -49,6 +50,7 @@ export default new Vuex.Store({
     },
     RESET_ACTIVE_PROJECT: state => {
       state.projectActive = null;
+      state.projectActiveName = null;
     },
   },
   actions: {
@@ -80,6 +82,9 @@ export default new Vuex.Store({
     },
     resetActiveProgram(context) {
       context.commit("RESET_ACTIVE_PROGRAM", null);
+    },
+    resetActiveProject(context) {
+      context.commit("RESET_ACTIVE_PROJECT", null);
     },
     setActiveProgramOnLoad(context, id) {
       context.commit("SET_ACTIVE_PROGRAM", id);

@@ -52,9 +52,10 @@ export default {
 .content {
   height: calc(100vh - 44px - 40px);
   @include display-flex(center, flex-start, row);
-  padding: 30px 75px 0 75px;
+  padding: 30px 4% 0 4%;
   .col1 {
       width: 23%;
+      min-width: 260px;
       height: 500px;
       margin-right: 20px;
   }
@@ -64,6 +65,7 @@ export default {
   }
   .col3 {
       width: 23%;
+      min-width: 320px;
       height: calc(100vh - 44px - 40px - 30px - 30px);
       margin-left: 20px;
   }
