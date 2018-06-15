@@ -1,6 +1,6 @@
 <template>
-    <div class="overview">
-        project overview
+    <div class="media">
+        project media
     </div>
 </template>
 
@@ -8,7 +8,7 @@
 import { mapState, mapActions } from "vuex";
 
 export default {
-  name: "overview",
+  name: "media",
   data() {
     return {
     };
@@ -23,7 +23,7 @@ export default {
 @import "../styles/variables";
 @import "../styles/mixins";
 
-.overview {
+.media {
 
   
 }

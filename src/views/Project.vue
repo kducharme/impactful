@@ -4,7 +4,9 @@
       <SubNavigation />
     </div>
     <div class="content">
-  
+        <ProjectOverview class='col1 feature'/>
+        <ProjectTimeline class='col2 feature'/>
+        <ProjectTasks class='col3 feature'/>
     </div>
   </div>
 </template>
@@ -13,6 +15,10 @@
 import { mapState, mapActions } from "vuex";
 import Card from "../components/Card.vue";
 import SubNavigation from "../components/SubNavigation.vue";
+import ProjectOverview from "../components/ProjectOverview.vue";
+import ProjectTimeline from "../components/ProjectTimeline.vue";
+import ProjectTasks from "../components/ProjectTasks.vue";
+import ProjectMedia from "../components/ProjectMedia.vue";
 
 export default {
   name: "project",
@@ -20,7 +26,11 @@ export default {
     programList: "programs"
   },
   components: {
-    SubNavigation
+    SubNavigation,
+    ProjectOverview,
+    ProjectTimeline,
+    ProjectTasks,
+    ProjectMedia,
   },
   methods: {
     ...mapActions(["getProjects", "setActiveProgramOnLoad"])
@@ -38,8 +48,28 @@ export default {
 
 .content {
   height: calc(100vh - 44px - 40px);
-  @include display-flex(flex-start, flex-start, row);
-  padding: 30px 100px 0 100px;
+  @include display-flex(center, flex-start, row);
+  padding: 30px 75px 0 75px;
+  text-align: center;
+  .col1 {
+      width: 25%;
+      height: calc(100vh - 44px - 40px - 30px - 30px);
+      margin-right: 20px;
+  }
+  .col2 {
+      width: 50%;
+      height: 100%;
+  }
+  .col3 {
+      width: 25%;
+      height: calc(100vh - 44px - 40px - 30px - 30px);
+      margin-left: 20px;
+  }
+  .feature {
+      border: 1px solid $grayBorder;
+      background-color: white;
+      border-radius: 5px;
+  }
 }
 </style>
 
