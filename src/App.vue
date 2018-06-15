@@ -3,22 +3,41 @@
     <nav>
       <div class='nav__logo'>
         <img src='img/impactful.svg'>
-        <router-link to='/home'>Dashboard</router-link>
-        <router-link to='/programs'>Programs</router-link>
-        <router-link to='/settings'>Settings</router-link>
+        <router-link @click.native="resetActive" to='/home'>Dashboard
+        </router-link>
+        <router-link @click.native="resetActive" to='/programs'>Programs
+        </router-link>
+        <router-link @click.native="resetActive" to='/settings'>Settings
+        </router-link>
       </div>
   
       <div class='nav__right'>
         <input class='nav__right--search' placeholder='Search people or projects…' />
         <span class='nav__right--user'>
-              <p>Kyle Ducharme</p>
-              <img src='img/chevronLight.svg'>
-            </span>
+                <p>Kyle Ducharme</p>
+                <img src='img/chevronLight.svg'>
+              </span>
       </div>
     </nav>
     <router-view/>
   </div>
 </template>
+
+<script>
+  import { mapActions } from "vuex";
+
+export default {
+  name: "App",
+  methods: {
+    ...mapActions([
+        "resetActiveProgram"
+    ]),
+    resetActive: function() {
+      this.resetActiveProgram();
+    }
+  }
+};
+</script>
 
 <style lang='scss'>
   @import './styles/variables';

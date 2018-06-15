@@ -29,7 +29,7 @@
                           d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
                         />
                       </svg>
-              <p>35 /45 tasks (90% complete)</p>
+              <p>35/45 tasks (90%)</p>
             </div>
             <div class="card__progress" />
           </div>
@@ -55,15 +55,20 @@
     },
     methods: {
       ...mapActions([
-        "getProjects"
+        "getProjects",
+        "setActiveProgramOnLoad"
       ]),
       getProjectData: function(id) {
         this.getProjects(id);
+      },
+      getActiveProgramData: function(id) {
+        this.getActiveProgram(id);
       },
     },
     beforeMount() {
       const id = window.location.href.split('programs/')[1]
       this.getProjectData(id);
+      this.setActiveProgramOnLoad(id);
     },
     computed: {
       ...mapState(["projects"])
@@ -79,7 +84,6 @@
     background-color: $colorBackground;
     @include display-flex(flex-start, flex-start, row);
     height: calc(100vh - 44px - 40px); // Height of screen minus 2 navs
-    flex-wrap: wrap;
     .groups {
       background-color: white;
       border-right: 1px solid $grayBorder;
@@ -112,8 +116,9 @@
       @include display-flex(flex-start, flex-start, row);
       flex-wrap: wrap;
       overflow: scroll;
-      width: 70%;
-      padding: 30px;
+      width: 73%;
+      padding: 2% 3.5% 4% 3.5%;
+      height: calc(100vh - 44px - 40px);
     }
   }
 </style>

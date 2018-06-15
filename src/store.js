@@ -60,8 +60,8 @@ export default new Vuex.Store({
         });
     },
     getActiveProgram(context, e) {
-      const id = e.currentTarget.parentNode.parentNode.parentNode.id;
-      context.commit("SET_ACTIVE_PROGRAM", id);
+        let id = e.currentTarget.parentNode.parentNode.parentNode.id;
+        context.commit("SET_ACTIVE_PROGRAM", id);
 
       fetch(`http://localhost:3000/programs?id=${id}`)
         .then(r => r.json())
@@ -71,7 +71,15 @@ export default new Vuex.Store({
     },
     resetActiveProgram(context) {
       context.commit('RESET_ACTIVE_PROGRAM', null)
-      console.log('woo')
+    },
+    setActiveProgramOnLoad(context, id) {
+      context.commit("SET_ACTIVE_PROGRAM", id);
+
+      fetch(`http://localhost:3000/programs?id=${id}`)
+        .then(r => r.json())
+        .then(program => {
+          context.commit("SET_ACTIVE_PROGRAM_NAME", program[0].name);
+        });
     }
   }
 });
