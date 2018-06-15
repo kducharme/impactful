@@ -3,6 +3,7 @@
         <div class='sub__breadcrumbs'>
             <router-link
                 v-bind:class="['sub__active']"
+                @click.native="resetActive"
                 to='/programs'>{{ levelOne }}
             </router-link>
             <svg
@@ -51,18 +52,22 @@
 
 <script>
 import { mapState } from "vuex";
+  import { mapActions } from "vuex";
 
 export default {
   name: "programs",
   data() {
     return {
-      levelOne: "All Programs",
-      page: window.location.href
+      levelOne: "All Programs"
     };
   },
   methods: {
-    check() {
-      this.checked = !this.checked;
+    ...mapActions([
+        "resetActiveProgram"
+    ]),
+    resetActive: function() {
+      console.log('works');
+      this.resetActiveProgram();
     }
   },
   computed: {

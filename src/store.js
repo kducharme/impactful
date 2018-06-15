@@ -29,6 +29,9 @@ export default new Vuex.Store({
     SET_ACTIVE_PROGRAM: (state, id) => {
       state.programActive = id;
     },
+    RESET_ACTIVE_PROGRAM: (state) => {
+      state.programActive = null;
+    },
     SET_ACTIVE_PROGRAM_NAME: (state, name) => {
       console.log(name);
       state.programActiveName = name;
@@ -65,6 +68,10 @@ export default new Vuex.Store({
         .then(program => {
           context.commit("SET_ACTIVE_PROGRAM_NAME", program[0].name);
         });
+    },
+    resetActiveProgram(context) {
+      context.commit('RESET_ACTIVE_PROGRAM', null)
+      console.log('woo')
     }
   }
 });
