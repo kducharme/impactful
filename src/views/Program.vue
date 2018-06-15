@@ -36,89 +36,84 @@
         </div>
   
       </div>
-
-
       </div>
       </div>
   </div>
 </template>
 
 <script>
-  import { mapState, mapActions } from "vuex";
-  import SubNavigation from "../components/SubNavigation.vue";
-  import Groups from "../components/Groups.vue";
-  export default {
-    name: 'program',
-    components: {
-      SubNavigation,
-      Groups
+import { mapState, mapActions } from "vuex";
+import SubNavigation from "../components/SubNavigation.vue";
+import Groups from "../components/Groups.vue";
+export default {
+  name: "program",
+  components: {
+    SubNavigation,
+    Groups
+  },
+  methods: {
+    ...mapActions(["getProjects", "setActiveProgramOnLoad"]),
+    getProjectData: function(id) {
+      this.getProjects(id);
     },
-    methods: {
-      ...mapActions([
-        "getProjects",
-        "setActiveProgramOnLoad"
-      ]),
-      getProjectData: function(id) {
-        this.getProjects(id);
-      },
-      getActiveProgramData: function(id) {
-        this.getActiveProgram(id);
-      },
-    },
-    beforeMount() {
-      const id = window.location.href.split('programs/')[1]
-      this.getProjectData(id);
-      this.setActiveProgramOnLoad(id);
-    },
-    computed: {
-      ...mapState(["projects"])
-    },
+    getActiveProgramData: function(id) {
+      this.getActiveProgram(id);
+    }
+  },
+  beforeMount() {
+    const id = window.location.href.split("programs/")[1];
+    this.getProjectData(id);
+    this.setActiveProgramOnLoad(id);
+  },
+  computed: {
+    ...mapState(["projects"])
   }
+};
 </script>
 
 <style lang='scss'>
-  @import "../styles/card";
-  @import "../styles/variables";
-  @import "../styles/mixins";
-  .content {
-    background-color: $colorBackground;
-    @include display-flex(flex-start, flex-start, row);
-    height: calc(100vh - 44px - 40px); // Height of screen minus 2 navs
-    .groups {
-      background-color: white;
-      border-right: 1px solid $grayBorder;
-      width: 25%;
-      min-width: 320px;
-      max-width: 400px;
-      height: 100%;
-      .groups__header {
-        @include display-flex(space-between, center, row);
-        height: 80px;
-        border-bottom: 1px solid $grayBorder;
-        padding: 0 30px 0 30px;
-        p {
-          font-size: 18px;
-          font-weight: $weightHeavy;
-        }
-        .groups__button {
-          height: 34px;
-          width: 88px;
-          font-size: 12px;
-          color: white!important;
-          background-color: $colorFontDark;
-        }
-        .groups__button:hover {
-          opacity: .8;
-        }
+@import "../styles/card";
+@import "../styles/variables";
+@import "../styles/mixins";
+.content {
+  background-color: $colorBackground;
+  @include display-flex(flex-start, flex-start, row);
+  height: calc(100vh - 44px - 40px); // Height of screen minus 2 navs
+  .groups {
+    background-color: white;
+    border-right: 1px solid $grayBorder;
+    width: 25%;
+    min-width: 320px;
+    max-width: 400px;
+    height: 100%;
+    .groups__header {
+      @include display-flex(space-between, center, row);
+      height: 80px;
+      border-bottom: 1px solid $grayBorder;
+      padding: 0 30px 0 30px;
+      p {
+        font-size: 18px;
+        font-weight: $weightHeavy;
+      }
+      .groups__button {
+        height: 34px;
+        width: 88px;
+        font-size: 12px;
+        color: white !important;
+        background-color: $colorFontDark;
+      }
+      .groups__button:hover {
+        opacity: 0.8;
       }
     }
-    .content__projects {
-      @include display-flex(flex-start, flex-start, row);
-      flex-wrap: wrap;
-      overflow: scroll;
-      width: 73%;
-      padding: 2% 3.5% 4% 3.5%;
-      height: calc(100vh - 44px - 40px);
-    }
   }
+  .content__projects {
+    @include display-flex(flex-start, flex-start, row);
+    flex-wrap: wrap;
+    overflow: scroll;
+    width: 73%;
+    padding: 2% 3.5% 4% 3.5%;
+    height: calc(100vh - 44px - 40px);
+  }
+}
 </style>

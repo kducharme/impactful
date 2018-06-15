@@ -13,7 +13,7 @@
 import { mapState } from "vuex";
 
 export default {
-  name: "programs",
+  name: "group",
   data() {
     return {
       levelOne: "All Programs",
