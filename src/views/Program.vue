@@ -57,12 +57,13 @@
       ...mapActions([
         "getProjects"
       ]),
-      getProjectData: function() {
-        this.getProjects();
+      getProjectData: function(id) {
+        this.getProjects(id);
       },
     },
     beforeMount() {
-      this.getProjectData();
+      const id = window.location.href.split('programs/')[1]
+      this.getProjectData(id);
     },
     computed: {
       ...mapState(["projects"])
@@ -108,7 +109,7 @@
       }
     }
     .content__projects {
-      @include display-flex(center, flex-start, row);
+      @include display-flex(flex-start, flex-start, row);
       flex-wrap: wrap;
       overflow: scroll;
       width: 70%;

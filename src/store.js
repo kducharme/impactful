@@ -47,9 +47,9 @@ export default new Vuex.Store({
           context.commit("SET_PROGRAMS", programs);
         });
     },
-    getProjects(context, state) {
+    getProjects(context, id) {
       fetch(
-        `http://localhost:3000/projects?program=${this.state.programActive}`
+        `http://localhost:3000/projects?program=${id}`
       )
         .then(r => r.json())
         .then(projects => {
