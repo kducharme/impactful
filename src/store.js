@@ -33,7 +33,6 @@ export default new Vuex.Store({
       state.programActive = null;
     },
     SET_ACTIVE_PROGRAM_NAME: (state, name) => {
-      console.log(name);
       state.programActiveName = name;
     },
     SET_PROJECTS: (state, projects) => {

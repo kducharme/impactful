@@ -66,7 +66,6 @@ export default {
         "resetActiveProgram"
     ]),
     resetActive: function() {
-      console.log('works');
       this.resetActiveProgram();
     }
   },
