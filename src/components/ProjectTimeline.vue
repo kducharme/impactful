@@ -6,8 +6,8 @@
         <div class="timeline__write">
             <div></div>
             <input placeholder="Post a note...">
-
         </div>
+        
     </div>
 </template>
 
