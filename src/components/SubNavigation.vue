@@ -23,9 +23,10 @@
                 />
             </svg>
             <router-link
-                @click.native="resetActiveProject"
+                class='sub__overflow'
+                @click.native="resetProjectOnly"
                 v-bind:class="[programActive ? 'sub__active' : 'sub__hide']"
-                to=''>{{ programActiveName }}
+                :to="/programs/ + programActive" >{{ programActiveName }}
             </router-link>
             <svg
                 v-bind:class="[programActive && projectActive? 'sub__active' : 'sub__hide']"
@@ -44,6 +45,7 @@
                 />
             </svg>
             <router-link 
+                class='sub__overflow'
                 v-bind:class="[programActive && projectActive ? 'sub__active' : 'sub__hide']"
                 to=''>{{ projectActiveName }}
             </router-link>
@@ -52,8 +54,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-  import { mapActions } from "vuex";
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: "programs",
@@ -71,7 +72,7 @@ export default {
       this.resetActiveProgram();
       this.resetActiveProject();
     },
-    resetActiveProject: function() {
+    resetProjectOnly: function() {
       this.resetActiveProject();
     }
   },
@@ -95,6 +96,12 @@ export default {
   .sub__breadcrumbs {
     @include display-flex(flex-start, center, row);
     width: 50%;
+    .sub__overflow {
+      max-width: 150px;
+      white-space: nowrap; 
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
     a {
       margin-top: -2px;
       color: $colorPrimaryDark;

@@ -49,7 +49,7 @@ export default {
   padding: 20px 20px 20px 20px;
   svg {
     align-self: flex-end;
-    margin-bottom: 4px;
+    margin-bottom: 8px;
   }
 }
 </style>

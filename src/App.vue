@@ -48,9 +48,10 @@
   export default {
     name: "App",
     methods: {
-      ...mapActions(["resetActiveProgram"]),
+      ...mapActions(["resetActiveProgram", "resetActiveProject"]),
       resetActive: function() {
         this.resetActiveProgram();
+        this.resetActiveProject();
       }
     }
   };
