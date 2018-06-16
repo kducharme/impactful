@@ -113,11 +113,12 @@
       }
     }
     .content__right {
-      @include display-flex(flex-start, flex-start, column);
+      @include display-flex(space-between, flex-start, column);
       width: calc(100vw - 300px);
-      padding: 0 3% 4% 3%;
       height: calc(100vh - 44px - 40px);
+
       .content__projects {
+        padding: 0 2% 0 2%;
         height: calc(100vh - 44px - 40px - 80px);
         @include display-flex(flex-start, flex-start, row);
         flex-wrap: wrap;

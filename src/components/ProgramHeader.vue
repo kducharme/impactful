@@ -47,11 +47,12 @@ export default {
 .header {
   height: 80px;
   @include display-flex(flex-start, center, row);
+  padding: 0 3% 0 3%;
   .header__title {
     @include display-flex(flex-start, flex-start, column);
     h2 {
       margin-bottom: 4px;
-      font-size: 18px;
+      font-size: 16px;
       color: $colorFontDark;
     }
     .header__select {
