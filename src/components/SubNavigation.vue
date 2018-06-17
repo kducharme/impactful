@@ -26,7 +26,7 @@
                 class='sub__overflow'
                 @click.native="resetProjectOnly"
                 v-bind:class="[programActive ? 'sub__active' : 'sub__hide']"
-                :to="/programs/ + programActive" >{{ programActiveName }}
+                :to="'/programs/' + programActive + '/projects/'" >{{ programActiveName }}
             </router-link>
             <svg
                 v-bind:class="[programActive && projectActive? 'sub__active' : 'sub__hide']"

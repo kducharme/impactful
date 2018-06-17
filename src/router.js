@@ -26,12 +26,12 @@ export default new Router({
       component: Settings
     },
     {
-      path: '/programs/:id',
+      path: '/programs/:programId/projects/',
       name: 'program',
       component: Program
     },
     {
-      path: '/programs/:id/:id',
+      path: '/programs/:programId/projects/:projectId',
       name: 'project',
       component: Project
     },
