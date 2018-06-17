@@ -38,6 +38,7 @@ export default {
   methods: {
     getDate() {
       const date = new Date();
+      console.log(date);
       const monthList = [
         "January",
         "February",
@@ -56,46 +57,61 @@ export default {
       const m = date.getMonth();
       const y = date.getFullYear();
       const fullDate = `${monthList[m]} ${d}, ${y}`;
-      return fullDate;
+      return { fullDate, date };
     },
     saveNote() {
+      console.log(this.note);
       const newNote = {
         text: this.note,
-        date_created: this.getDate(),
+        date_created: this.getDate().fullDate,
+        date_sort: this.getDate().date,
         date_deleted: null,
         read: false,
         project: window.location.href.split("/projects/")[1],
         image: null, // TODO = change once images can be added
-        author: 3 // TODO = change once active used hooked up
+        author: 2 // TODO = change once active used hooked up
       };
       fetch("http://localhost:3000/project_notes", {
         method: "POST",
         headers: {
-            'content-type': 'application/json'
+          "content-type": "application/json"
         },
         body: JSON.stringify(newNote)
-      }).catch(error => console.log(error));
+      })
+        .then(
+          fetch(`http://localhost:3000/users?id=${newNote.author}`)
+            .then(r => r.json())
+            .then(author => {
+              newNote.writer = author[0];
+              this.allNotes.push(newNote);
+              this.allNotes.sort((a, b) => new Date(b.date_sort) - new Date(a.date_sort));
+            })
+        )
+        .catch(error => console.log(error));
       this.note = "";
-      console.log(newNote)
+    },
+    loadNotes() {
+      const id = window.location.href.split("/projects/")[1];
+      fetch(`http://localhost:3000/project_notes?project=${id}`)
+        .then(r => r.json())
+        .then(notes => {
+          notes.forEach(note => {
+            fetch(`http://localhost:3000/users?id=${note.author}`)
+              .then(r => r.json())
+              .then(author => {
+                note.writer = author[0];
+                this.allNotes.push(note);
+                this.allNotes.sort((a, b) => new Date(b.date_sort) - new Date(a.date_sort));
+              });
+          });
+        });
     }
   },
   computed: {
     ...mapState(["projects"])
   },
   beforeMount() {
-    const id = window.location.href.split("/projects/")[1];
-    fetch(`http://localhost:3000/project_notes?project=${id}`)
-      .then(r => r.json())
-      .then(notes => {
-        notes.forEach(note => {
-          fetch(`http://localhost:3000/users?id=${note.author}`)
-            .then(r => r.json())
-            .then(author => {
-              note.writer = author[0];
-              this.allNotes.push(note);
-            });
-        });
-      });
+    this.loadNotes();
   }
 };
 </script>

@@ -7,7 +7,7 @@
         <div class="note__right">
             <div class="note__head">
                 <p class='note__author'>{{ `${noteDetails.writer.first_name} ${noteDetails.writer.last_name}`}}</p>
-                <p class='note__date'>{{ `${noteDetails.writer.date_created}`}}</p>
+                <p class='note__date'>{{ `${noteDetails.date_created}`}}</p>
             </div>
             <p class='note__text'>{{ noteDetails.text }}</p>
         </div>
