@@ -93,6 +93,8 @@ export default {
   }
   .timeline__notes {
     width: 100%;
+    height: calc(100% - 75px);
+    overflow: scroll;
   }
 }
 </style>

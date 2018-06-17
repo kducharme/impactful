@@ -280,11 +280,51 @@
         },
         {
             "id": 4,
-            "text": "Testing testing",
-            "date_created": "June 2, 2018",
+            "text": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blas penum voluptatum deleniti atque corrupti quo.",
+            "date_created": "May 23, 2018",
             "date_deleted": null,
-            "read": false,
-            "project": 2,
+            "read": true,
+            "project": 1,
+            "image": 1,
+            "author": 2
+        },
+        {
+            "id": 5,
+            "text": "This is my favorite thing in the world. This is the most fun ever..",
+            "date_created": "May 19, 2018",
+            "date_deleted": null,
+            "read": true,
+            "project": 1,
+            "image": 1,
+            "author": 2
+        },
+        {
+            "id": 6,
+            "text": "Should we invite other people to the party?",
+            "date_created": "May 14, 2018",
+            "date_deleted": null,
+            "read": true,
+            "project": 1,
+            "image": 1,
+            "author": 3
+        },
+        {
+            "id": 7,
+            "text": "This is super helpful",
+            "date_created": "May 13, 2018",
+            "date_deleted": null,
+            "read": true,
+            "project": 1,
+            "image": 1,
+            "author": 1
+        },
+        {
+            "id": 8,
+            "text": "Created this project to help organize our project stuff.",
+            "date_created": "May 11, 2018",
+            "date_deleted": null,
+            "read": true,
+            "project": 1,
             "image": 1,
             "author": 2
         }
