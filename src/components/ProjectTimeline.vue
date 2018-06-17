@@ -36,8 +36,47 @@ export default {
     };
   },
   methods: {
+    getDate() {
+      const date = new Date();
+      const monthList = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+      ];
+      const d = date.getDate();
+      const m = date.getMonth();
+      const y = date.getFullYear();
+      const fullDate = `${monthList[m]} ${d}, ${y}`;
+      return fullDate;
+    },
     saveNote() {
+      const newNote = {
+        text: this.note,
+        date_created: this.getDate(),
+        date_deleted: null,
+        read: false,
+        project: window.location.href.split("/projects/")[1],
+        image: null, // TODO = change once images can be added
+        author: 3 // TODO = change once active used hooked up
+      };
+      fetch("http://localhost:3000/project_notes", {
+        method: "POST",
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify(newNote)
+      }).catch(error => console.log(error));
       this.note = "";
+      console.log(newNote)
     }
   },
   computed: {
@@ -45,7 +84,6 @@ export default {
   },
   beforeMount() {
     const id = window.location.href.split("/projects/")[1];
-    console.log(id)
     fetch(`http://localhost:3000/project_notes?project=${id}`)
       .then(r => r.json())
       .then(notes => {
@@ -54,8 +92,7 @@ export default {
             .then(r => r.json())
             .then(author => {
               note.writer = author[0];
-              this.allNotes.push(note)
-              console.log(this.allNotes)
+              this.allNotes.push(note);
             });
         });
       });
