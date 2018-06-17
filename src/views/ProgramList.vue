@@ -59,9 +59,6 @@ import SubNavigation from "../components/SubNavigation.vue";
 
 export default {
   name: "programs",
-  data: {
-    programList: "programs"
-  },
   methods: {
     ...mapActions(["getPrograms", "getActiveProgram"]),
     getProgramData: function() {

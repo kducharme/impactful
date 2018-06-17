@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     organization: 1,
     organizationUsers: [],
+    activeUser: 1, // TODO = Hook up to auth
 
     programs: [],
     programsSelected: [],
@@ -51,7 +52,6 @@ export default new Vuex.Store({
     RESET_ACTIVE_PROJECT: state => {
       state.projectActive = null;
       state.projectActiveName = null;
-      console.log('step 3')
     },
   },
   actions: {
@@ -85,7 +85,6 @@ export default new Vuex.Store({
       context.commit("RESET_ACTIVE_PROGRAM", null);
     },
     resetActiveProject(context) {
-      console.log('step 2')
       context.commit("RESET_ACTIVE_PROJECT", null);
     },
     setActiveProgramOnLoad(context, id) {

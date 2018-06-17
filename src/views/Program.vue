@@ -89,7 +89,6 @@
     },
     beforeMount() {
       const id = window.location.href.split("/projects/")[0].split('programs/')[1]
-      console.log('id', id)
       this.getProjectData(id);
       this.setActiveProgramOnLoad(id);
     },

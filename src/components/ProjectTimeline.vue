@@ -1,11 +1,11 @@
 <template>
     <div class="timeline">
         <div class="feature__title">
-            <h4>Project updates <span>({{ newUpdates }} new)</span></h4>
+            <h4>Project updates <span>({{ unreadUpdates }} new)</span></h4>
         </div>
         <div class="timeline__write">
             <div></div>
-            <input placeholder="Post a note...">
+            <input v-model="update" @keyup.enter="saveUpdate" placeholder="Post a note...">
         </div>
         
     </div>
@@ -18,8 +18,15 @@ export default {
   name: "timeline",
   data() {
     return {
-      newUpdates: 2
+      update: '',
+      unreadUpdates: 2
     };
+  },
+  methods: {
+      saveUpdate() {
+          console.log(this.update)
+          this.update = '';
+      }
   },
   computed: {
     ...mapState(["projects"])

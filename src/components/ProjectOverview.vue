@@ -18,9 +18,6 @@ import { mapState, mapActions } from "vuex";
 
 export default {
   name: "overview",
-  data() {
-    return {};
-  },
   computed: {
     ...mapState(["projectActiveName"])
   },
@@ -29,13 +26,7 @@ export default {
     fetch(`http://localhost:3000/projects?id=${id}`)
       .then(r => r.json())
       .then(proj => {
-        return project = {
-          name: proj[0].name,
-          description: proj[0].description,
-          budget: proj[0].budget,
-          manager: proj[0].manager,
-          created: proj[0].date_created
-        };
+        return proj;
       });
   }
 };

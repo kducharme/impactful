@@ -22,9 +22,6 @@ import ProjectMedia from "../components/ProjectMedia.vue";
 
 export default {
   name: "project",
-  data: {
-    programList: "programs"
-  },
   components: {
     SubNavigation,
     ProjectOverview,
@@ -40,7 +37,6 @@ export default {
     this.setActiveProgramOnLoad(programId);
 
     const projectId = window.location.href.split("projects/")[1]
-    console.log(projectId)
     this.setActiveProjectOnLoad(projectId);
   }
 };
