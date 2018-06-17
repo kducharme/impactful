@@ -9,7 +9,7 @@
         </div>
         <div class="timeline__notes">
             <ProjectNote
-                v-for="note in allNotes[0]"
+                v-for="note in allNotes"
                 :noteDetails="note"
                 :key="note.id"
                 :id="note.id" 
@@ -26,7 +26,7 @@ import ProjectNote from "../components/ProjectNote.vue";
 export default {
   name: "timeline",
   components: {
-      ProjectNote
+    ProjectNote
   },
   data() {
     return {
@@ -37,7 +37,6 @@ export default {
   },
   methods: {
     saveNote() {
-      console.log(this.note);
       this.note = "";
     }
   },
@@ -45,11 +44,20 @@ export default {
     ...mapState(["projects"])
   },
   beforeMount() {
-    const id = window.location.href.split("/projects/")[1]
+    const id = window.location.href.split("/projects/")[1];
+    console.log(id)
     fetch(`http://localhost:3000/project_notes?project=${id}`)
       .then(r => r.json())
       .then(notes => {
-        this.allNotes.push(notes);
+        notes.forEach(note => {
+          fetch(`http://localhost:3000/users?id=${note.author}`)
+            .then(r => r.json())
+            .then(author => {
+              note.writer = author[0];
+              this.allNotes.push(note)
+              console.log(this.allNotes)
+            });
+        });
       });
   }
 };
@@ -82,6 +90,9 @@ export default {
     input::placeholder {
       color: $colorFontMedium;
     }
+  }
+  .timeline__notes {
+    width: 100%;
   }
 }
 </style>
