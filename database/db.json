@@ -273,7 +273,7 @@
             "text": "Woo woo woo",
             "date_created": "June 2, 2018",
             "date_deleted": null,
-            "read": false,
+            "read": true,
             "project": 1,
             "image": 1,
             "author": 2

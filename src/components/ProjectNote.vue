@@ -1,9 +1,10 @@
 <template>
     <div class="note">
-        <!-- <img v-attr="src= imageLink" :src="'public/' + noteDetails.writer.image"/> -->
-        <span class="note__unread"></span>
-        <img :src="noteDetails.writer.image" />
-        <div class="note__content">
+        <div class="note__left">
+            <div :class="(noteDetails.read) ? 'note__read' : 'note__unread'"></div>
+            <img :src="noteDetails.writer.image" />
+        </div>
+        <div class="note__right">
             <div class="note__head">
                 <p class='note__author'>{{ `${noteDetails.writer.first_name} ${noteDetails.writer.last_name}`}}</p>
                 <p class='note__date'>{{ `${noteDetails.writer.date_created}`}}</p>
@@ -35,13 +36,31 @@ export default {
   border-bottom: 1px solid $grayBorder;
   padding: 24px 24px 24px 20px;
   font-size: 13px;
-  img {
-    width: 40px;
-    height: 40px;
-    border-radius: 3px;
-    margin-right: 16px;
+  position: relative;
+  .note__left {
+    position: relative;
+    .note__unread {
+      content: "";
+      position: absolute;
+      z-index: 999;
+      top: -3px;
+      right: 12px;
+      width: 12px;
+      height: 12px;
+      border-radius: 100%;
+      background-color: $colorAccent;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+    }
+    img {
+      display: inline-block;
+      position: relative;
+      width: 40px;
+      height: 40px;
+      border-radius: 3px;
+      margin-right: 16px;
+    }
   }
-  .note__content {
+  .note__right {
     @include display-flex(flex-start, flex-start, column);
     width: calc(100% - 40px);
     .note__head {
@@ -53,8 +72,8 @@ export default {
         margin-right: 8px;
       }
       .note__date {
-          font-size: 13px;
-          color: $colorPrimaryLight;
+        font-size: 13px;
+        color: $colorPrimaryLight;
       }
     }
     .note__text {
