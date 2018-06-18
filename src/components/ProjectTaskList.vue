@@ -10,6 +10,7 @@
     </div>
     <div class="taskList__list">
       <ProjectTask
+          class='list__tasks'
           v-for="task in allTasks"
           :taskDetails="task"
           :key="task.id"
@@ -47,7 +48,6 @@ export default {
               });
           });
         });
-        console.log(this.allTasks)
     }
   },
   computed: {
@@ -99,6 +99,13 @@ export default {
       text-align: left;
       margin-left: 25px;
     }
+  }
+  .list__tasks:last-child {
+    border-bottom: none;
+  }
+  .list__tasks:last-child:hover {
+    border-bottom: 1px solid $grayBorder;
+    border-bottom-left-radius: 5px;
   }
 }
 </style>

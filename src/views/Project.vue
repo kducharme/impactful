@@ -1,7 +1,10 @@
 <template>
   <div class="programs" id='programs'>
     <div class="subnav">
-      <SubNavigation />
+      <SubNavigation 
+        :subLinks="this.links"
+        :subButton="this.button"
+      />
     </div>
     <div class="content">
         <ProjectOverview class='col1'/>
@@ -22,6 +25,17 @@ import ProjectMedia from "../components/ProjectMedia.vue";
 
 export default {
   name: "project",
+  data() {
+    return {
+      links: {
+        linkOne: 'Overview',
+        linkTwo: 'Media'
+      },
+      button: {
+        text: 'Edit project'
+      }
+    }
+  },
   components: {
     SubNavigation,
     ProjectOverview,
@@ -49,21 +63,20 @@ export default {
 .content {
   height: calc(100vh - 44px - 40px);
   @include display-flex(center, flex-start, row);
-  padding: 30px 4% 0 4%;
+  padding: 30px 8% 0 8%;
   .col1 {
-      width: 20%;
+      width: 14%;
       min-width: 260px;
-      margin: 0 20px 0 20px;
+      margin: 16px 0 0 0;
       background-color: transparent;
   }
   .col2 {
-      width: 55%;
+      width: 61%;
       height: 100%;
   }
   .col3 {
       width: 25%;
       min-width: 320px;
-      height: calc(100vh - 44px - 40px - 30px - 30px);
       margin: 0 20px 0 20px;
   }
   .feature {

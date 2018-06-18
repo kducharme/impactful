@@ -11,12 +11,12 @@
             </g>
             </svg> -->
             <h3>{{ projectActiveName }}</h3>
-            <p>Date created: <span class="details">{{ projectData.created }}</span></p>
+            <!-- <p>Date created: <span class="details">{{ projectData.created }}</span></p> -->
         </div>
         <div class="overview__bottom">
             <div class="block">
-                <p class='block__label'>Project name</p>
-                <p class='block__data'>{{ projectData.name }}</p>
+                <p class='block__label'>Date created</p>
+                <p class='block__data'>{{ projectData.created }}</p>
             </div>
             <div class="block">
                 <p class='block__label'>Location</p>
@@ -103,14 +103,13 @@ export default {
   .overview__top {
     @include display-flex(flex-start, space-between, column);
     width: 100%;
-    border-bottom: 1px solid $grayBorder;
-    padding: 20px 20px 32px 20px;
     svg {
       align-self: flex-end;
       margin-bottom: 12px;
     }
     h3 {
-      margin-bottom: 20px;
+      font-size: 20px;
+      line-height: 1.6;
     }
     p {
       font-size: 13px;
@@ -121,7 +120,7 @@ export default {
     }
   }
   .overview__bottom {
-    padding: 32px 20px 16px 20px;
+    padding-top: 24px;
     .block {
       margin-bottom: 16px;
       .block__label {
