@@ -18,10 +18,10 @@
 import { mapState, mapActions } from "vuex";
 import Card from "../components/Card.vue";
 import SubNavigation from "../components/SubNavigation.vue";
-import ProjectOverview from "../components/ProjectOverview.vue";
-import ProjectTimeline from "../components/ProjectTimeline.vue";
-import ProjectTaskList from "../components/ProjectTaskList.vue";
-import ProjectMedia from "../components/ProjectMedia.vue";
+import ProjectOverview from "../components/Project/ProjectOverview.vue";
+import ProjectTimeline from "../components/Project/ProjectTimeline.vue";
+import ProjectTaskList from "../components/Project/ProjectTaskList.vue";
+import ProjectMedia from "../components/Project/ProjectMedia.vue";
 
 export default {
   name: "project",
@@ -66,12 +66,13 @@ export default {
   padding: 30px 8% 0 8%;
   .col1 {
       width: 14%;
-      min-width: 260px;
-      margin: 16px 20px 0 0;
+      min-width: 240px;
+      margin: 16px 25px 0 0;
       background-color: transparent;
   }
   .col2 {
       width: 61%;
+      min-width: 500px;
       height: 100%;
   }
   .col3 {

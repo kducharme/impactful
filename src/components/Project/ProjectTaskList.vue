@@ -2,13 +2,23 @@
   <div class="taskList">
     <div class="feature__title taskList__header">
       <h4>To-do's</h4>
-      <button class="taskList__add button__primary">Add new</button>
+      <button
+        class="button__primary"
+        v-on:click="createNewTask"
+      >Add new</button>
+      <ProjectTaskCreate
+        class='hide'
+        :position="this.position"
+      />
     </div>
     <div class="taskList__count">
       <p class="taskList__tab tab__left taskList__active">In progress {{ inProgress.length }}</p>
       <p class="taskList__tab tab__right">Completed {{ completed.length }}</p>
     </div>
-    <div class="taskList__list">
+    <div
+      class="taskList__list"
+      :class="(createActive) ? 'task__create' : ''"
+    >
       <ProjectTask
           class='list__tasks'
           v-for="task in allTasks"
@@ -21,18 +31,25 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
-import ProjectTask from "../components/ProjectTask.vue";
+import ProjectTask from "./ProjectTask.vue";
+import ProjectTaskCreate from "./ProjectTaskCreate.vue";
 
 export default {
   name: "tasklist",
   components: {
-    ProjectTask
+    ProjectTask,
+    ProjectTaskCreate
   },
   data() {
     return {
       allTasks: [],
       inProgress: [],
-      completed: []
+      completed: [],
+      position: {
+        top: '',
+        left: ''
+      },
+      createActive: false
     };
   },
   methods: {
@@ -52,6 +69,15 @@ export default {
           });
         });
     },
+    createNewTask(e) {
+      this.position.top = e.target.parentElement.offsetTop;
+      this.position.left = e.target.parentElement.offsetLeft;
+
+      this.createActive = true;
+
+      const create = e.currentTarget.parentNode.childNodes[2]
+      create.classList.remove('hide');
+    },
     countTaskTypes(task) {
       if (!task.completed) {
         this.inProgress.push(task);
@@ -59,33 +85,40 @@ export default {
       if (task.completed) {
         this.completed.push(task);
       }
-      console.log(this.inProgress);
     }
   },
   computed: {
     ...mapState(["projects"])
   },
   beforeMount() {
+    console.log(this)
     this.loadTasks();
+  },
+  mounted() {
+    this.position.top = this.$el.offsetTop;
+    this.position.left = this.$el.offsetLeft;
   }
 };
 </script>
 
 <style lang='scss'>
-@import "../styles/variables";
-@import "../styles/mixins";
+@import "../../styles/variables";
+@import "../../styles/mixins";
 .taskList {
   width: 100%;
   .taskList__header {
     @include display-flex(space-between, center, row);
     width: 100%;
-  }
-  .taskList__add {
-    height: 30px;
-    width: 80px;
-    font-size: 12px;
-    color: white !important;
-    background-color: $colorFontDark;
+      button {
+        height: 30px;
+        width: 80px;
+        font-size: 12px;
+        color: white !important;
+        background-color: $colorFontDark;
+      }
+      button:hover {
+        opacity: .7!important;
+      }
   }
   .taskList__count {
     @include display-flex(center, center, row);
@@ -118,6 +151,13 @@ export default {
   .list__tasks:last-child:hover {
     border-bottom: 1px solid $grayBorder;
     border-bottom-left-radius: 5px;
+  }
+  .hide {
+    display: none;
+  }
+  .task__create {
+    margin-top: 80px;
+    border-top: 1px solid $grayBorder;
   }
 }
 </style>
