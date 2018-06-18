@@ -7,7 +7,7 @@ export default new Vuex.Store({
   state: {
     organization: 1,
     organizationUsers: [],
-    activeUser: 1, // TODO = Hook up to auth
+    activeUser: 2, // TODO = Hook up to auth
 
     programs: [],
     programsSelected: [],

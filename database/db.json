@@ -1,498 +1,517 @@
 {
-    "organizations": [
-        {
-            "id": 1,
-            "name": "Appalachia Service Project",
-            "mission": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            "vision": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum.",
-            "location": "4253 Bristol Hwy, Johnson City, TN 37209"
-        },
-        {
-            "id": 2,
-            "name": "Habitat For Humanity",
-            "mission": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            "vision": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum.",
-            "location": "Address here"
-        }
-    ],
-    "users": [
-        {
-            "id": 1,
-            "first_name": "Meg",
-            "last_name": "Ducharme",
-            "title": "Program Manager",
-            "email": "meg@ducharme.com",
-            "image": "img/meg.jpg",
-            "date_created": "January 7, 2018",
-            "date_deleted": null,
-            "organization": 1,
-            "permission": 1
-        },
-        {
-            "id": 2,
-            "first_name": "Kyle",
-            "last_name": "Ducharme",
-            "title": "Volunteer Experience Manager",
-            "email": "Kyle@Ducharme.com",
-            "image": "img/kyle.jpg",
-            "date_created": "February 12, 2018",
-            "date_deleted": null,
-            "organization": 1,
-            "permission": 1
-        },
-        {
-            "id": 3,
-            "first_name": "Delaine",
-            "last_name": "Wendling",
-            "title": "Consultant",
-            "email": "Delaine@Wendling.com",
-            "image": "img/delaine.jpg",
-            "date_created": "May 4, 2018",
-            "date_deleted": null,
-            "organization": 1,
-            "permission": 2
-        }
-    ],
-    "permissions": [
-        {
-            "id": 1,
-            "type": "Admin"
-        },
-        {
-            "id": 2,
-            "type": "Analyst"
-        }
-    ],
-    "programs": [
-        {
-            "id": 1,
-            "name": "Home Repair Program",
-            "description": "Since 1969, ASP's Home Repair Program has brought more than 300,000 volunteers to Central Appalachia to help make homes warmer, safer, and drier.",
-            "date_created": "March 12, 1982",
-            "date_deleted": null,
-            "date_archived": null,
-            "budget": "500,000",
-            "organization": 1,
-            "manager": 1
-        },
-        {
-            "id": 2,
-            "name": "New Build Program",
-            "description": "After responding to floods in Tennessee, ASP officially launched its New Build program, and now, five years later, has built more than 100 new homes.",
-            "date_created": "January 12, 2018",
-            "date_deleted": null,
-            "date_archived": null,
-            "budget": "223,420",
-            "organization": 1,
-            "manager": 2
-        },
-        {
-            "id": 3,
-            "name": "This better not be showing",
-            "description": "This is a sample program that should not be showing. If it is, you fail.",
-            "date_created": "January 28, 2018",
-            "date_deleted": null,
-            "date_archived": null,
-            "budget": "5,220",
-            "organization": 2,
-            "manager": null
-        }
-    ],
-    "projects": [
-        {
-            "id": 1,
-            "name": "Davidson's Home Update: Back Porch New Stairs",
-            "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
-            "date_created": "May 19, 2018",
-            "date_updated": null,
-            "date_due": null,
-            "date_completed": null,
-            "date_deleted": null,
-            "budget": "2,000",
-            "type": 1,
-            "program": 1,
-            "manager": 2,
-            "location": 1
-        },
-        {
-            "id": 2,
-            "name": "New Home - Jones Family",
-            "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
-            "date_created": "June 4, 2018",
-            "date_updated": null,
-            "date_due": null,
-            "date_completed": null,
-            "date_deleted": null,
-            "budget": "120,000",
-            "type": 2,
-            "program": 2,
-            "manager": 1,
-            "location": 3
-        },
-        {
-            "id": 3,
-            "name": "Back Porch Repair",
-            "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
-            "date_created": "June 9, 2018",
-            "date_updated": null,
-            "date_due": null,
-            "date_completed": null,
-            "date_deleted": null,
-            "budget": "500",
-            "type": 1,
-            "program": 1,
-            "manager": 1,
-            "location": 4
-        },
-        {
-            "id": 4,
-            "name": "New Tin Roof - Frank's",
-            "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
-            "date_created": "June 10, 2018",
-            "date_updated": null,
-            "date_due": null,
-            "date_completed": null,
-            "date_deleted": null,
-            "budget": "1,500",
-            "type": 1,
-            "program": 1,
-            "manager": 2,
-            "location": 3
-        },
-        {
-            "id": 5,
-            "name": "Finish Back Porch Reno",
-            "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
-            "date_created": "June 10, 2018",
-            "date_updated": null,
-            "date_due": null,
-            "date_completed": null,
-            "date_deleted": null,
-            "budget": "452",
-            "type": 1,
-            "program": 1,
-            "manager": 2,
-            "location": 3
-        },
-        {
-            "id": 6,
-            "name": "Drainage Ditch - George's",
-            "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
-            "date_created": "June 10, 2018",
-            "date_updated": null,
-            "date_due": null,
-            "date_completed": null,
-            "date_deleted": null,
-            "budget": "220",
-            "type": 1,
-            "program": 1,
-            "manager": 2,
-            "location": 3
-        },
-        {
-            "id": 7,
-            "name": "Replace Toilet. Ew.",
-            "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
-            "date_created": "June 10, 2018",
-            "date_updated": null,
-            "date_due": null,
-            "date_completed": null,
-            "date_deleted": null,
-            "budget": "220",
-            "type": 1,
-            "program": 1,
-            "manager": 2,
-            "location": 3
-        },
-        {
-            "id": 8,
-            "name": "Paint Back Bedroom Walls",
-            "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
-            "date_created": "June 10, 2018",
-            "date_updated": null,
-            "date_due": null,
-            "date_completed": null,
-            "date_deleted": null,
-            "budget": "220",
-            "type": 1,
-            "program": 1,
-            "manager": 2,
-            "location": 3
-        }
-    ],
-    "project_users": [
-        {
-            "id": 1,
-            "user": 1,
-            "project": 1
-        },
-        {
-            "id": 2,
-            "user": 2,
-            "project": 1
-        },
-        {
-            "id": 3,
-            "user": 3,
-            "project": 1
-        },
-        {
-            "id": 4,
-            "user": 2,
-            "project": 2
-        },
-        {
-            "id": 5,
-            "user": 1,
-            "project": 3
-        }
-    ],
-    "project_notes": [
-        {
-            "id": 1,
-            "text": "This is a really cool project - I love it so much",
-            "date_created": "May 24, 2018",
-            "date_deleted": null,
-            "read": false,
-            "project": 1,
-            "image": 1,
-            "author": 3
-        },
-        {
-            "id": 2,
-            "text": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accus doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
-            "date_created": "May 29, 2018",
-            "date_deleted": null,
-            "read": false,
-            "project": 1,
-            "image": 1,
-            "author": 1
-        },
-        {
-            "id": 3,
-            "text": "Woo woo woo",
-            "date_created": "June 2, 2018",
-            "date_deleted": null,
-            "read": true,
-            "project": 1,
-            "image": 1,
-            "author": 2
-        },
-        {
-            "id": 4,
-            "text": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blas penum voluptatum deleniti atque corrupti quo.",
-            "date_created": "May 23, 2018",
-            "date_deleted": null,
-            "read": true,
-            "project": 1,
-            "image": 1,
-            "author": 2
-        },
-        {
-            "id": 5,
-            "text": "This is my favorite thing in the world. This is the most fun ever..",
-            "date_created": "May 19, 2018",
-            "date_deleted": null,
-            "read": true,
-            "project": 1,
-            "image": 1,
-            "author": 2
-        },
-        {
-            "id": 6,
-            "text": "Should we invite other people to the party?",
-            "date_created": "May 14, 2018",
-            "date_deleted": null,
-            "read": true,
-            "project": 1,
-            "image": 1,
-            "author": 3
-        },
-        {
-            "id": 7,
-            "text": "This is super helpful",
-            "date_created": "May 13, 2018",
-            "date_deleted": null,
-            "read": true,
-            "project": 1,
-            "image": 1,
-            "author": 1
-        },
-        {
-            "id": 8,
-            "text": "Created this project to help organize our project stuff.",
-            "date_created": "May 11, 2018",
-            "date_deleted": null,
-            "read": true,
-            "project": 1,
-            "image": 1,
-            "author": 2
-        }
-    ],
-    "project_images": [
-        {
-            "id": 1,
-            "image": "img/proj.png",
-            "description": "Smith's Home Fixup",
-            "date_uploaded": "Date here",
-            "project": 1,
-            "author": 1
-        }
-    ],
-    "project_types": [
-        {
-            "id": 1,
-            "name": "New Construction"
-        },
-        {
-            "id": 2,
-            "name": "Home Repair"
-        },
-        {
-            "id": 3,
-            "name": "Painting & Finish Work"
-        }
-    ],
-    "group": [
-        {
-            "id": 1,
-            "name": "Kyle's projects",
-            "date_created": "May 22, 2018",
-            "date_deleted": null,
-            "public": true,
-            "creator": 1
-        },
-        {
-            "id": 2,
-            "name": "New Home Projects",
-            "date_created": "June 3, 2018",
-            "date_deleted": null,
-            "public": true,
-            "creator": 2
-        },
-        {
-            "id": 3,
-            "name": "Project Ideas",
-            "date_created": "June 1, 2018",
-            "date_deleted": null,
-            "public": true,
-            "creator": 1
-        },
-        {
-            "id": 4,
-            "name": "Davidson County, TN",
-            "date_created": "May 29, 2018",
-            "date_deleted": null,
-            "public": true,
-            "creator": 1
-        }
-    ],
-    "group_projects": [
-        {
-            "id": 1,
-            "group": 2,
-            "project": 3
-        },
-        {
-            "id": 2,
-            "group": 1,
-            "project": 1
-        },
-        {
-            "id": 3,
-            "group": 1,
-            "project": 2
-        },
-        {
-            "id": 4,
-            "group": 1,
-            "project": 4
-        },
-        {
-            "id": 5,
-            "group": 3,
-            "project": 2
-        },
-        {
-            "id": 4,
-            "group": 3,
-            "project": 1
-        }
-    ],
-    "tasks": [
-        {
-            "id": 1,
-            "name": "Order materials and setup delivery",
-            "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
-            "date_created": "June 1, 2018",
-            "date_due": null,
-            "date_completed": null,
-            "date_deleted": null,
-            "project": 1,
-            "owner": 1
-        },
-        {
-            "id": 2,
-            "name": "Schedule inspection",
-            "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
-            "date_created": "June 3, 2018",
-            "date_due": null,
-            "date_completed": null,
-            "date_deleted": null,
-            "project": 3,
-            "owner": 2
-        },
-        {
-            "id": 3,
-            "name": "Schedule delivery for Tuesday",
-            "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
-            "date_created": "May 19, 2018",
-            "date_due": null,
-            "date_completed": null,
-            "date_deleted": null,
-            "project": 1,
-            "owner": 2
-        },
-        {
-            "id": 4,
-            "name": "Get final sign off from family",
-            "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
-            "date_created": "June 1, 2018",
-            "date_due": null,
-            "date_completed": null,
-            "date_deleted": null,
-            "project": 1,
-            "owner": 1
-        }
-    ],
-    "locations": [
-        {
-            "id": 1,
-            "street_address": "724 Croley Drive",
-            "city": "Nashville",
-            "state": "Tennessee",
-            "zip": "37209"
-        },
-        {
-            "id": 2,
-            "street_address": "500 Interstate Driveway",
-            "city": "Nashville",
-            "state": "Tennessee",
-            "zip": "37211"
-        },
-        {
-            "id": 3,
-            "street_address": "85423 Bristol Hwy",
-            "city": "Johnson City",
-            "state": "Tennessee",
-            "zip": "37601"
-        },
-        {
-            "id": 4,
-            "street_address": "260 Moon Hill Road",
-            "city": "Northbridge",
-            "state": "Massachussets",
-            "zip": "01534"
-        }
-    ]
+  "organizations": [
+    {
+      "id": 1,
+      "name": "Appalachia Service Project",
+      "mission": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "vision": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum.",
+      "location": "4253 Bristol Hwy, Johnson City, TN 37209"
+    },
+    {
+      "id": 2,
+      "name": "Habitat For Humanity",
+      "mission": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "vision": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum.",
+      "location": "Address here"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "first_name": "Meg",
+      "last_name": "Ducharme",
+      "title": "Program Manager",
+      "email": "meg@ducharme.com",
+      "image": "img/meg.jpg",
+      "date_created": "January 7, 2018",
+      "date_deleted": null,
+      "organization": 1,
+      "permission": 1
+    },
+    {
+      "id": 2,
+      "first_name": "Kyle",
+      "last_name": "Ducharme",
+      "title": "Volunteer Experience Manager",
+      "email": "Kyle@Ducharme.com",
+      "image": "img/kyle.jpg",
+      "date_created": "February 12, 2018",
+      "date_deleted": null,
+      "organization": 1,
+      "permission": 1
+    },
+    {
+      "id": 3,
+      "first_name": "Delaine",
+      "last_name": "Wendling",
+      "title": "Consultant",
+      "email": "Delaine@Wendling.com",
+      "image": "img/delaine.jpg",
+      "date_created": "May 4, 2018",
+      "date_deleted": null,
+      "organization": 1,
+      "permission": 2
+    }
+  ],
+  "permissions": [
+    {
+      "id": 1,
+      "type": "Admin"
+    },
+    {
+      "id": 2,
+      "type": "Analyst"
+    }
+  ],
+  "programs": [
+    {
+      "id": 1,
+      "name": "Home Repair Program",
+      "description": "Since 1969, ASP's Home Repair Program has brought more than 300,000 volunteers to Central Appalachia to help make homes warmer, safer, and drier.",
+      "date_created": "March 12, 1982",
+      "date_deleted": null,
+      "date_archived": null,
+      "budget": "500,000",
+      "organization": 1,
+      "manager": 1
+    },
+    {
+      "id": 2,
+      "name": "New Build Program",
+      "description": "After responding to floods in Tennessee, ASP officially launched its New Build program, and now, five years later, has built more than 100 new homes.",
+      "date_created": "January 12, 2018",
+      "date_deleted": null,
+      "date_archived": null,
+      "budget": "223,420",
+      "organization": 1,
+      "manager": 2
+    },
+    {
+      "id": 3,
+      "name": "This better not be showing",
+      "description": "This is a sample program that should not be showing. If it is, you fail.",
+      "date_created": "January 28, 2018",
+      "date_deleted": null,
+      "date_archived": null,
+      "budget": "5,220",
+      "organization": 2,
+      "manager": null
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "name": "Davidson's Home Update: Back Porch New Stairs",
+      "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
+      "date_created": "May 19, 2018",
+      "date_updated": null,
+      "date_due": null,
+      "date_completed": null,
+      "date_deleted": null,
+      "budget": "2,000",
+      "type": 1,
+      "program": 1,
+      "manager": 2,
+      "location": 1
+    },
+    {
+      "id": 2,
+      "name": "New Home - Jones Family",
+      "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
+      "date_created": "June 4, 2018",
+      "date_updated": null,
+      "date_due": null,
+      "date_completed": null,
+      "date_deleted": null,
+      "budget": "120,000",
+      "type": 2,
+      "program": 2,
+      "manager": 1,
+      "location": 3
+    },
+    {
+      "id": 3,
+      "name": "Back Porch Repair",
+      "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
+      "date_created": "June 9, 2018",
+      "date_updated": null,
+      "date_due": null,
+      "date_completed": null,
+      "date_deleted": null,
+      "budget": "500",
+      "type": 1,
+      "program": 1,
+      "manager": 1,
+      "location": 4
+    },
+    {
+      "id": 4,
+      "name": "New Tin Roof - Frank's",
+      "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
+      "date_created": "June 10, 2018",
+      "date_updated": null,
+      "date_due": null,
+      "date_completed": null,
+      "date_deleted": null,
+      "budget": "1,500",
+      "type": 1,
+      "program": 1,
+      "manager": 2,
+      "location": 3
+    },
+    {
+      "id": 5,
+      "name": "Finish Back Porch Reno",
+      "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
+      "date_created": "June 10, 2018",
+      "date_updated": null,
+      "date_due": null,
+      "date_completed": null,
+      "date_deleted": null,
+      "budget": "452",
+      "type": 1,
+      "program": 1,
+      "manager": 2,
+      "location": 3
+    },
+    {
+      "id": 6,
+      "name": "Drainage Ditch - George's",
+      "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
+      "date_created": "June 10, 2018",
+      "date_updated": null,
+      "date_due": null,
+      "date_completed": null,
+      "date_deleted": null,
+      "budget": "220",
+      "type": 1,
+      "program": 1,
+      "manager": 2,
+      "location": 3
+    },
+    {
+      "id": 7,
+      "name": "Replace Toilet. Ew.",
+      "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
+      "date_created": "June 10, 2018",
+      "date_updated": null,
+      "date_due": null,
+      "date_completed": null,
+      "date_deleted": null,
+      "budget": "220",
+      "type": 1,
+      "program": 1,
+      "manager": 2,
+      "location": 3
+    },
+    {
+      "id": 8,
+      "name": "Paint Back Bedroom Walls",
+      "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
+      "date_created": "June 10, 2018",
+      "date_updated": null,
+      "date_due": null,
+      "date_completed": null,
+      "date_deleted": null,
+      "budget": "220",
+      "type": 1,
+      "program": 1,
+      "manager": 2,
+      "location": 3
+    }
+  ],
+  "project_users": [
+    {
+      "id": 1,
+      "user": 1,
+      "project": 1
+    },
+    {
+      "id": 2,
+      "user": 2,
+      "project": 1
+    },
+    {
+      "id": 3,
+      "user": 3,
+      "project": 1
+    },
+    {
+      "id": 4,
+      "user": 2,
+      "project": 2
+    },
+    {
+      "id": 5,
+      "user": 1,
+      "project": 3
+    }
+  ],
+  "project_notes": [
+    {
+      "text": "The availability of knowledge doesn’t necessarily translate into meaningfully informed decisions. ",
+      "date_created": "June 17, 2018",
+      "date_sort": "2018-06-17T22:10:35.202Z",
+      "date_deleted": null,
+      "read": false,
+      "project": "1",
+      "image": null,
+      "author": 1,
+      "id": 1
+    },
+    {
+      "text": "The ambiguous language of Facebook’s data policy makes it hard for most of us to assess the risks of our data being shared with an abstract “other partner.” ",
+      "date_created": "June 17, 2018",
+      "date_sort": "2018-06-17T22:10:51.130Z",
+      "date_deleted": null,
+      "read": false,
+      "project": "1",
+      "image": null,
+      "author": 2,
+      "id": 2
+    },
+    {
+      "text": "It is often overlooked that the source of truth in Vue applications is the raw data object - a Vue instance only proxies access to it.",
+      "date_created": "June 17, 2018",
+      "date_sort": "2018-06-17T22:11:06.619Z",
+      "date_deleted": null,
+      "read": false,
+      "project": "1",
+      "image": null,
+      "author": 3,
+      "id": 3
+    },
+    {
+      "text": "We have a single source of truth now, but debugging would be a nightmare. Any piece of data could be changed by any part of our app at any time, without leaving a trace.",
+      "date_created": "June 17, 2018",
+      "date_sort": "2018-06-17T22:11:23.141Z",
+      "date_deleted": null,
+      "read": false,
+      "project": "1",
+      "image": null,
+      "author": 2,
+      "id": 4
+    },
+    {
+      "text": "The terms don’t meaningfully cover that eventuality — but how could they, with a situation that’s so complex and enormous in scope?",
+      "date_created": "June 17, 2018",
+      "date_sort": "2018-06-17T22:13:20.041Z",
+      "date_deleted": null,
+      "read": false,
+      "project": "1",
+      "image": null,
+      "author": 2,
+      "id": 5
+    },
+    {
+      "text": "In addition, each instance/component can still own and manage its own private state.",
+      "date_created": "June 17, 2018",
+      "date_sort": "2018-06-17T22:13:31.226Z",
+      "date_deleted": null,
+      "read": false,
+      "project": "1",
+      "image": null,
+      "author": 1,
+      "id": 6
+    },
+    {
+      "text": "It’s important to note that you should never replace the original state object in your actions - the components and the store need to share reference to the same object in order for mutations to be observed.",
+      "date_created": "June 17, 2018",
+      "date_sort": "2018-06-17T22:13:37.226Z",
+      "date_deleted": null,
+      "read": false,
+      "project": "1",
+      "image": null,
+      "author": 3,
+      "id": 7
+    },
+    {
+      "text": "Hello world!",
+      "date_created": "June 17, 2018",
+      "date_sort": "2018-06-17T22:14:05.922Z",
+      "date_deleted": null,
+      "read": false,
+      "project": "3",
+      "image": null,
+      "author": 2,
+      "id": 8
+    },
+    {
+      "text": "Although not strictly associated with the MVVM pattern, Vue’s design was partly inspired by it. As a convention, we often use the variable vm (short for ViewModel) to refer to our Vue instance.\n",
+      "date_created": "June 17, 2018",
+      "date_sort": "2018-06-17T23:38:54.098Z",
+      "date_deleted": null,
+      "read": false,
+      "project": "1",
+      "image": null,
+      "author": 2,
+      "id": 9
+    }
+  ],
+  "project_images": [
+    {
+      "id": 1,
+      "image": "img/proj.png",
+      "description": "Smith's Home Fixup",
+      "date_uploaded": "Date here",
+      "project": 1,
+      "author": 1
+    }
+  ],
+  "project_types": [
+    {
+      "id": 1,
+      "name": "New Construction"
+    },
+    {
+      "id": 2,
+      "name": "Home Repair"
+    },
+    {
+      "id": 3,
+      "name": "Painting & Finish Work"
+    }
+  ],
+  "group": [
+    {
+      "id": 1,
+      "name": "Kyle's projects",
+      "date_created": "May 22, 2018",
+      "date_deleted": null,
+      "public": true,
+      "creator": 1
+    },
+    {
+      "id": 2,
+      "name": "New Home Projects",
+      "date_created": "June 3, 2018",
+      "date_deleted": null,
+      "public": true,
+      "creator": 2
+    },
+    {
+      "id": 3,
+      "name": "Project Ideas",
+      "date_created": "June 1, 2018",
+      "date_deleted": null,
+      "public": true,
+      "creator": 1
+    },
+    {
+      "id": 4,
+      "name": "Davidson County, TN",
+      "date_created": "May 29, 2018",
+      "date_deleted": null,
+      "public": true,
+      "creator": 1
+    }
+  ],
+  "group_projects": [
+    {
+      "id": 1,
+      "group": 2,
+      "project": 3
+    },
+    {
+      "id": 2,
+      "group": 1,
+      "project": 1
+    },
+    {
+      "id": 3,
+      "group": 1,
+      "project": 2
+    },
+    {
+      "id": 4,
+      "group": 1,
+      "project": 4
+    },
+    {
+      "id": 5,
+      "group": 3,
+      "project": 2
+    },
+    {
+      "id": 4,
+      "group": 3,
+      "project": 1
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "name": "Order materials and setup delivery",
+      "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
+      "date_created": "June 1, 2018",
+      "date_due": null,
+      "date_completed": null,
+      "date_deleted": null,
+      "project": 1,
+      "owner": 1
+    },
+    {
+      "id": 2,
+      "name": "Schedule inspection",
+      "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
+      "date_created": "June 3, 2018",
+      "date_due": null,
+      "date_completed": null,
+      "date_deleted": null,
+      "project": 3,
+      "owner": 2
+    },
+    {
+      "id": 3,
+      "name": "Schedule delivery for Tuesday",
+      "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
+      "date_created": "May 19, 2018",
+      "date_due": null,
+      "date_completed": null,
+      "date_deleted": null,
+      "project": 1,
+      "owner": 2
+    },
+    {
+      "id": 4,
+      "name": "Get final sign off from family",
+      "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
+      "date_created": "June 1, 2018",
+      "date_due": null,
+      "date_completed": null,
+      "date_deleted": null,
+      "project": 1,
+      "owner": 1
+    }
+  ],
+  "locations": [
+    {
+      "id": 1,
+      "street_address": "724 Croley Drive",
+      "city": "Nashville",
+      "state": "TN",
+      "zip": "37209"
+    },
+    {
+      "id": 2,
+      "street_address": "500 Interstate Driveway",
+      "city": "Nashville",
+      "state": "TN",
+      "zip": "37211"
+    },
+    {
+      "id": 3,
+      "street_address": "85423 Bristol Hwy",
+      "city": "Johnson City",
+      "state": "TN",
+      "zip": "37601"
+    },
+    {
+      "id": 4,
+      "street_address": "260 Moon Hill Road",
+      "city": "Northbridge",
+      "state": "MA",
+      "zip": "01534"
+    }
+  ]
 }

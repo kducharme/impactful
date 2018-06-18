@@ -53,7 +53,6 @@ export default {
   .col1 {
       width: 23%;
       min-width: 260px;
-      height: 500px;
       margin-right: 20px;
   }
   .col2 {

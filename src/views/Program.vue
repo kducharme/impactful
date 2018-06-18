@@ -153,9 +153,7 @@
   left: 0;
   right: 0;
   height: 174px;
-  width: 23%;
-  min-width: 230px;
-  max-width: 260px;
+  width: 100%;
   background-color: rgba(52, 56, 73, 0.94);
   border-top-left-radius: 9px;
   border-top-right-radius: 9px;
