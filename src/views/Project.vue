@@ -67,7 +67,7 @@ export default {
   .col1 {
       width: 14%;
       min-width: 260px;
-      margin: 16px 0 0 0;
+      margin: 16px 20px 0 0;
       background-color: transparent;
   }
   .col2 {

@@ -5,8 +5,8 @@
       <button class="taskList__add button__primary">Add new</button>
     </div>
     <div class="taskList__count">
-      <p class="taskList__tab tab__left taskList__active">In progress (5)</p>
-      <p class="taskList__tab tab__right">Completed (2)</p>
+      <p class="taskList__tab tab__left taskList__active">In progress {{ inProgress.length }}</p>
+      <p class="taskList__tab tab__right">Completed {{ completed.length }}</p>
     </div>
     <div class="taskList__list">
       <ProjectTask
@@ -30,7 +30,9 @@ export default {
   },
   data() {
     return {
-      allTasks: []
+      allTasks: [],
+      inProgress: [],
+      completed: []
     };
   },
   methods: {
@@ -45,9 +47,19 @@ export default {
               .then(owner => {
                 task.ownerDetails = owner[0];
                 this.allTasks.push(task);
+                this.countTaskTypes(task);
               });
           });
         });
+    },
+    countTaskTypes(task) {
+      if (!task.completed) {
+        this.inProgress.push(task);
+      }
+      if (task.completed) {
+        this.completed.push(task);
+      }
+      console.log(this.inProgress);
     }
   },
   computed: {
