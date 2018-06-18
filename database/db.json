@@ -249,20 +249,20 @@
   ],
   "project_notes": [
     {
-      "text": "Hello world",
+      "text": "The availability of knowledge doesn’t necessarily translate into meaningfully informed decisions. ",
       "date_created": "June 17, 2018",
-      "date_sort": "2018-06-17T21:59:58.081Z",
+      "date_sort": "2018-06-17T22:10:35.202Z",
       "date_deleted": null,
       "read": false,
       "project": "1",
       "image": null,
-      "author": 2,
+      "author": 1,
       "id": 1
     },
     {
-      "text": "this is a test",
+      "text": "The ambiguous language of Facebook’s data policy makes it hard for most of us to assess the risks of our data being shared with an abstract “other partner.” ",
       "date_created": "June 17, 2018",
-      "date_sort": "2018-06-17T22:00:00.415Z",
+      "date_sort": "2018-06-17T22:10:51.130Z",
       "date_deleted": null,
       "read": false,
       "project": "1",
@@ -271,20 +271,20 @@
       "id": 2
     },
     {
-      "text": "hey",
+      "text": "It is often overlooked that the source of truth in Vue applications is the raw data object - a Vue instance only proxies access to it.",
       "date_created": "June 17, 2018",
-      "date_sort": "2018-06-17T22:00:56.307Z",
+      "date_sort": "2018-06-17T22:11:06.619Z",
       "date_deleted": null,
       "read": false,
       "project": "1",
       "image": null,
-      "author": 2,
+      "author": 3,
       "id": 3
     },
     {
-      "text": "test",
+      "text": "We have a single source of truth now, but debugging would be a nightmare. Any piece of data could be changed by any part of our app at any time, without leaving a trace.",
       "date_created": "June 17, 2018",
-      "date_sort": "2018-06-17T22:02:45.779Z",
+      "date_sort": "2018-06-17T22:11:23.141Z",
       "date_deleted": null,
       "read": false,
       "project": "1",
@@ -293,9 +293,9 @@
       "id": 4
     },
     {
-      "text": "hi",
+      "text": "The terms don’t meaningfully cover that eventuality — but how could they, with a situation that’s so complex and enormous in scope?",
       "date_created": "June 17, 2018",
-      "date_sort": "2018-06-17T22:06:36.297Z",
+      "date_sort": "2018-06-17T22:13:20.041Z",
       "date_deleted": null,
       "read": false,
       "project": "1",
@@ -304,70 +304,48 @@
       "id": 5
     },
     {
-      "text": "first",
+      "text": "In addition, each instance/component can still own and manage its own private state.",
       "date_created": "June 17, 2018",
-      "date_sort": "2018-06-17T22:06:50.323Z",
+      "date_sort": "2018-06-17T22:13:31.226Z",
       "date_deleted": null,
       "read": false,
       "project": "1",
       "image": null,
-      "author": 2,
+      "author": 1,
       "id": 6
     },
     {
-      "text": "hi",
+      "text": "It’s important to note that you should never replace the original state object in your actions - the components and the store need to share reference to the same object in order for mutations to be observed.",
       "date_created": "June 17, 2018",
-      "date_sort": "2018-06-17T22:07:01.619Z",
+      "date_sort": "2018-06-17T22:13:37.226Z",
       "date_deleted": null,
       "read": false,
       "project": "1",
       "image": null,
-      "author": 2,
+      "author": 3,
       "id": 7
     },
     {
-      "text": "hello",
+      "text": "Hello world!",
       "date_created": "June 17, 2018",
-      "date_sort": "2018-06-17T22:07:03.601Z",
+      "date_sort": "2018-06-17T22:14:05.922Z",
       "date_deleted": null,
       "read": false,
-      "project": "1",
+      "project": "3",
       "image": null,
       "author": 2,
       "id": 8
     },
     {
-      "text": "woo woo",
+      "text": "Although not strictly associated with the MVVM pattern, Vue’s design was partly inspired by it. As a convention, we often use the variable vm (short for ViewModel) to refer to our Vue instance.\n",
       "date_created": "June 17, 2018",
-      "date_sort": "2018-06-17T22:07:05.130Z",
+      "date_sort": "2018-06-17T23:38:54.098Z",
       "date_deleted": null,
       "read": false,
       "project": "1",
       "image": null,
       "author": 2,
       "id": 9
-    },
-    {
-      "text": "hey there",
-      "date_created": "June 17, 2018",
-      "date_sort": "2018-06-17T22:07:14.970Z",
-      "date_deleted": null,
-      "read": false,
-      "project": "3",
-      "image": null,
-      "author": 2,
-      "id": 10
-    },
-    {
-      "text": "testing 123",
-      "date_created": "June 17, 2018",
-      "date_sort": "2018-06-17T22:07:32.002Z",
-      "date_deleted": null,
-      "read": false,
-      "project": "3",
-      "image": null,
-      "author": 2,
-      "id": 11
     }
   ],
   "project_images": [
@@ -511,28 +489,28 @@
       "id": 1,
       "street_address": "724 Croley Drive",
       "city": "Nashville",
-      "state": "Tennessee",
+      "state": "TN",
       "zip": "37209"
     },
     {
       "id": 2,
       "street_address": "500 Interstate Driveway",
       "city": "Nashville",
-      "state": "Tennessee",
+      "state": "TN",
       "zip": "37211"
     },
     {
       "id": 3,
       "street_address": "85423 Bristol Hwy",
       "city": "Johnson City",
-      "state": "Tennessee",
+      "state": "TN",
       "zip": "37601"
     },
     {
       "id": 4,
       "street_address": "260 Moon Hill Road",
       "city": "Northbridge",
-      "state": "Massachussets",
+      "state": "MA",
       "zip": "01534"
     }
   ]

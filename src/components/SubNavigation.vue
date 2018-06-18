@@ -115,6 +115,9 @@ export default {
       color: $colorAccent;
       font-weight: 600;
     }
+    .sub__active:hover {
+      text-decoration: underline;
+    }
     .sub__divider {
       fill: $colorArrow;
     }

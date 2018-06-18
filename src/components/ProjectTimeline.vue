@@ -4,8 +4,8 @@
             <h4>Project notes <span>({{ undreadNotes }} new)</span></h4>
         </div>
         <div class="timeline__write">
-            <div></div>
-            <input v-model="note" @keyup.enter="saveNote" placeholder="Post a note...">
+            <img :src="activeUserImage" />
+            <textarea type='textarea' v-model="note" @keyup.enter="saveNote" placeholder="Post a note..."></textarea>
         </div>
         <div class="timeline__notes">
             <ProjectNote
@@ -32,7 +32,8 @@ export default {
     return {
       allNotes: [],
       note: "",
-      undreadNotes: 2
+      undreadNotes: 2,
+      activeUserImage: ""
     };
   },
   methods: {
@@ -59,8 +60,14 @@ export default {
       const fullDate = `${monthList[m]} ${d}, ${y}`;
       return { fullDate, date };
     },
+    getActiveUserImage() {
+      fetch(`http://localhost:3000/users?id=${this.activeUser}`)
+        .then(r => r.json())
+        .then(user => {
+            this.activeUserImage = user[0].image;
+        });
+    },
     saveNote() {
-      console.log(this.note);
       const newNote = {
         text: this.note,
         date_created: this.getDate().fullDate,
@@ -84,7 +91,9 @@ export default {
             .then(author => {
               newNote.writer = author[0];
               this.allNotes.push(newNote);
-              this.allNotes.sort((a, b) => new Date(b.date_sort) - new Date(a.date_sort));
+              this.allNotes.sort(
+                (a, b) => new Date(b.date_sort) - new Date(a.date_sort)
+              );
             })
         )
         .catch(error => console.log(error));
@@ -101,17 +110,20 @@ export default {
               .then(author => {
                 note.writer = author[0];
                 this.allNotes.push(note);
-                this.allNotes.sort((a, b) => new Date(b.date_sort) - new Date(a.date_sort));
+                this.allNotes.sort(
+                  (a, b) => new Date(b.date_sort) - new Date(a.date_sort)
+                );
               });
           });
         });
     }
   },
   computed: {
-    ...mapState(["projects"])
+    ...mapState(["projects", "activeUser"])
   },
   beforeMount() {
     this.loadNotes();
+    this.getActiveUserImage();
   }
 };
 </script>
@@ -128,17 +140,18 @@ export default {
     width: 100%;
     padding: 0 20px 0 20px;
     border-bottom: 1px solid $grayBorder;
-    div {
-      border: 2px solid $grayBorder;
+    img {
       width: 40px;
       height: 40px;
+      border-radius: 3px;
     }
-    input {
-      width: 100%;
+    textarea {
+      width: calc(100% - 40px);
       height: 100%;
       border: none;
-      padding-left: 15px;
+      padding: 12px 15px;
       font-size: 14px;
+      resize: none;
     }
     input::placeholder {
       color: $colorFontMedium;

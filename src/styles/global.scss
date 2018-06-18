@@ -29,13 +29,16 @@ button {
 }
 
 // Inputs and buttons
-button:hover, button:active, button:focus, a:hover, a:focus, input:focus, input:active {
-    cursor: pointer;
+button:hover, button:active, button:focus, a:hover, a:focus, input:focus, input:active, textarea:active, textarea:focus {
     -webkit-transition: none;
     -moz-transition: none;
     -ms-transition: none;
     -o-transition: none;
     outline: none;
+}
+
+button {
+    cursor: pointer;
 }
 
 // Primary page content
