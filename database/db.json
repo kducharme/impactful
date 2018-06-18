@@ -387,6 +387,18 @@
       "image": null,
       "author": 1,
       "id": 10
+    },
+    {
+      "note": true,
+      "text": "Testing the notes feature\n",
+      "date_created": "June 18, 2018",
+      "date_sort": "2018-06-18T13:31:56.338Z",
+      "date_deleted": null,
+      "read": false,
+      "project": "1",
+      "image": null,
+      "author": 2,
+      "id": 11
     }
   ],
   "project_images": [
@@ -482,10 +494,10 @@
   "tasks": [
     {
       "id": 1,
-      "name": "Order materials and setup delivery",
+      "name": "Order materials and setup delivery for the second day of the month woo hoo",
       "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
       "date_created": "June 1, 2018",
-      "date_due": null,
+      "date_due": "June 18, 2018",
       "date_completed": null,
       "date_deleted": null,
       "project": 1,
@@ -496,10 +508,10 @@
       "name": "Schedule inspection",
       "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
       "date_created": "June 3, 2018",
-      "date_due": null,
+      "date_due": "June 27, 2018",
       "date_completed": null,
       "date_deleted": null,
-      "project": 3,
+      "project": 1,
       "owner": 2
     },
     {
@@ -507,18 +519,18 @@
       "name": "Schedule delivery for Tuesday",
       "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
       "date_created": "May 19, 2018",
-      "date_due": null,
+      "date_due": "July 2, 2018",
       "date_completed": null,
       "date_deleted": null,
       "project": 1,
-      "owner": 2
+      "owner": 3
     },
     {
       "id": 4,
       "name": "Get final sign off from family",
       "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
       "date_created": "June 1, 2018",
-      "date_due": null,
+      "date_due": "July 12, 2018",
       "date_completed": null,
       "date_deleted": null,
       "project": 1,

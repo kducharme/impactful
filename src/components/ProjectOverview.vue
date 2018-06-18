@@ -1,7 +1,7 @@
 <template>
     <div class="overview">
         <div class="overview__top">
-            <svg width="15px" height="16px" viewBox="0 0 15 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <!-- <svg width="15px" height="16px" viewBox="0 0 15 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <g id="Discovery-(v2)" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                 <g id="Project-(Activity)" transform="translate(-374.000000, -151.000000)" fill="#BBBEC2">
                     <g id="Group" transform="translate(374.000000, 151.000000)">
@@ -9,7 +9,7 @@
                     </g>
                 </g>
             </g>
-            </svg>
+            </svg> -->
             <h3>{{ projectActiveName }}</h3>
             <p>Date created: <span class="details">{{ projectData.created }}</span></p>
         </div>
