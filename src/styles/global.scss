@@ -49,7 +49,6 @@ button {
 }
 
 .content__sub {
-    @include display-flex(flex-start, flex-start, row);
     height: calc(100vh - 44px - 40px); // Height of screen minus 2 navs
     flex-wrap: wrap;
     padding-top: 32px;
@@ -59,7 +58,6 @@ button {
     .content__sub {
         @include display-flex(center, flex-start, row);
     }
-
 }
 
 .content__full {

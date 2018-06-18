@@ -50,6 +50,15 @@
                 to=''>{{ projectActiveName }}
             </router-link>
         </div>
+        <div class="sub__tabs">
+          <router-link class='sub__tabs--link active' to=''>{{ subLinks.linkOne }}</router-link>
+          <router-link class='sub__tabs--link' to=''>{{ subLinks.linkTwo }}</router-link>
+        </div>
+
+        <div class="sub__actions">
+          <router-link class='sub__tabs--link active' to=''>{{ subLinks.linkOne }}</router-link>
+          <router-link class='sub__tabs--link' to=''>{{ subLinks.linkTwo }}</router-link>
+        </div>
     </div>
 </template>
 
@@ -58,16 +67,18 @@ import { mapState, mapActions } from "vuex";
 
 export default {
   name: "programs",
+  props: {
+    subLinks: {
+      type: Object
+    }
+  },
   data() {
     return {
       levelOne: "All Programs"
     };
   },
   methods: {
-    ...mapActions([
-        "resetActiveProgram",
-        "resetActiveProject",
-    ]),
+    ...mapActions(["resetActiveProgram", "resetActiveProject"]),
     resetActive: function() {
       this.resetActiveProgram();
       this.resetActiveProject();
@@ -77,7 +88,12 @@ export default {
     }
   },
   computed: {
-    ...mapState(["programActive", "projectActive", "programActiveName", "projectActiveName"])
+    ...mapState([
+      "programActive",
+      "projectActive",
+      "programActiveName",
+      "projectActiveName"
+    ])
   }
 };
 </script>
@@ -86,7 +102,7 @@ export default {
 @import "../styles/variables";
 @import "../styles/mixins";
 .sub {
-  @include display-flex(flex-start, center, row);
+  @include display-flex(space-between, center, row);
   background-color: white;
   border-bottom: 1px solid $grayBorder;
   height: 40px;
@@ -95,10 +111,10 @@ export default {
   font-size: 13px;
   .sub__breadcrumbs {
     @include display-flex(flex-start, center, row);
-    width: 50%;
+    width: calc(100vw - 100px - 50%);
     .sub__overflow {
       max-width: 130px;
-      white-space: nowrap; 
+      white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
@@ -122,19 +138,28 @@ export default {
       fill: $colorArrow;
     }
   }
-  .sub__links {
-    width: 20%;
+
+  .sub__tabs {
+    min-width: 170px;
+    @include display-flex(space-between, center, row);
+    text-align: center;
+    a {
+      width: 100px;
+      color: $colorPrimaryLight;
+      font-size: 13px;
+      margin: 0 5% 0 5%;
+    }
+    .active {
+      color: $colorPrimaryDark;
+      font-weight: $weightHeavy;
+      padding: 10px;
+      border-bottom: 2px solid $colorAccent;
+    }
   }
+
   .sub__actions {
     @include display-flex(flex-end, center, row);
-    width: 30%;
-    .sub__actions--button {
-      height: 30px;
-      width: 100px;
-    }
-    .sub__actions--button:hover {
-      background-color: $colorAccentHover;
-    }
+    width: calc(100vw - 100px - 50%);
   }
   // Hides arrow depending on depth of pagination
   .sub__divider--hide {

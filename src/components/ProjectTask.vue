@@ -34,11 +34,13 @@ export default {
 .task {
   @include display-flex(space-between, flex-start, row);
   padding: 15px 10px;
-  margin: 0 10px 0 10px;
+  margin: -1px 10px 0 10px;
   border-bottom: 1px solid $grayBorder;
+  border-top: 1px solid $grayBorder;
+  background-color: white;
   .task__left {
     width: 15px;
-    margin-right: 15px;
+    margin-right: 10px;
     .task__complete {
       width: 15px;
       height: 15px;
@@ -74,6 +76,18 @@ export default {
           height: 30px;
           border-radius: 3px;
       }
+  }
+}
+.task:hover {
+  height: 110%;
+  width: 110%;
+  margin: -1px 0;
+  padding: 15px 20px;
+  cursor: pointer;
+  border-right: 1px solid $grayBorder;
+  .task__middle {
+    @include display-flex(flex-start, flex-start, column);
+    width: 230px;
   }
 }
 </style>

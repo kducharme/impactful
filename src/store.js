@@ -55,7 +55,7 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    getPrograms(context, state) {
+    getPrograms(context) {
       fetch(
         `http://localhost:3000/programs?organization=${this.state.organization}`
       )
