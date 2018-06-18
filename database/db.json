@@ -218,6 +218,36 @@
       "program": 1,
       "manager": 2,
       "location": 3
+    },
+    {
+      "id": 9,
+      "name": "Update HVAC System in BR",
+      "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
+      "date_created": "June 10, 2018",
+      "date_updated": null,
+      "date_due": null,
+      "date_completed": null,
+      "date_deleted": null,
+      "budget": "220",
+      "type": 1,
+      "program": 1,
+      "manager": 2,
+      "location": 3
+    },
+    {
+      "id": 10,
+      "name": "Drainage Ditch Behind Back Porch",
+      "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
+      "date_created": "June 10, 2018",
+      "date_updated": null,
+      "date_due": null,
+      "date_completed": null,
+      "date_deleted": null,
+      "budget": "220",
+      "type": 1,
+      "program": 1,
+      "manager": 2,
+      "location": 3
     }
   ],
   "project_users": [
@@ -346,6 +376,28 @@
       "image": null,
       "author": 2,
       "id": 9
+    },
+    {
+      "text": "This is the most fun I've ever had managing projects.\n",
+      "date_created": "June 17, 2018",
+      "date_sort": "2018-06-18T00:22:33.586Z",
+      "date_deleted": null,
+      "read": false,
+      "project": "1",
+      "image": null,
+      "author": 1,
+      "id": 10
+    },
+    {
+      "text": "Glad to hear, @meg.\n",
+      "date_created": "June 17, 2018",
+      "date_sort": "2018-06-18T02:02:31.583Z",
+      "date_deleted": null,
+      "read": false,
+      "project": "1",
+      "image": null,
+      "author": 2,
+      "id": 11
     }
   ],
   "project_images": [

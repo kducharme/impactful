@@ -32,7 +32,7 @@
             </div>
             <div class="block">
                 <p class='block__label'>Budget</p>
-                <p class='block__data'>{{ projectData.budget }}</p>
+                <p class='block__data'>${{ projectData.budget }}</p>
             </div>
         </div>
     </div>
@@ -89,7 +89,6 @@ export default {
           locationId: proj[0].location,
           location: this.getLocation(proj[0].location)
         };
-        console.log(this.projectData);
       });
   }
 };
@@ -100,8 +99,10 @@ export default {
 @import "../styles/mixins";
 .overview {
   @include display-flex(flex-start, flex-start, column);
+  width: 100%;
   .overview__top {
     @include display-flex(flex-start, space-between, column);
+    width: 100%;
     border-bottom: 1px solid $grayBorder;
     padding: 20px 20px 32px 20px;
     svg {
@@ -126,6 +127,7 @@ export default {
       .block__label {
         font-size: 11px;
         color: $colorPrimaryLight;
+        font-weight: $weightMedium;
         text-transform: uppercase;
         margin-bottom: 7px;
       }
