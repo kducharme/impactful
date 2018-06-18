@@ -19,8 +19,21 @@ export default {
   data() {
     return {};
   },
+  methods: {
+    loadTasks() {
+      const id = window.location.href.split("/projects/")[1];
+      fetch(`http://localhost:3000/project_notes?project=${id}`)
+        .then(r => r.json())
+        .then(notes => {
+          
+        });
+    }
+  },
   computed: {
     ...mapState(["projects"])
+  },
+  beforeMount() {
+    this.loadTasks();
   }
 };
 </script>
