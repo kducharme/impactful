@@ -1,5 +1,8 @@
 <template>
-  <div class="create__bg">
+  <div
+    class="create__bg"
+    v-on:click="close"
+  >
     <div
       class="create"
       :style="{
@@ -7,8 +10,13 @@
         left: position.left + 'px'
       }"
     >
-      <textarea type="text" class='create__name' placeholder="Task name"></textarea>
-      <input type="date" class='create__descript' placeholder="Due date">
+      <div class="create__name">
+        <input type="text" class='create__name' placeholder="Enter task name" />
+      </div>
+      <div class="create__date">
+        <p>Due:</p>
+        <input type="date" class='create__date' placeholder="Select due date">
+      </div>
     </div>
   </div>
 </template>
@@ -21,6 +29,11 @@ export default {
   props: {
     position: {
       type: Object
+    }
+  },
+  methods: {
+    close() {
+
     }
   }
 };
@@ -37,7 +50,7 @@ export default {
   z-index: 1001;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(29, 29, 29, 0);
+  background-color: rgba(29, 29, 29, .3);
 }
 
 .create {
@@ -49,27 +62,46 @@ export default {
   position: fixed;
   overflow-x: hidden;
   overflow-y: hidden;
-  padding: 12px 8px 2px 8px;
-  textarea, input {
+  padding: 12px 5px 2px 8px;
+  input {
     height: 28px;
-    width: 100%;
     border: none;
     padding-left: 10px;
     resize: none;
   }
   .create__name {
-    font-size: 13px;
-    font-weight: $weightMedium;
+    @include display-flex(flex-start, center, row);
+    height: 28px;
+    input {
+      width: 100%;
+      font-size: 14px;
+      font-weight: $weightMedium;
+    }
+    input::placeholder {
+      color: $colorPrimaryLight;
+      font-weight: $weightLight;
+    }
   }
-  .create__name::placeholder {
-    font-weight: $weightLight;
-    color: $colorPrimaryLight;
+  .create__date {
+    @include display-flex(flex-start, center, row);
+    height: 28px;
+    padding-left: 10px;
+    width: 60%;
+    min-width: 130px;
+    p {
+      font-size: 12px;
+      color: $colorPrimaryLight;
+    }
+    input {
+      padding-left: 8px;
+      margin-top: 6px;
+    }
   }
   ::-webkit-datetime-edit {
     height: 25px;
     font-family: 'Lato';
     font-size: 13px;
-    color: $colorPrimaryLight;
+    color: $colorPrimaryDark;
   }
 ::-webkit-datetime-edit-fields-wrapper { }
 ::-webkit-datetime-edit-text { color: $colorPrimaryDark; }
