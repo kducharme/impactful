@@ -3,6 +3,7 @@
     <div class="subnav">
       <SubNavigation 
         :subLinks="this.links"
+        :subButton="this.button"
       />
     </div>
     <div class="content">
@@ -29,6 +30,9 @@ export default {
       links: {
         linkOne: 'Overview',
         linkTwo: 'Media'
+      },
+      button: {
+        text: 'Edit project'
       }
     }
   },
@@ -59,21 +63,20 @@ export default {
 .content {
   height: calc(100vh - 44px - 40px);
   @include display-flex(center, flex-start, row);
-  padding: 30px 4% 0 4%;
+  padding: 30px 8% 0 8%;
   .col1 {
-      width: 16%;
+      width: 14%;
       min-width: 260px;
-      margin: 16px 32px 0 20px;
+      margin: 16px 0 0 0;
       background-color: transparent;
   }
   .col2 {
-      width: 59%;
+      width: 61%;
       height: 100%;
   }
   .col3 {
       width: 25%;
       min-width: 320px;
-      height: calc(100vh - 44px - 40px - 30px - 30px);
       margin: 0 20px 0 20px;
   }
   .feature {
