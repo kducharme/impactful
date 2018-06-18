@@ -4,9 +4,9 @@
       <SubNavigation />
     </div>
     <div class="content">
-        <ProjectOverview class='col1 feature'/>
+        <ProjectOverview class='col1'/>
         <ProjectTimeline class='col2 feature'/>
-        <ProjectTasks class='col3 feature'/>
+        <ProjectTaskList class='col3 feature'/>
     </div>
   </div>
 </template>
@@ -17,7 +17,7 @@ import Card from "../components/Card.vue";
 import SubNavigation from "../components/SubNavigation.vue";
 import ProjectOverview from "../components/ProjectOverview.vue";
 import ProjectTimeline from "../components/ProjectTimeline.vue";
-import ProjectTasks from "../components/ProjectTasks.vue";
+import ProjectTaskList from "../components/ProjectTaskList.vue";
 import ProjectMedia from "../components/ProjectMedia.vue";
 
 export default {
@@ -26,7 +26,7 @@ export default {
     SubNavigation,
     ProjectOverview,
     ProjectTimeline,
-    ProjectTasks,
+    ProjectTaskList,
     ProjectMedia,
   },
   methods: {
@@ -51,16 +51,17 @@ export default {
   @include display-flex(center, flex-start, row);
   padding: 30px 4% 0 4%;
   .col1 {
-      width: 23%;
+      width: 20%;
       min-width: 260px;
       margin: 0 20px 0 20px;
+      background-color: transparent;
   }
   .col2 {
-      width: 54%;
+      width: 55%;
       height: 100%;
   }
   .col3 {
-      width: 23%;
+      width: 25%;
       min-width: 320px;
       height: calc(100vh - 44px - 40px - 30px - 30px);
       margin: 0 20px 0 20px;
