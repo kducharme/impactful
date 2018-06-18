@@ -69,6 +69,7 @@ export default {
     },
     saveNote() {
       const newNote = {
+        note: true,
         text: this.note,
         date_created: this.getDate().fullDate,
         date_sort: this.getDate().date,
@@ -159,7 +160,7 @@ export default {
   }
   .timeline__notes {
     width: 100%;
-    height: calc(100% - 75px);
+    height: calc(100% - 75px - 50px);
     overflow: scroll;
   }
 }

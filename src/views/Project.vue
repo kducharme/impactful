@@ -53,7 +53,7 @@ export default {
   .col1 {
       width: 23%;
       min-width: 260px;
-      margin-right: 20px;
+      margin: 0 20px 0 20px;
   }
   .col2 {
       width: 54%;
@@ -63,7 +63,7 @@ export default {
       width: 23%;
       min-width: 320px;
       height: calc(100vh - 44px - 40px - 30px - 30px);
-      margin-left: 20px;
+      margin: 0 20px 0 20px;
   }
   .feature {
       border: 1px solid $grayBorder;

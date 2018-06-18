@@ -34,7 +34,8 @@ export default {
   @include display-flex(flex-start, flex-start, row);
   background-color: white;
   border-bottom: 1px solid $grayBorder;
-  padding: 24px 24px 24px 20px;
+  padding: 24px 0 24px 0;
+  margin: 0 20px 0 20px;
   font-size: 13px;
   position: relative;
   .note__left {

@@ -97,7 +97,7 @@ export default {
     @include display-flex(flex-start, center, row);
     width: 50%;
     .sub__overflow {
-      max-width: 150px;
+      max-width: 130px;
       white-space: nowrap; 
       overflow: hidden;
       text-overflow: ellipsis;
