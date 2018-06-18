@@ -1,7 +1,7 @@
 <template>
     <div class="timeline">
         <div class="feature__title">
-            <h4>Project notes <span>({{ undreadNotes }} new)</span></h4>
+            <h4>Project notes <span>({{ undreadNotes.length }} new)</span></h4>
         </div>
         <div class="timeline__write">
             <img :src="activeUserImage" />
@@ -21,7 +21,7 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
-import ProjectNote from "../components/ProjectNote.vue";
+import ProjectNote from "./ProjectNote.vue";
 
 export default {
   name: "timeline",
@@ -32,7 +32,7 @@ export default {
     return {
       allNotes: [],
       note: "",
-      undreadNotes: 2,
+      undreadNotes: [],
       activeUserImage: ""
     };
   },
@@ -64,7 +64,7 @@ export default {
       fetch(`http://localhost:3000/users?id=${this.activeUser}`)
         .then(r => r.json())
         .then(user => {
-            this.activeUserImage = user[0].image;
+          this.activeUserImage = user[0].image;
         });
     },
     saveNote() {
@@ -114,9 +114,15 @@ export default {
                 this.allNotes.sort(
                   (a, b) => new Date(b.date_sort) - new Date(a.date_sort)
                 );
+                this.countNoteTypes(note)
               });
           });
         });
+    },
+    countNoteTypes(note) {
+      if (!note.read) {
+        this.undreadNotes.push(note);
+      }
     }
   },
   computed: {
@@ -130,9 +136,9 @@ export default {
 </script>
 
 <style lang='scss'>
-@import "../styles/variables";
-@import "../styles/mixins";
-@import "../styles/project";
+@import "../../styles/variables";
+@import "../../styles/mixins";
+@import "../../styles/project";
 .timeline {
   @include display-flex(flex-start, flex-start, column);
   .timeline__write {

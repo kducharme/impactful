@@ -95,8 +95,8 @@ export default {
 </script>
 
 <style lang='scss'>
-@import "../styles/variables";
-@import "../styles/mixins";
+@import "../../styles/variables";
+@import "../../styles/mixins";
 .overview {
   @include display-flex(flex-start, flex-start, column);
   width: 100%;

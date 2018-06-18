@@ -13,7 +13,7 @@
                         d='M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z'
                     />
                 </svg>
-      <router-link class='sub__overflow' @click.native="resetProjectOnly" v-bind:class="[programActive ? 'sub__active' : 'sub__hide']" :to="'/programs/' + programActive + '/projects/'">{{ programActiveName }}
+      <router-link class='sub__overflow--program' @click.native="resetProjectOnly" v-bind:class="[programActive ? 'sub__active' : 'sub__hide']" :to="'/programs/' + programActive + '/projects/'">{{ programActiveName }}
       </router-link>
       <svg v-bind:class="[programActive && projectActive? 'sub__active' : 'sub__hide']" class='sub__svg' xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'>
                     <path
@@ -25,7 +25,7 @@
                         d='M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z'
                     />
                 </svg>
-      <router-link class='sub__overflow' v-bind:class="[programActive && projectActive ? 'sub__active' : 'sub__hide']" to=''>{{ projectActiveName }}
+      <router-link class='sub__overflow--project' v-bind:class="[programActive && projectActive ? 'sub__active' : 'sub__hide']" to=''>{{ projectActiveName }}
       </router-link>
     </div>
     <div class="sub__tabs">
@@ -105,7 +105,13 @@
     .sub__breadcrumbs {
       @include display-flex(flex-start, center, row);
       width: calc(100vw - 100px - 50%);
-      .sub__overflow {
+      .sub__overflow--program {
+        max-width: 90px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .sub__overflow--project {
         max-width: 130px;
         white-space: nowrap;
         overflow: hidden;
