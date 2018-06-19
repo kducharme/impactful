@@ -7,8 +7,9 @@
         v-on:click="createNewTask"
       >Add new</button>
       <ProjectTaskCreate
-        class='hide'
         :position="this.position"
+        :allTasks="this.allTasks"
+        :createActive="this.createActive"
       />
     </div>
     <div class="taskList__count">
@@ -72,11 +73,7 @@ export default {
     createNewTask(e) {
       this.position.top = e.target.parentElement.offsetTop;
       this.position.left = e.target.parentElement.offsetLeft;
-
       this.createActive = true;
-
-      const create = e.currentTarget.parentNode.childNodes[2]
-      create.classList.remove('hide');
     },
     countTaskTypes(task) {
       if (!task.completed) {
@@ -91,7 +88,6 @@ export default {
     ...mapState(["projects"])
   },
   beforeMount() {
-    console.log(this)
     this.loadTasks();
   },
   mounted() {
