@@ -65,13 +65,14 @@ export default {
   @include display-flex(center, flex-start, row);
   padding: 30px 8% 0 8%;
   .col1 {
-      width: 14%;
-      min-width: 240px;
+      width: 15%;
+      min-width: 200px;
+      max-width: 300px;
       margin: 16px 25px 0 0;
       background-color: transparent;
   }
   .col2 {
-      width: 61%;
+      width: 60%;
       min-width: 500px;
       height: 100%;
   }

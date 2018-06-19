@@ -21,7 +21,10 @@
         </div>
       </div>
       <div class="right">
-        <div class="create__owner">
+        <div
+          class="create__owner"
+          v-on:click="selectOwner"
+        >
           <svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <g id="Discovery-(v2)" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                   <g id="Artboard-4" transform="translate(-127.000000, -82.000000)" fill="#97A7B8" fill-rule="nonzero">
@@ -32,6 +35,22 @@
         </div>
       </div>
     </form>
+    <div
+      class="owner"
+      :class="[ownerActive ? '' : 'create__hide']"
+      @click.prevent.stop
+      :style="{
+        top: position.top + 50 + 36 + 80 + 'px',
+        left: position.left + 'px'
+
+      }"
+    >
+      <div class='owner__option' v-for="user in allUsers[0]" :key="user.id" :id="user.id">
+        <img :src="user.image" />
+        <h3>{{`${user.first_name} ${user.last_name}`}}</h3>
+        <p>({{ user.title }})</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -59,12 +78,18 @@ export default {
       active: false,
       taskName: null,
       taskDate: null,
-      owner: null
+      taskUser: null,
+      ownerActive: false,
+      owner: null,
+      allUsers: []
     };
   },
   methods: {
     close() {
       this.$emit("close");
+    },
+    selectOwner() {
+      this.ownerActive = !this.ownerActive;
     },
     getDate() {
       const date = new Date();
@@ -87,12 +112,11 @@ export default {
       const y = date.getFullYear();
       let due = this.taskDate.split("-");
       let month = "";
-      console.log(due)
       if (due[1].indexOf(0) === 0) {
         month = due[1].split("")[1] - 1;
-      } 
-      if(due[1].indexOf(0) !== 0) {
-        month = due[1] - 1
+      }
+      if (due[1].indexOf(0) !== 0) {
+        month = due[1] - 1;
       }
       const dueDate = `${monthList[month]} ${due[2]}, ${due[0]}`;
       const fullDate = `${monthList[m]} ${d}, ${y}`;
@@ -103,7 +127,7 @@ export default {
       };
     },
     getOwner() {
-      fetch(`http://localhost:3000/users?id=${this.activeUser}`)
+      fetch(`http://localhost:3000/users?id=${this.taskUser}`)
         .then(r => r.json())
         .then(owner => {
           this.newTask.ownerDetails = owner[0];
@@ -123,7 +147,7 @@ export default {
           project: window.location.href.split("/projects/")[1],
           ownerDetails: this.owner
         };
-        console.log(newTask)
+        console.log(newTask);
         // fetch("http://localhost:3000/tasks", {
         //   method: "POST",
         //   headers: {
@@ -143,10 +167,12 @@ export default {
     }
   },
   beforeMount() {
-    fetch(`http://localhost:3000/users?id=${this.activeUser}`)
+    fetch(`http://localhost:3000/users`)
       .then(r => r.json())
-      .then(o => {
-        this.owner = o[0];
+      .then(users => {
+        console.log(users)
+        this.allUsers.push(users);
+        console.log(this.allUsers)
       });
     window.addEventListener("resize", this.onResize);
   }
@@ -252,6 +278,49 @@ export default {
       background-color: #eaecf0;
       cursor: pointer;
     }
+  }
+}
+.owner {
+  position: relative;
+  background-color: white;
+  width: 150px;
+  max-height: 250px;
+  overflow: scroll;
+  min-width: 318px;
+  position: fixed;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  padding: 8px 16px 8px 16px;
+  border-top: 1px solid $grayBorder;
+  .owner__option {
+    @include display-flex(flex-start, center, row);
+    height: 40px;
+    img {
+      width: 25px;
+      height: 25px;
+      border-radius: 2px;
+      margin-right: 10px;
+    }
+    h3 {
+      font-size: 13px;
+      font-weight: $weightMedium;
+      margin-right: 5px;
+      max-width: 120px;
+    }
+    p {
+      font-size: 12px;
+      color: $colorPrimaryLight;
+      max-width: 130px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  .owner__option:hover {
+    background-color: $colorBackground;
+    cursor: pointer;
+    margin: 0 -16px 0 -16px;
+    padding: 0 16px 0 16px;
   }
 }
 .create__hide {
