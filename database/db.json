@@ -588,6 +588,30 @@
         "permission": 2
       },
       "id": 3
+    },
+    {
+      "name": "fasdfasdf",
+      "date_created": "June 19, 2018",
+      "date_sort": "2018-06-05",
+      "date_due": "June 05, 2018",
+      "completed": false,
+      "date_completed": null,
+      "date_deleted": null,
+      "project": "1",
+      "owner": 5,
+      "ownerDetails": {
+        "id": 5,
+        "first_name": "Kimmy",
+        "last_name": "Bird",
+        "title": "Lead On-Site Manager",
+        "email": "Kimmy@Bird.com",
+        "image": "img/kimmy.png",
+        "date_created": "May 19, 2018",
+        "date_deleted": null,
+        "organization": 1,
+        "permission": 2
+      },
+      "id": 4
     }
   ],
   "locations": [
