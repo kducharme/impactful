@@ -3,7 +3,11 @@
     :class="[createActive ? '' : 'create__hide']"
     v-on:click="close"
     >
-    <form class="create" @keyup.enter="createTask" :style="{
+    <form
+      class="create"
+      @keyup.enter="createTask"
+      @click.prevent.stop
+      :style="{
           top: position.top + 50 + 36 + 'px',
           left: position.left + 'px'
         }">
@@ -11,9 +15,9 @@
         <div class="create__name">
           <input v-model="taskName" type="text" class='create__name' placeholder="Enter task name" />
         </div>
-        <div class="create__date">
+        <div class="create__date" @click.prevent.stop>
           <label for="taskDate">Due:</label>
-          <input v-model="taskDate" type="date" class='create__date' placeholder="Select due date">
+          <input v-model="taskDate" type="date" class='create__date' @click.prevent.stop>
         </div>
       </div>
       <div class="right">
@@ -60,7 +64,7 @@ export default {
   },
   methods: {
     close() {
-      this.$emit('close')
+      this.$emit("close");
     },
     getDate() {
       const date = new Date();
@@ -83,10 +87,12 @@ export default {
       const y = date.getFullYear();
       let due = this.taskDate.split("-");
       let month = "";
+      console.log(due)
       if (due[1].indexOf(0) === 0) {
-        month = due[1].split("")[1];
-      } else {
-        month = due[1];
+        month = due[1].split("")[1] - 1;
+      } 
+      if(due[1].indexOf(0) !== 0) {
+        month = due[1] - 1
       }
       const dueDate = `${monthList[month]} ${due[2]}, ${due[0]}`;
       const fullDate = `${monthList[m]} ${d}, ${y}`;
@@ -104,11 +110,12 @@ export default {
         });
     },
     createTask(e) {
+      e.preventDefault();
       if (this.taskName && this.taskDate) {
         const newTask = {
           name: this.taskName,
           date_created: this.getDate().fullDate,
-          date_sort: this.getDate().date,
+          date_sort: this.taskDate,
           date_due: this.getDate().dueDate,
           completed: false,
           date_completed: null,
@@ -116,10 +123,23 @@ export default {
           project: window.location.href.split("/projects/")[1],
           ownerDetails: this.owner
         };
-        this.allTasks.push(newTask);
+        console.log(newTask)
+        // fetch("http://localhost:3000/tasks", {
+        //   method: "POST",
+        //   headers: {
+        //     "content-type": "application/json"
+        //   },
+        //   body: JSON.stringify(newTask)
+        // })
+        //   .then(
+        //     this.allTasks.push(newTask),
+        //     this.allTasks.sort( (a, b) => new Date(a.date_sort) - new Date(b.date_sort) )
+        //   )
+        //   .catch(error => console.log(error));
+        // this.taskName = "";
+        // this.taskDate = "";
+        // this.$emit("close");
       }
-      this.$emit('close')
-      e.preventDefault();
     }
   },
   beforeMount() {
@@ -128,7 +148,7 @@ export default {
       .then(o => {
         this.owner = o[0];
       });
-    window.addEventListener('resize', this.onResize)
+    window.addEventListener("resize", this.onResize);
   }
 };
 </script>
@@ -207,8 +227,10 @@ export default {
       display: none;
     }
     ::-webkit-calendar-picker-indicator {
-      color: $colorPrimaryDark;
-      width: 12px;
+      display: none;
+    }
+    ::-webkit-clear-button {
+      display: none;
     }
   }
   .right {
@@ -226,9 +248,13 @@ export default {
         height: 12px;
       }
     }
+    .create__owner:hover {
+      background-color: #eaecf0;
+      cursor: pointer;
+    }
   }
 }
 .create__hide {
-  display: none!important;
+  display: none !important;
 }
 </style>

@@ -66,6 +66,9 @@ export default {
               .then(owner => {
                 task.ownerDetails = owner[0];
                 this.allTasks.push(task);
+                this.allTasks.sort(
+                  (a, b) => new Date(a.date_sort) - new Date(b.date_sort)
+                )
                 this.countTaskTypes(task);
               });
           });
