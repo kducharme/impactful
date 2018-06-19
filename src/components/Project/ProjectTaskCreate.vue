@@ -87,6 +87,7 @@ export default {
   methods: {
     close() {
       this.$emit("close");
+      this.ownerActive = false;
     },
     selectOwner() {
       this.ownerActive = !this.ownerActive;
@@ -132,6 +133,9 @@ export default {
         .then(owner => {
           this.newTask.ownerDetails = owner[0];
         });
+    },
+    onResize() {
+      this.$emit("close");
     },
     createTask(e) {
       e.preventDefault();
@@ -317,7 +321,7 @@ export default {
     }
   }
   .owner__option:hover {
-    background-color: $colorBackground;
+    background-color: $grayFill;
     cursor: pointer;
     margin: 0 -16px 0 -16px;
     padding: 0 16px 0 16px;
