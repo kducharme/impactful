@@ -1,51 +1,36 @@
 <template>
-  <div class="create__bg"
-    :class="[createActive ? '' : 'create__hide']"
-    v-on:click="close"
-    >
-    <form
-      class="create"
-      @keyup.enter="createTask"
-      @click.prevent.stop
-      :style="{
-          top: position.top + 50 + 36 + 'px',
-          left: position.left + 'px'
-        }">
+  <div class="create__bg" :class="[createActive ? '' : 'owner__hide']" v-on:click.self="close" @keyup.enter="createTask" >
+    <form class="create" :style="{
+              top: position.top + 50 + 36 + 'px',
+              left: position.left + 'px'
+            }">
       <div class="left">
         <div class="create__name">
           <input v-model="taskName" type="text" class='create__name' placeholder="Enter task name" />
         </div>
-        <div class="create__date" @click.prevent.stop>
+        <div class="create__date">
           <label for="taskDate">Due:</label>
-          <input v-model="taskDate" type="date" class='create__date' @click.prevent.stop>
+          <input v-model="taskDate" type="date" class='create__date'>
         </div>
       </div>
       <div class="right">
-        <div
-          class="create__owner"
-          v-on:click="selectOwner"
-        >
-          <svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-              <g id="Discovery-(v2)" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                  <g id="Artboard-4" transform="translate(-127.000000, -82.000000)" fill="#97A7B8" fill-rule="nonzero">
-                      <path d="M133,88 C134.6575,88 136,86.6575 136,85 C136,83.3425 134.6575,82 133,82 C131.3425,82 130,83.3425 130,85 C130,86.6575 131.3425,88 133,88 Z M133,89.5 C130.9975,89.5 127,90.505 127,92.5 L127,94 L139,94 L139,92.5 C139,90.505 135.0025,89.5 133,89.5 Z" id="Shape"></path>
+        <div :class="[owner ? '' : 'owner__unselected']" v-on:click="ownerDropdown">
+          <svg :class="[owner ? 'owner__hide' : '']" width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <g id="Discovery-(v2)" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g id="Artboard-4" transform="translate(-127.000000, -82.000000)" fill="#97A7B8" fill-rule="nonzero">
+                          <path d="M133,88 C134.6575,88 136,86.6575 136,85 C136,83.3425 134.6575,82 133,82 C131.3425,82 130,83.3425 130,85 C130,86.6575 131.3425,88 133,88 Z M133,89.5 C130.9975,89.5 127,90.505 127,92.5 L127,94 L139,94 L139,92.5 C139,90.505 135.0025,89.5 133,89.5 Z" id="Shape"></path>
+                      </g>
                   </g>
-              </g>
-          </svg>
+              </svg>
         </div>
+        <img :class="[owner ? 'owner__selected' : 'owner__hide']" :src="this.ownerImage" v-on:click="ownerDropdown" />
       </div>
     </form>
-    <div
-      class="owner"
-      :class="[ownerActive ? '' : 'create__hide']"
-      @click.prevent.stop
-      :style="{
-        top: position.top + 50 + 36 + 80 + 'px',
-        left: position.left + 'px'
-
-      }"
-    >
-      <div class='owner__option' v-for="user in allUsers[0]" :key="user.id" :id="user.id">
+    <div class="owner" :class="[ownerActive ? '' : 'owner__hide']" @click.prevent.stop :style="{
+          top: position.top + 50 + 36 + 80 + 'px',
+          left: position.left + 'px'
+        }">
+      <div class='owner__option' v-for="user in allUsers[0]" :key="user.id" :id="user.id" v-on:click="selectOwner">
         <img :src="user.image" />
         <h3>{{`${user.first_name} ${user.last_name}`}}</h3>
         <p>({{ user.title }})</p>
@@ -71,7 +56,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(["activeUser"])
+    ...mapState(["activeUser", "organization"])
   },
   data() {
     return {
@@ -81,16 +66,68 @@ export default {
       taskUser: null,
       ownerActive: false,
       owner: null,
+      ownerImage: null,
       allUsers: []
     };
   },
   methods: {
-    close() {
+    ownerDropdown() {
+      this.ownerActive = !this.ownerActive;
+    },
+    selectOwner(e) {
+      let id = e.currentTarget.id;
+      fetch(`http://localhost:3000/users?id=${id}`)
+        .then(r => r.json())
+        .then(o => {
+          this.owner = o[0];
+          this.getOwnerImage(o[0]);
+          this.ownerActive = false;
+        });
+    },
+    getOwnerImage: function(owner) {
+      this.ownerImage = owner.image;
+    },
+    createTask(e) {
+      e.preventDefault();
+      if (this.taskName && this.taskDate) {
+        const newTask = {
+          name: this.taskName,
+          date_created: this.getDate().fullDate,
+          date_sort: this.taskDate,
+          date_due: this.getDate().dueDate,
+          completed: false,
+          date_completed: null,
+          date_deleted: null,
+          project: window.location.href.split("/projects/")[1],
+          owner: this.owner.id,
+          ownerDetails: this.owner
+        };
+        this.ownerActive = false;
+        fetch("http://localhost:3000/tasks", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json"
+          },
+          body: JSON.stringify(newTask)
+        })
+          .then(
+            this.allTasks.push(newTask),
+            this.allTasks.sort( (a, b) => new Date(a.date_sort) - new Date(b.date_sort) )
+          )
+          .catch(error => console.log(error));
+        this.taskName = "";
+        this.taskDate = "";
+        this.$emit("close");
+        this.owner = false;
+      }
+    },
+    onResize() {
       this.$emit("close");
       this.ownerActive = false;
     },
-    selectOwner() {
-      this.ownerActive = !this.ownerActive;
+    close() {
+      this.$emit("close");
+      this.ownerActive = false;
     },
     getDate() {
       const date = new Date();
@@ -126,57 +163,13 @@ export default {
         date,
         dueDate
       };
-    },
-    getOwner() {
-      fetch(`http://localhost:3000/users?id=${this.taskUser}`)
-        .then(r => r.json())
-        .then(owner => {
-          this.newTask.ownerDetails = owner[0];
-        });
-    },
-    onResize() {
-      this.$emit("close");
-    },
-    createTask(e) {
-      e.preventDefault();
-      if (this.taskName && this.taskDate) {
-        const newTask = {
-          name: this.taskName,
-          date_created: this.getDate().fullDate,
-          date_sort: this.taskDate,
-          date_due: this.getDate().dueDate,
-          completed: false,
-          date_completed: null,
-          date_deleted: null,
-          project: window.location.href.split("/projects/")[1],
-          ownerDetails: this.owner
-        };
-        console.log(newTask);
-        // fetch("http://localhost:3000/tasks", {
-        //   method: "POST",
-        //   headers: {
-        //     "content-type": "application/json"
-        //   },
-        //   body: JSON.stringify(newTask)
-        // })
-        //   .then(
-        //     this.allTasks.push(newTask),
-        //     this.allTasks.sort( (a, b) => new Date(a.date_sort) - new Date(b.date_sort) )
-        //   )
-        //   .catch(error => console.log(error));
-        // this.taskName = "";
-        // this.taskDate = "";
-        // this.$emit("close");
-      }
     }
   },
   beforeMount() {
-    fetch(`http://localhost:3000/users`)
+    fetch(`http://localhost:3000/users?organization=${this.organization}`)
       .then(r => r.json())
       .then(users => {
-        console.log(users)
         this.allUsers.push(users);
-        console.log(this.allUsers)
       });
     window.addEventListener("resize", this.onResize);
   }
@@ -193,7 +186,7 @@ export default {
   z-index: 1001;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(29, 29, 29, 0.3);
+  background-color: rgba(29, 29, 29, 0.45);
 }
 
 .create {
@@ -256,18 +249,18 @@ export default {
     ::-webkit-inner-spin-button {
       display: none;
     }
-    ::-webkit-calendar-picker-indicator {
-      display: none;
-    }
-    ::-webkit-clear-button {
-      display: none;
-    }
+    // ::-webkit-calendar-picker-indicator {
+    //   display: none;
+    // }
+    // ::-webkit-clear-button {
+    //   display: none;
+    // }
   }
   .right {
     @include display-flex(flex-end, center, row);
     padding-right: 15px;
     width: 20%;
-    .create__owner {
+    .owner__unselected {
       @include display-flex(center, center, row);
       background-color: $colorBackground;
       border: 1px dashed $colorPrimaryLight;
@@ -278,22 +271,29 @@ export default {
         height: 12px;
       }
     }
-    .create__owner:hover {
+    .owner__unselected:hover {
       background-color: #eaecf0;
+      cursor: pointer;
+    }
+    .owner__selected {
+      border-radius: 2px;
+      width: 30px;
+      height: 30px;
+    }
+    img:hover {
       cursor: pointer;
     }
   }
 }
+
 .owner {
   position: relative;
   background-color: white;
   width: 150px;
-  max-height: 250px;
+  max-height: 230px;
   overflow: scroll;
   min-width: 318px;
   position: fixed;
-  overflow-x: hidden;
-  overflow-y: hidden;
   padding: 8px 16px 8px 16px;
   border-top: 1px solid $grayBorder;
   .owner__option {
@@ -327,7 +327,8 @@ export default {
     padding: 0 16px 0 16px;
   }
 }
-.create__hide {
+
+.owner__hide {
   display: none !important;
 }
 </style>

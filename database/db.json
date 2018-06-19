@@ -61,7 +61,7 @@
       "image": "img/george.jpg",
       "date_created": "May 12, 2018",
       "date_deleted": null,
-      "organization": 1,
+      "organization": 2,
       "permission": 2
     },
     {
@@ -71,6 +71,30 @@
       "title": "Lead On-Site Manager",
       "email": "Kimmy@Bird.com",
       "image": "img/kimmy.png",
+      "date_created": "May 19, 2018",
+      "date_deleted": null,
+      "organization": 1,
+      "permission": 2
+    },
+    {
+      "id": 6,
+      "first_name": "Meghan",
+      "last_name": "Debity",
+      "title": "Volunteer Manager",
+      "email": "Meghan@Debity.com",
+      "image": "img/meghan.png",
+      "date_created": "May 29, 2018",
+      "date_deleted": null,
+      "organization": 1,
+      "permission": 2
+    },
+    {
+      "id": 7,
+      "first_name": "Ronnie",
+      "last_name": "Young",
+      "title": "Program Manager",
+      "email": "Ronnie@Young.com",
+      "image": "img/ronnie.png",
       "date_created": "May 19, 2018",
       "date_deleted": null,
       "organization": 1,
@@ -518,43 +542,52 @@
       "owner": 1
     },
     {
-      "id": 2,
-      "name": "third - Schedule inspection",
-      "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
-      "date_created": "June 3, 2018",
-      "date_due": "June 27, 2018",
-      "date_sort": "2018-06-27",
+      "name": "I LOVE YOU!!",
+      "date_created": "June 19, 2018",
+      "date_sort": "2018-06-12",
+      "date_due": "June 12, 2018",
       "completed": false,
       "date_completed": null,
       "date_deleted": null,
-      "project": 1,
-      "owner": 2
+      "project": "1",
+      "owner": 2,
+      "ownerDetails": {
+        "id": 2,
+        "first_name": "Kyle",
+        "last_name": "Ducharme",
+        "title": "Volunteer Experience Manager",
+        "email": "Kyle@Ducharme.com",
+        "image": "img/kyle.jpg",
+        "date_created": "February 12, 2018",
+        "date_deleted": null,
+        "organization": 1,
+        "permission": 1
+      },
+      "id": 2
     },
     {
-      "id": 3,
-      "name": "second - Schedule delivery for Tuesday",
-      "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
-      "date_created": "May 9, 2018",
-      "date_due": "June 26, 2018",
-      "date_sort": "2018-06-26",
+      "name": "THIS WORKS< WOO!!!!",
+      "date_created": "June 19, 2018",
+      "date_sort": "2018-06-22",
+      "date_due": "June 22, 2018",
       "completed": false,
       "date_completed": null,
       "date_deleted": null,
-      "project": 1,
-      "owner": 3
-    },
-    {
-      "id": 4,
-      "name": "fourth - Get final sign off from family",
-      "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
-      "date_created": "June 11, 2018",
-      "date_sort": "2018-07-12",
-      "date_due": "July 12, 2018",
-      "completed": false,
-      "date_completed": null,
-      "date_deleted": null,
-      "project": 1,
-      "owner": 1
+      "project": "1",
+      "owner": 5,
+      "ownerDetails": {
+        "id": 5,
+        "first_name": "Kimmy",
+        "last_name": "Bird",
+        "title": "Lead On-Site Manager",
+        "email": "Kimmy@Bird.com",
+        "image": "img/kimmy.png",
+        "date_created": "May 19, 2018",
+        "date_deleted": null,
+        "organization": 1,
+        "permission": 2
+      },
+      "id": 3
     }
   ],
   "locations": [
