@@ -1,7 +1,8 @@
 <template>
   <div class="create__bg"
     :class="[createActive ? '' : 'create__hide']"
-    v-on:click="close">
+    v-on:click="close"
+    >
     <form class="create" @keyup.enter="createTask" :style="{
           top: position.top + 50 + 36 + 'px',
           left: position.left + 'px'
@@ -51,6 +52,7 @@ export default {
   },
   data() {
     return {
+      active: false,
       taskName: null,
       taskDate: null,
       owner: null
@@ -58,7 +60,7 @@ export default {
   },
   methods: {
     close() {
-      this.$emit(this.createActive, false);
+      this.$emit('close')
     },
     getDate() {
       const date = new Date();
@@ -115,8 +117,8 @@ export default {
           ownerDetails: this.owner
         };
         this.allTasks.push(newTask);
-        console.log(newTask);
       }
+      this.$emit('close')
       e.preventDefault();
     }
   },

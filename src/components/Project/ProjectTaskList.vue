@@ -10,6 +10,7 @@
         :position="this.position"
         :allTasks="this.allTasks"
         :createActive="this.createActive"
+        @close="closeNewTask"
       />
     </div>
     <div class="taskList__count">
@@ -74,6 +75,9 @@ export default {
       this.position.top = e.target.parentElement.offsetTop;
       this.position.left = e.target.parentElement.offsetLeft;
       this.createActive = true;
+    },
+    closeNewTask() {
+      this.createActive = false;
     },
     countTaskTypes(task) {
       if (!task.completed) {
