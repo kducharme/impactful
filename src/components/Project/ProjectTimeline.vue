@@ -31,7 +31,7 @@ export default {
   data() {
     return {
       allNotes: [],
-      note: "",
+      note: null,
       undreadNotes: [],
       activeUserImage: ""
     };
@@ -39,7 +39,6 @@ export default {
   methods: {
     getDate() {
       const date = new Date();
-      console.log(date);
       const monthList = [
         "January",
         "February",
@@ -77,7 +76,7 @@ export default {
         read: false,
         project: window.location.href.split("/projects/")[1],
         image: null, // TODO = change once images can be added
-        author: 2 // TODO = change once active used hooked up
+        author: this.activeUser // TODO = change once active used hooked up
       };
       fetch("http://localhost:3000/project_notes", {
         method: "POST",
@@ -99,6 +98,7 @@ export default {
         )
         .catch(error => console.log(error));
       this.note = "";
+      this.countNoteTypes();
     },
     loadNotes() {
       const id = window.location.href.split("/projects/")[1];
