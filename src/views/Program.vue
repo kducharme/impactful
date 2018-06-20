@@ -1,6 +1,9 @@
 <template>
   <div class="program">
-    <SubNavigation />
+    <SubNavigation
+    :subLinks="this.links"
+    :subButton="this.button"
+    />
     <div class="content">
       <Groups />
       <div class="content__right">
@@ -56,96 +59,106 @@
 </template>
 
 <script>
-  import {
-    mapState,
-    mapActions
-  } from "vuex";
-  import SubNavigation from "../components/SubNavigation.vue";
-  import ProgramHeader from "../components/ProgramHeader.vue";
-  import Groups from "../components/Groups.vue";
-  export default {
-    name: "program",
-    components: {
-      SubNavigation,
-      ProgramHeader,
-      Groups
+import { mapState, mapActions } from "vuex";
+import SubNavigation from "../components/SubNavigation.vue";
+import ProgramHeader from "../components/ProgramHeader.vue";
+import Groups from "../components/Groups.vue";
+export default {
+  name: "program",
+  components: {
+    SubNavigation,
+    ProgramHeader,
+    Groups
+  },
+  data() {
+    return {
+      links: {
+        linkOne: "Projects",
+        linkTwo: "Media"
+      },
+      button: {
+        text: 'Create project'
+      }
+    };
+  },
+  methods: {
+    ...mapActions(["getProjects", "setActiveProgramOnLoad"]),
+    getProjectData: function(id) {
+      this.getProjects(id);
     },
-    methods: {
-      ...mapActions(["getProjects", "setActiveProgramOnLoad"]),
-      getProjectData: function(id) {
-        this.getProjects(id);
-      },
-      getActiveProgramData: function(id) {
-        this.getActiveProgram(id);
-      },
-      showOverlay: function(e) {
-        const overlay = e.currentTarget.children[0];
-        overlay.classList.remove("hide");
+    getActiveProgramData: function(id) {
+      this.getActiveProgram(id);
+    },
+    showOverlay: function(e) {
+      const overlay = e.currentTarget.children[0];
+      overlay.classList.remove("hide");
     },
     hideOverlay: function(e) {
       const overlay = e.currentTarget.children[0];
       overlay.classList.add("hide");
     }
-    },
-    beforeMount() {
-      const id = window.location.href.split("/projects/")[0].split('programs/')[1]
-      this.getProjectData(id);
-      this.setActiveProgramOnLoad(id);
-    },
-    computed: {
-      ...mapState(["projects", "programActive"])
-    }
-  };
+  },
+  beforeMount() {
+    const id = window.location.href
+      .split("/projects/")[0]
+      .split("programs/")[1];
+    this.getProjectData(id);
+    this.setActiveProgramOnLoad(id);
+  },
+  computed: {
+    ...mapState(["projects", "programActive"])
+  }
+};
 </script>
 
 <style lang='scss'>
-  @import "../styles/card";
-  @import "../styles/variables";
-  @import "../styles/mixins";
-  .content {
-    background-color: $colorBackground;
-    @include display-flex(flex-start, flex-start, row);
-    height: calc(100vh - 44px - 40px); // Height of screen minus 2 navs
-    .groups {
-      background-color: white;
-      border-right: 1px solid $grayBorder;
-      width: 300px;
-      height: 100%;
-      .groups__header {
-        @include display-flex(space-between, center, row);
-        height: 80px;
-        border-bottom: 1px solid $grayBorder;
-        padding: 0 30px 0 30px;
-        p {
-          font-size: 18px;
-          font-weight: $weightHeavy;
-        }
-        .groups__button {
-          height: 34px;
-          width: 88px;
-          font-size: 12px;
-          color: white !important;
-          background-color: $colorFontDark;
-        }
-        .groups__button:hover {
-          opacity: 0.8;
-        }
+@import "../styles/card";
+@import "../styles/variables";
+@import "../styles/mixins";
+.content {
+  background-color: $colorBackground;
+  @include display-flex(flex-start, flex-start, row);
+  height: calc(100vh - 44px - 40px); // Height of screen minus 2 navs
+  .groups {
+    background-color: white;
+    border-right: 1px solid $grayBorder;
+    width: 300px;
+    height: 100%;
+    .groups__header {
+      @include display-flex(space-between, center, row);
+      height: 80px;
+      border-bottom: 1px solid $grayBorder;
+      padding: 0 30px 0 30px;
+      p {
+        font-size: 18px;
+        font-weight: $weightHeavy;
       }
-    }
-    .content__right {
-      @include display-flex(space-between, flex-start, column);
-      width: calc(100vw - 300px);
-      height: calc(100vh - 44px - 40px);
-      .content__projects {
-        padding: 0 2% 0 2%;
-        height: calc(100vh - 44px - 40px - 80px);
-        @include display-flex(flex-start, flex-start, row);
-        flex-wrap: wrap;
-        overflow: scroll;
+      .groups__button {
+        height: 34px;
+        width: 88px;
+        font-size: 12px;
+        color: white !important;
+        background-color: $colorFontDark;
+      }
+      .groups__button:hover {
+        opacity: 0.8;
       }
     }
   }
-  .project__hover {
+  .content__right {
+    @include display-flex(space-between, flex-start, column);
+    width: calc(100vw - 300px);
+    height: calc(100vh - 44px - 40px);
+    .content__projects {
+      padding: 0 2% 0 2%;
+      height: calc(100vh - 44px - 40px - 80px);
+      @include display-flex(flex-start, flex-start, row);
+      flex-wrap: wrap;
+      overflow: scroll;
+    }
+  }
+}
+.project__hover {
   @include display-flex(flex-start, flex-start, column);
   z-index: 999;
   position: relative;
@@ -199,5 +212,4 @@
 .hide {
   display: none;
 }
-
 </style>

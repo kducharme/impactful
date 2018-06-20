@@ -160,7 +160,8 @@
       button {
         background-color: $colorAccent;
         height: 30px;
-        width: 100px;
+        min-width: 100px;
+        padding: 0 10px 0 10px;
         font-size: 13px;
       }
       .sub__settings {
