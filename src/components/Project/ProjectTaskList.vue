@@ -48,8 +48,8 @@ export default {
       inProgress: [],
       completed: [],
       position: {
-        top: '',
-        left: ''
+        top: "",
+        left: ""
       },
       createActive: false
     };
@@ -68,7 +68,7 @@ export default {
                 this.allTasks.push(task);
                 this.allTasks.sort(
                   (a, b) => new Date(a.date_sort) - new Date(b.date_sort)
-                )
+                );
                 this.countTaskTypes(task);
               });
           });
@@ -112,16 +112,16 @@ export default {
   .taskList__header {
     @include display-flex(space-between, center, row);
     width: 100%;
-      button {
-        height: 30px;
-        width: 80px;
-        font-size: 12px;
-        color: white !important;
-        background-color: $colorFontDark;
-      }
-      button:hover {
-        opacity: .7!important;
-      }
+    button {
+      height: 30px;
+      width: 80px;
+      font-size: 12px;
+      color: white !important;
+      background-color: $colorFontDark;
+    }
+    button:hover {
+      opacity: 0.7 !important;
+    }
   }
   .taskList__count {
     @include display-flex(center, center, row);
@@ -147,6 +147,10 @@ export default {
       text-align: left;
       margin-left: 25px;
     }
+  }
+  .taskList__list {
+    max-height: 500px;
+    overflow: scroll;
   }
   .list__tasks:last-child {
     border-bottom: none;

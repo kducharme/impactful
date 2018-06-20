@@ -1,7 +1,10 @@
 <template>
   <div class="programs" id='programs'>
     <div class="subnav">
-      <SubNavigation />
+      <SubNavigation
+      :subLinks="this.links"
+      :subButton="this.button"
+      />
     </div>
     <div class="content">
       <div class='card' v-on:mouseover="showOverlay" v-on:mouseleave="hideOverlay"  v-for="program in programs" :key="program.id"  :id="program.id">
@@ -59,6 +62,17 @@ import SubNavigation from "../components/SubNavigation.vue";
 
 export default {
   name: "programs",
+  data() {
+    return {
+      links: {
+        linkOne: 'Programs',
+        linkTwo: 'Media'
+      },
+      button: {
+        text: 'Create program'
+      }
+    }
+  },
   methods: {
     ...mapActions(["getPrograms", "getActiveProgram"]),
     getProgramData: function() {

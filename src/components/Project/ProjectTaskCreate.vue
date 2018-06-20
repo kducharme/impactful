@@ -5,12 +5,15 @@
               left: position.left + 'px'
             }">
       <div class="left">
-        <div class="create__name">
+        <div class="create__name" :class="[warningName ? 'warning' : '']">
           <input v-model="taskName" type="text" class='create__name' placeholder="Enter task name" />
         </div>
-        <div class="create__date">
-          <label for="taskDate">Due:</label>
-          <input v-model="taskDate" type="date" class='create__date'>
+        <div class="create__date" :class="[warningDate ? 'warning' : '']">
+          <label  for="taskDate">Due:</label>
+          <input
+            v-model="taskDate"
+            type="date"
+          >
         </div>
       </div>
       <div class="right">
@@ -61,6 +64,8 @@ export default {
   data() {
     return {
       active: false,
+      warningName: false,
+      warningDate: false,
       taskName: null,
       taskDate: null,
       taskUser: null,
@@ -89,6 +94,12 @@ export default {
     },
     createTask(e) {
       e.preventDefault();
+      if(!this.taskName) {
+        this.warningName = true;
+      }
+      if(!this.taskDate) {
+        this.warningDate = true;
+      }
       if (this.taskName && this.taskDate) {
         const newTask = {
           name: this.taskName,
@@ -128,6 +139,10 @@ export default {
     close() {
       this.$emit("close");
       this.ownerActive = false;
+      document.querySelector('.create__date').classList.remove('warning')
+      document.querySelector('.create__name').classList.remove('warning')
+      this.warningName = false
+      this.warningDate = false
     },
     getDate() {
       const date = new Date();
@@ -186,7 +201,7 @@ export default {
   z-index: 1001;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(29, 29, 29, 0.45);
+  background-color: rgba(29, 29, 29, 0);
 }
 
 .create {
@@ -325,6 +340,28 @@ export default {
     cursor: pointer;
     margin: 0 -16px 0 -16px;
     padding: 0 16px 0 16px;
+  }
+}
+
+.warning  {
+  animation: shake 0.95s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
   }
 }
 

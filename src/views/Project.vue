@@ -7,7 +7,7 @@
       />
     </div>
     <div class="content">
-        <ProjectOverview class='col1'/>
+        <ProjectOverview :editProject="this.edit" class='col1'/>
         <ProjectTimeline class='col2 feature'/>
         <ProjectTaskList class='col3 feature'/>
     </div>
@@ -32,8 +32,10 @@ export default {
         linkTwo: 'Media'
       },
       button: {
-        text: 'Edit project'
-      }
+        text: 'Edit project',
+        action: this.editProject
+      },
+      edit: false
     }
   },
   components: {
@@ -44,7 +46,14 @@ export default {
     ProjectMedia,
   },
   methods: {
-    ...mapActions(["getProjects", "setActiveProgramOnLoad", "setActiveProjectOnLoad"])
+    ...mapActions([
+        "getProjects",
+        "setActiveProgramOnLoad",
+        "setActiveProjectOnLoad"
+    ]),
+    editProject() {
+      this.edit = !this.edit;
+    }
   },
   beforeMount() {
     const programId = window.location.href.split("programs/")[1].split("/")[0];

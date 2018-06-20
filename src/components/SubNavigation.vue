@@ -44,7 +44,12 @@
         </svg>
         <p>Page settings</p>
       </div>
-      <button class="button__primary">{{ subButton.text }}</button>
+      <button
+        class="button__primary"
+        v-on:click="subButton.action"
+      >
+        
+      {{ subButton.text }}</button>
     </div>
   </div>
 </template>
@@ -160,7 +165,8 @@
       button {
         background-color: $colorAccent;
         height: 30px;
-        width: 100px;
+        min-width: 100px;
+        padding: 0 10px 0 10px;
         font-size: 13px;
       }
       .sub__settings {
