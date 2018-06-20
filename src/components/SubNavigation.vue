@@ -44,7 +44,12 @@
         </svg>
         <p>Page settings</p>
       </div>
-      <button class="button__primary">{{ subButton.text }}</button>
+      <button
+        class="button__primary"
+        v-on:click="subButton.action"
+      >
+        
+      {{ subButton.text }}</button>
     </div>
   </div>
 </template>
