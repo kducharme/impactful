@@ -1,7 +1,12 @@
 <template>
     <div class="overview">
-        <ProjectOverviewStatic :class="[editProject ? 'overview__hide' : '']"/>
-        <ProjectOverviewEdit :class="[editProject ? '' : 'overview__hide']"/>
+        <ProjectOverviewStatic
+            :class="[editProject ? 'overview__hide' : '']"
+        />
+        <ProjectOverviewEdit
+            :class="[editProject ? '' : 'overview__hide']"
+            @done="finishEdit"
+        />
     </div>
 
 </template>
@@ -18,10 +23,10 @@ export default {
     ProjectOverviewStatic,
     ProjectOverviewEdit
   },
-  data() {
-    return {
-      edit: false
-    };
+  methods: {
+    finishEdit() {
+        this.$emit('edit')
+    }
   }
 };
 </script>
@@ -33,7 +38,7 @@ export default {
   @include display-flex(flex-start, flex-start, column);
   width: 100%;
   .overview__hide {
-      display: none!important;
+    display: none !important;
   }
 }
 </style>

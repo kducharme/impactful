@@ -7,7 +7,11 @@
       />
     </div>
     <div class="content">
-        <ProjectOverview :editProject="this.edit" class='col1'/>
+        <ProjectOverview
+          :editProject="this.edit"
+          class='col1'
+          @edit='editProject'
+        />
         <ProjectTimeline class='col2 feature'/>
         <ProjectTaskList class='col3 feature'/>
     </div>
@@ -53,6 +57,7 @@ export default {
     ]),
     editProject() {
       this.edit = !this.edit;
+      console.log('project')
     }
   },
   beforeMount() {

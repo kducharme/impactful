@@ -150,17 +150,17 @@
     {
       "id": 1,
       "name": "Davidson's Home Update: Back Porch New Stairs",
-      "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
-      "date_created": "May 19, 2018",
-      "date_updated": null,
+      "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem fasdf",
+      "location": 2,
+      "budget": "2,001",
+      "date_created": "June 4, 2018",
+      "date_updated": "June 21, 2018",
       "date_due": null,
       "date_completed": null,
       "date_deleted": null,
-      "budget": "2,000",
-      "type": 1,
-      "program": 1,
-      "manager": 2,
-      "location": 1
+      "type": 2,
+      "program": 2,
+      "manager": 1
     },
     {
       "id": 2,
@@ -435,30 +435,6 @@
       "image": null,
       "author": 1,
       "id": 10
-    },
-    {
-      "note": true,
-      "text": "heolo\n",
-      "date_created": "June 20, 2018",
-      "date_sort": "2018-06-20T12:54:51.102Z",
-      "date_deleted": null,
-      "read": false,
-      "project": "1",
-      "image": null,
-      "author": 2,
-      "id": 11
-    },
-    {
-      "note": true,
-      "text": "dsfsdf\n",
-      "date_created": "June 20, 2018",
-      "date_sort": "2018-06-20T14:01:04.334Z",
-      "date_deleted": null,
-      "read": false,
-      "project": "1",
-      "image": null,
-      "author": 2,
-      "id": 12
     }
   ],
   "project_images": [
@@ -636,6 +612,30 @@
         "permission": 2
       },
       "id": 5
+    },
+    {
+      "name": "sdf",
+      "date_created": "June 20, 2018",
+      "date_sort": "2018-06-19",
+      "date_due": "June 19, 2018",
+      "completed": false,
+      "date_completed": null,
+      "date_deleted": null,
+      "project": "1",
+      "owner": 5,
+      "ownerDetails": {
+        "id": 5,
+        "first_name": "Kimmy",
+        "last_name": "Bird",
+        "title": "Lead On-Site Manager",
+        "email": "Kimmy@Bird.com",
+        "image": "img/kimmy.png",
+        "date_created": "May 19, 2018",
+        "date_deleted": null,
+        "organization": 1,
+        "permission": 2
+      },
+      "id": 6
     }
   ],
   "locations": [
