@@ -6,25 +6,25 @@
         <div class="overview__bottom">
             <div class="block">
                 <p class='block__label'>Date created</p>
-                <p class='block__data'>{{ projectData.created }}</p>
+                <p class='block__data'>{{ project.created }}</p>
             </div>
             <div class="block">
                 <p class='block__label'>Manager</p>
-                <p class='block__data'>{{ projectData.manager }}</p>
+                <p class='block__data'>{{ project.manager }}</p>
             </div>
             <div class="block">
                 <p  class='block__label'>Location</p>
-                <p class='block__data'>{{ projectData.location }}</p>
+                <p class='block__data'>{{ project.location }}</p>
             </div>
             <div class="block">
                 <p class='block__label'>Description</p>
-                <textarea rows="4" id="description" :value="projectData.description"></textarea>
+                <textarea rows="4" id="description" :value="project.description"></textarea>
             </div>
             <div class="block">
                 <p class='block__label'>Budget</p>
                 <span class="budget">
                     <div>$</div>
-                    <input id="budget" :value="projectData.budget" />
+                    <input id="budget" :value="project.budget" />
                 </span>
                 
             </div>
@@ -47,10 +47,14 @@ import { mapState, mapActions } from "vuex";
 
 export default {
   name: "overviewstatic",
+  props: {
+    project: {
+      type: Object
+    }
+  },
   data() {
     return {
       formClicked: false,
-      projectData: {},
       nameUpdate: null,
       managerUpdate: null,
       descriptionUpdate: null,
@@ -74,7 +78,7 @@ export default {
         budget: document.querySelector("#budget").value,
         date_updated: this.getDate()
       };
-      console.log(update)
+      this.$emit('updated', update)
       fetch(`http://localhost:3000/projects/${id}`, {
         method: "PATCH",
         headers: {
@@ -84,26 +88,12 @@ export default {
         })
         this.$emit('done');
     },
+    updateState(update) {
+        this.project.name = update.name;
+        console.log(this.project)
+    },
     discardUpdates() {
       this.$emit('done');
-    },
-    getManager(id) {
-      fetch(`http://localhost:3000/users?id=${id}`)
-        .then(r => r.json())
-        .then(m => {
-          const name = `${m[0].first_name} ${m[0].last_name}`;
-          this.projectData.manager = name;
-        });
-    },
-    getLocation(id) {
-      fetch(`http://localhost:3000/locations?id=${id}`)
-        .then(r => r.json())
-        .then(l => {
-          const address = `${l[0].street_address} ${l[0].city}, ${l[0].state} ${
-            l[0].zip
-          }`;
-          this.projectData.location = address;
-        });
     },
     getDate() {
       const date = new Date();
@@ -130,27 +120,6 @@ export default {
   },
   computed: {
     ...mapState(["projectActiveName"])
-  },
-  beforeMount() {
-    const id = window.location.href.split("projects/")[1];
-    fetch(`http://localhost:3000/projects?id=${id}`)
-      .then(r => r.json())
-      .then(proj => {
-        this.projectData = {
-          name: proj[0].name,
-          description: proj[0].description,
-          type: proj[0].type,
-          created: proj[0].date_created,
-          due: proj[0].date_due,
-          updated: proj[0].date_updated,
-          deleted: proj[0].date_deleted,
-          budget: proj[0].budget,
-          managerId: proj[0].manager,
-          manager: this.getManager(proj[0].manager),
-          locationId: proj[0].location,
-          location: this.getLocation(proj[0].location)
-        };
-      });
   }
 };
 </script>

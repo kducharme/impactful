@@ -57,7 +57,6 @@ export default {
     ]),
     editProject() {
       this.edit = !this.edit;
-      console.log('project')
     }
   },
   beforeMount() {
