@@ -9,6 +9,10 @@
         <p class='block__data'>{{ this.project.created }}</p>
       </div>
       <div class="block">
+        <p class='block__label'>Last updated</p>
+        <p class='block__data'>{{ this.getUpdate() }}</p>
+      </div>
+      <div class="block">
         <p class='block__label'>Manager</p>
         <p class='block__data'>{{ this.project.manager }}</p>
       </div>
@@ -36,6 +40,16 @@ export default {
   props: {
     project: {
       type: Object
+    }
+  },
+  methods: {
+    getUpdate() {
+      if(this.project.updated) {
+        return this.project.updated;
+      }
+      if(!this.project.updated) {
+        return '--'
+      }
     }
   },
   computed: {

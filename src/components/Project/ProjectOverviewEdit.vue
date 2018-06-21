@@ -9,6 +9,10 @@
                 <p class='block__data'>{{ project.created }}</p>
             </div>
             <div class="block">
+                <p class='block__label'>Last updated</p>
+                <p class='block__data'>{{ this.getUpdate() }}</p>
+            </div>
+            <div class="block">
                 <p class='block__label'>Manager</p>
                 <p class='block__data'>{{ project.manager }}</p>
             </div>
@@ -64,6 +68,14 @@ export default {
   methods: {
     formActive() {
       this.formClicked = true;
+    },
+    getUpdate() {
+      if(this.project.updated) {
+        return this.project.updated;
+      }
+      if(!this.project.updated) {
+        return '--'
+      }
     },
     changesMade() {
       this.buttonDisabled = false;

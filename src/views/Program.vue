@@ -77,12 +77,19 @@ export default {
         linkTwo: "Media"
       },
       button: {
-        text: 'Create project'
+        text: 'Create project',
+        action: this.addProgram
       }
     };
   },
   methods: {
-    ...mapActions(["getProjects", "setActiveProgramOnLoad"]),
+    addProgram() {
+
+    },
+    ...mapActions([
+      "getProjects",
+      "setActiveProgramOnLoad"
+    ]),
     getProjectData: function(id) {
       this.getProjects(id);
     },

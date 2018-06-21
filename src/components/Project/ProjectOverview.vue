@@ -41,6 +41,7 @@ export default {
         this.projectData.name = update.name;
         this.projectData.description = update.description;
         this.projectData.budget = update.budget;
+        this.projectData.updated = update.date_updated;
         console.log(this.projectData)
     },
     getManager(id) {
