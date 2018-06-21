@@ -169,6 +169,9 @@
         padding: 0 10px 0 10px;
         font-size: 13px;
       }
+      button:hover {
+        background-color: $colorAccentHover;
+      }
       .sub__settings {
         @include display-flex(flex-end, center, row);
         margin-right: 24px;
