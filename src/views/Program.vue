@@ -79,11 +79,11 @@ export default {
       this.expandedProjects.forEach(project => {
         fetch(`http://localhost:3000/locations?id=${project.locationId}`)
           .then(r => r.json())
-          .then(l => project.location = l[0]);
+          .then(l => (project.location = l[0]));
 
         fetch(`http://localhost:3000/users?id=${project.managerId}`)
-        .then(r => r.json())
-        .then(m => project.manager = m[0]);
+          .then(r => r.json())
+          .then(m => (project.manager = m[0]));
       });
     }
   },
@@ -112,16 +112,16 @@ export default {
           };
           this.expandedProjects.push(project);
         });
-      })
-      .then(this.expandedProjects.forEach(project => {
-        fetch(`http://localhost:3000/locations?id=${project.locationId}`)
-          .then(r => r.json())
-          .then(l => project.location = l[0]);
+        this.expandedProjects.forEach(project => {
+          fetch(`http://localhost:3000/locations?id=${project.locationId}`)
+            .then(r => r.json())
+            .then(l => (project.location = l[0]));
 
-        fetch(`http://localhost:3000/users?id=${project.managerId}`)
-        .then(r => r.json())
-        .then(m => project.manager = m[0]);
-      })).then(console.log(this.expandedProjects))
+          fetch(`http://localhost:3000/users?id=${project.managerId}`)
+            .then(r => r.json())
+            .then(m => (project.manager = m[0].first_name));
+        });
+      });
   },
   computed: {
     ...mapState(["projects", "programActive"])
