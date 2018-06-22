@@ -14,6 +14,7 @@
         <a class="header__select--all">Select all</a>
       </div>
     </div>
+    <input placeholder='Search projects...'>
   </div>
 </template>
 
@@ -34,13 +35,6 @@
     computed: {
       ...mapState(["projects"])
     }
-    //   methods: {
-    //     ...mapActions(["getProjects"])
-    //   },
-    //   beforeMount() {
-    //     const id = window.location.href.split("programs/")[1];
-    //     this.getProjects(id);
-    //   }
   };
 </script>
 
@@ -50,8 +44,8 @@
   .header {
     height: 70px;
     width: 100%;
-    @include display-flex(flex-start, center, row);
-    padding: 0 15px;
+    @include display-flex(space-between, center, row);
+    padding: 0 30px 0 15px;
     .header__title {
       @include display-flex(flex-start, flex-start, column);
       h2 {
@@ -73,6 +67,20 @@
           margin: 0 8px 0 8px;
         }
       }
+    }
+    input {
+      width: 300px;
+      height: 38px;
+      border-radius: 4px;
+      border: 1px solid $grayBorder;
+      padding-left: 16px;
+      font-size: 13px;
+    }
+    input::placeholder {
+      color: $colorPrimaryLight;
+    }
+    input:active, input:focus {
+      border: 1px solid $colorAccent;
     }
   }
 </style>

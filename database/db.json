@@ -435,6 +435,18 @@
       "image": null,
       "author": 1,
       "id": 10
+    },
+    {
+      "note": true,
+      "text": "Hello world!\n",
+      "date_created": "June 22, 2018",
+      "date_sort": "2018-06-22T14:28:23.574Z",
+      "date_deleted": null,
+      "read": false,
+      "project": "1",
+      "image": null,
+      "author": 2,
+      "id": 11
     }
   ],
   "project_images": [
@@ -636,6 +648,126 @@
         "permission": 2
       },
       "id": 6
+    },
+    {
+      "name": "go to the store",
+      "date_created": "June 22, 2018",
+      "date_sort": "2018-06-01",
+      "date_due": "June 01, 2018",
+      "completed": false,
+      "date_completed": null,
+      "date_deleted": null,
+      "project": "1",
+      "owner": 2,
+      "ownerDetails": {
+        "id": 2,
+        "first_name": "Kyle",
+        "last_name": "Ducharme",
+        "title": "Volunteer Experience Manager",
+        "email": "Kyle@Ducharme.com",
+        "image": "img/kyle.jpg",
+        "date_created": "February 12, 2018",
+        "date_deleted": null,
+        "organization": 1,
+        "permission": 1
+      },
+      "id": 7
+    },
+    {
+      "name": "Testing 123",
+      "date_created": "June 22, 2018",
+      "date_sort": "2018-06-05",
+      "date_due": "June 05, 2018",
+      "completed": false,
+      "date_completed": null,
+      "date_deleted": null,
+      "project": "5",
+      "owner": 2,
+      "ownerDetails": {
+        "id": 2,
+        "first_name": "Kyle",
+        "last_name": "Ducharme",
+        "title": "Volunteer Experience Manager",
+        "email": "Kyle@Ducharme.com",
+        "image": "img/kyle.jpg",
+        "date_created": "February 12, 2018",
+        "date_deleted": null,
+        "organization": 1,
+        "permission": 1
+      },
+      "id": 8
+    },
+    {
+      "name": "Testing to make this longer than the height of the div",
+      "date_created": "June 22, 2018",
+      "date_sort": "2018-06-28",
+      "date_due": "June 28, 2018",
+      "completed": false,
+      "date_completed": null,
+      "date_deleted": null,
+      "project": "1",
+      "owner": 7,
+      "ownerDetails": {
+        "id": 7,
+        "first_name": "Ronnie",
+        "last_name": "Young",
+        "title": "Program Manager",
+        "email": "Ronnie@Young.com",
+        "image": "img/ronnie.png",
+        "date_created": "May 19, 2018",
+        "date_deleted": null,
+        "organization": 1,
+        "permission": 2
+      },
+      "id": 9
+    },
+    {
+      "name": "testing hte max height of this div",
+      "date_created": "June 22, 2018",
+      "date_sort": "2018-06-05",
+      "date_due": "June 05, 2018",
+      "completed": false,
+      "date_completed": null,
+      "date_deleted": null,
+      "project": "1",
+      "owner": 5,
+      "ownerDetails": {
+        "id": 5,
+        "first_name": "Kimmy",
+        "last_name": "Bird",
+        "title": "Lead On-Site Manager",
+        "email": "Kimmy@Bird.com",
+        "image": "img/kimmy.png",
+        "date_created": "May 19, 2018",
+        "date_deleted": null,
+        "organization": 1,
+        "permission": 2
+      },
+      "id": 10
+    },
+    {
+      "name": "asdfasdf asdf asdf asdf",
+      "date_created": "June 22, 2018",
+      "date_sort": "2018-06-18",
+      "date_due": "June 18, 2018",
+      "completed": false,
+      "date_completed": null,
+      "date_deleted": null,
+      "project": "1",
+      "owner": 5,
+      "ownerDetails": {
+        "id": 5,
+        "first_name": "Kimmy",
+        "last_name": "Bird",
+        "title": "Lead On-Site Manager",
+        "email": "Kimmy@Bird.com",
+        "image": "img/kimmy.png",
+        "date_created": "May 19, 2018",
+        "date_deleted": null,
+        "organization": 1,
+        "permission": 2
+      },
+      "id": 11
     }
   ],
   "locations": [

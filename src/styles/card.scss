@@ -64,6 +64,13 @@
       p {
         font-size: 13px;
       }
+      a {
+        font-size: 13px;
+        color: $colorAccent;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
     }
   }
 }

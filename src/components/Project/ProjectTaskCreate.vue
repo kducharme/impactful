@@ -310,7 +310,7 @@ export default {
   min-width: 318px;
   position: fixed;
   padding: 8px 16px 8px 16px;
-  border-top: 1px solid $grayBorder;
+  border: 1px solid $grayBorder;
   .owner__option {
     @include display-flex(flex-start, center, row);
     height: 40px;
