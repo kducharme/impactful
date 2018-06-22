@@ -1,9 +1,9 @@
 <template>
-    <div class="overview__edit" v-on:click='formActive'>
-        <div class="overview__top">
+    <div class="overview__edit">
+        <div class="overview__top" v-on:click='activeForm'>
             <textarea id="name" type='textarea' rows="3" :value="projectActiveName"></textarea>
         </div>
-        <div class="overview__bottom">
+        <div class="overview__bottom" v-on:click='activeForm'>
             <div class="block">
                 <p class='block__label'>Date created</p>
                 <p class='block__data'>{{ project.created }}</p>
@@ -32,7 +32,9 @@
                 </span>
                 
             </div>
-            <div :class="[formClicked ? 'prepActions' : 'hideActions']">
+            <div
+            :class="[formActive ? 'prepActions' : 'hideActions']"
+            >
                 <button
                     v-on:click="updateProject"
                     class='save'
@@ -58,16 +60,12 @@ export default {
   },
   data() {
     return {
-      formClicked: false,
-      nameUpdate: null,
-      managerUpdate: null,
-      descriptionUpdate: null,
-      budgetUpdate: null,
+      formActive: false,
     };
   },
   methods: {
-    formActive() {
-      this.formClicked = true;
+    activeForm() {
+      this.formActive = true;
     },
     getUpdate() {
       if(this.project.updated) {
@@ -77,12 +75,8 @@ export default {
         return '--'
       }
     },
-    changesMade() {
-      this.buttonDisabled = false;
-      console.log(this.buttonDisabled)
-    },
     updateProject() {
-    const id = window.location.href.split("projects/")[1];
+      const id = window.location.href.split("projects/")[1];
       const update = {
         id,
         name: document.querySelector("#name").value,
@@ -99,10 +93,6 @@ export default {
         body: JSON.stringify(update)
         })
         this.$emit('done');
-    },
-    updateState(update) {
-        this.project.name = update.name;
-        console.log(this.project)
     },
     discardUpdates() {
       this.$emit('done');
@@ -136,7 +126,7 @@ export default {
 };
 </script>
 
-<style lang='scss'>
+<style scoped lang='scss'>
 @import "../../styles/variables";
 @import "../../styles/mixins";
 .overview__edit {

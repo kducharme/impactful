@@ -1,92 +1,69 @@
 @import "variables";
 @import "mixins";
 
-.card {
-  @include display-flex(flex-start, flex-start, column);
-  position: relative;
-  background-color: white;
-  border: 1px solid $grayBorder;
-  border-radius: 10px;
-  height: 300px;
-  width: 23%;
-  min-width: 230px;
-  max-width: 260px;
-  margin: 0 1% 2% 1%;
-  .card__overview {
-    position: absolute;
-    z-index: 998;
-    padding: 32px 24px 24px 24px;
-    min-height: 174px !important;
-    h4 {
-      font-size: 15px;
-      font-weight: 800;
-      margin-bottom: 8px;
-      color: $colorFontDark;
-    }
+.table {
+  width: 100%;
+
+  .col {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 32px;
+  }
+
+  .col1 {
+    width: 15px;
+    margin: 0 15px;
+  }
+  .col2 {
+    min-width: 150px;
+    width: 225px;
+    max-width: 300px;
+  }
+  .col3 {
+    min-width: 100px;
+    width: 150px;
+    max-width: 200px;
+  }
+  .col4 {
+    min-width: 100px;
+    width: 150px;
+    max-width: 200px;
+  }
+  .col5 {
+    min-width: 50px;
+    width: 75px;
+    max-width: 100px;
+  }
+  .col6, .col7 {
+    min-width: 80px;
+    width: 120px;
+    max-width: 150px;
+  }
+
+  .table__header {
+    @include display-flex(space-between, center, row);
+    background-color: $colorBackground;
+    height: 40px;
+    border-top: 1px solid $grayBorder;
+    border-bottom: 1px solid $grayBorder;
+    margin-top: -1px;
     p {
-      font-size: 13px;
-      font-weight: 400;
-      color: $colorFontMedium;
-      line-height: 1.5;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: -webkit-box;
-      -webkit-line-clamp: 4;
-      -webkit-box-orient: vertical;
+      font-weight: 600;
+      font-size: 14px;
     }
   }
-  .card__data {
-    @include display-flex(flex-start, flex-start, column);
-    position: absolute;
-    width: 100%;
-    padding: 24px;
-    top: 134px;
-    margin: 40px -20px 0 -20px;
-    border-top: 1px solid $grayBorder;
-    left: 20px;
-    .card__data--block {
-      @include display-flex(flex-start, center, row);
-      margin-bottom: 12px;
-      svg {
-        height: 18px;
-        width: 18px;
-        .icon {
-          fill: $colorFontMedium;
-          opacity: 0.7;
-        }
-        .money {
-          height: 20px;
-          width: 20px;
-          margin-left: 4px;
-        }
-        .check {
-          height: 14px;
-          width: 14px;
-        }
-      }
+  .table__body {
+    height: calc(100vh - 84px - 120px);
+    overflow: scroll;
+    .row {
+      width: 100%;
+      @include display-flex(space-between, center, row);
+      border-bottom: 1px solid $grayBorder;
+      height: 38px;
       p {
         font-size: 13px;
-        font-weight: 400;
-        padding-left: 6px;
-        color: $colorFontDark;
       }
-    }
-    .card__progress {
-      @include display-flex(flex-start, center, row);
-      width: 100%;
-      height: 10px;
-      background: $colorBackground;
-      border: 1px solid $grayBorder;
-      border-radius: 200px;
-      margin-top: 4px;
-    }
-    .card__progress:after {
-      content: "";
-      display: block;
-      width: 50%;
-      height: 100%;
-      border-radius: 9px;
-      background: $colorAccent;
     }
   }
 }

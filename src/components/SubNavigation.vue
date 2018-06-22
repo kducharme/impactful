@@ -111,13 +111,13 @@
       @include display-flex(flex-start, center, row);
       width: calc(100vw - 100px - 50%);
       .sub__overflow--program {
-        max-width: 90px;
+        max-width: 110px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
       }
       .sub__overflow--project {
-        max-width: 130px;
+        max-width: 110px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -168,6 +168,9 @@
         min-width: 100px;
         padding: 0 10px 0 10px;
         font-size: 13px;
+      }
+      button:hover {
+        background-color: $colorAccentHover;
       }
       .sub__settings {
         @include display-flex(flex-end, center, row);
