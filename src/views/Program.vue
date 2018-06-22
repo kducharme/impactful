@@ -22,7 +22,7 @@
           </div>
 
           <div class="table__body">
-            <div class='row' v-for="project in expandedProjects" :key="project.id" :id="project.id">
+            <div class='row' v-for="project in projects" :key="project.id" :id="project.id">
               <input type='checkbox' class='col col1'>
               <router-link :to="'/programs/' + programActive + '/projects/' + project.id" class='col col2'>{{project.name}}
             </router-link>
@@ -79,11 +79,11 @@ export default {
       this.expandedProjects.forEach(project => {
         fetch(`http://localhost:3000/locations?id=${project.locationId}`)
           .then(r => r.json())
-          .then(l => project.location = l[0]);
+          .then(l => (project.location = l[0]));
 
         fetch(`http://localhost:3000/users?id=${project.managerId}`)
-        .then(r => r.json())
-        .then(m => project.manager = m[0]);
+          .then(r => r.json())
+          .then(m => (project.manager = m[0]));
       });
     }
   },
@@ -94,34 +94,34 @@ export default {
     this.getProjectData(id);
     this.setActiveProgramOnLoad(id);
 
-    fetch(`http://localhost:3000/projects?program=${id}`)
-      .then(r => r.json())
-      .then(proj => {
-        proj.forEach(p => {
-          const project = {
-            name: p.name,
-            description: p.description,
-            type: p.type,
-            created: p.date_created,
-            due: p.date_due,
-            updated: p.date_updated,
-            deleted: p.date_deleted,
-            budget: p.budget,
-            managerId: p.manager,
-            locationId: p.location
-          };
-          this.expandedProjects.push(project);
-        });
-      })
-      .then(this.expandedProjects.forEach(project => {
-        fetch(`http://localhost:3000/locations?id=${project.locationId}`)
-          .then(r => r.json())
-          .then(l => project.location = l[0]);
+    // fetch(`http://localhost:3000/projects?program=${id}`)
+    //   .then(r => r.json())
+    //   .then(proj => {
+    //     proj.forEach(p => {
+    //       const project = {
+    //         name: p.name,
+    //         description: p.description,
+    //         type: p.type,
+    //         created: p.date_created,
+    //         due: p.date_due,
+    //         updated: p.date_updated,
+    //         deleted: p.date_deleted,
+    //         budget: p.budget,
+    //         managerId: p.manager,
+    //         locationId: p.location
+    //       };
+    //       this.expandedProjects.push(project);
+    //     });
+    //     this.expandedProjects.forEach(project => {
+    //       fetch(`http://localhost:3000/locations?id=${project.locationId}`)
+    //         .then(r => r.json())
+    //         .then(l => (project.location = l[0]));
 
-        fetch(`http://localhost:3000/users?id=${project.managerId}`)
-        .then(r => r.json())
-        .then(m => project.manager = m[0]);
-      })).then(console.log(this.expandedProjects))
+    //       fetch(`http://localhost:3000/users?id=${project.managerId}`)
+    //         .then(r => r.json())
+    //         .then(m => (project.manager = m[0].first_name));
+    //     });
+    //   });
   },
   computed: {
     ...mapState(["projects", "programActive"])
