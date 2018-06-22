@@ -48,9 +48,10 @@
   @import "../styles/variables";
   @import "../styles/mixins";
   .header {
-    height: 80px;
+    height: 70px;
+    width: 100%;
     @include display-flex(flex-start, center, row);
-    padding: 0 3% 0 3%;
+    padding: 0 15px;
     .header__title {
       @include display-flex(flex-start, flex-start, column);
       h2 {
