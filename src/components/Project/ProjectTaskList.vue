@@ -108,7 +108,6 @@ export default {
 @import "../../styles/variables";
 @import "../../styles/mixins";
 .taskList {
-  width: 100%;
   .taskList__header {
     @include display-flex(space-between, center, row);
     width: 100%;
