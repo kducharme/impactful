@@ -636,6 +636,30 @@
         "permission": 2
       },
       "id": 6
+    },
+    {
+      "name": "go to the store",
+      "date_created": "June 22, 2018",
+      "date_sort": "2018-06-01",
+      "date_due": "June 01, 2018",
+      "completed": false,
+      "date_completed": null,
+      "date_deleted": null,
+      "project": "1",
+      "owner": 2,
+      "ownerDetails": {
+        "id": 2,
+        "first_name": "Kyle",
+        "last_name": "Ducharme",
+        "title": "Volunteer Experience Manager",
+        "email": "Kyle@Ducharme.com",
+        "image": "img/kyle.jpg",
+        "date_created": "February 12, 2018",
+        "date_deleted": null,
+        "organization": 1,
+        "permission": 1
+      },
+      "id": 7
     }
   ],
   "locations": [

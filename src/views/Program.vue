@@ -24,7 +24,8 @@
           <div class="table__body">
             <div class='row' v-for="project in projects" :key="project.id" :id="project.id">
               <input type='checkbox' class='col col1'>
-              <p class="col col2">{{ project.name }}</p>
+              <router-link :to="'/programs/' + programActive + '/projects/' + project.id" class='col col2'>{{project.name}}
+            </router-link>
               <p class="col col3">{{ project.manager }}</p>
               <p class="col col4">{{ project.location }}</p>
               <p class="col col5">${{ project.budget }}</p>
