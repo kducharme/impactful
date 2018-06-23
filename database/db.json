@@ -149,12 +149,12 @@
   "projects": [
     {
       "id": 1,
-      "name": "Davidson's Home Update: Back Porch New Stairs",
+      "name": "Davidson's Home Update: Back Porch New Stairz",
       "description": "Sed ut perspiciatis unde omnis iste testing 123",
       "location": 2,
       "budget": "1,000",
       "date_created": "June 4, 2018",
-      "date_updated": "June 21, 2018",
+      "date_updated": "June 22, 2018",
       "date_due": null,
       "date_completed": null,
       "date_deleted": null,
@@ -179,10 +179,10 @@
     },
     {
       "id": 3,
-      "name": "Back Porch Repair",
+      "name": "Back Porch Repairing",
       "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem",
       "date_created": "June 9, 2018",
-      "date_updated": null,
+      "date_updated": "June 22, 2018",
       "date_due": null,
       "date_completed": null,
       "date_deleted": null,
@@ -447,6 +447,18 @@
       "image": null,
       "author": 2,
       "id": 11
+    },
+    {
+      "note": true,
+      "text": "hello project!\n",
+      "date_created": "June 22, 2018",
+      "date_sort": "2018-06-22T18:18:13.619Z",
+      "date_deleted": null,
+      "read": false,
+      "project": "6",
+      "image": null,
+      "author": 2,
+      "id": 12
     }
   ],
   "project_images": [
@@ -768,6 +780,78 @@
         "permission": 2
       },
       "id": 11
+    },
+    {
+      "name": "asdfasdf",
+      "date_created": "June 22, 2018",
+      "date_sort": "2018-06-12",
+      "date_due": "June 12, 2018",
+      "completed": false,
+      "date_completed": null,
+      "date_deleted": null,
+      "project": "1",
+      "owner": 5,
+      "ownerDetails": {
+        "id": 5,
+        "first_name": "Kimmy",
+        "last_name": "Bird",
+        "title": "Lead On-Site Manager",
+        "email": "Kimmy@Bird.com",
+        "image": "img/kimmy.png",
+        "date_created": "May 19, 2018",
+        "date_deleted": null,
+        "organization": 1,
+        "permission": 2
+      },
+      "id": 12
+    },
+    {
+      "name": "dsfasdf",
+      "date_created": "June 22, 2018",
+      "date_sort": "2018-05-29",
+      "date_due": "May 29, 2018",
+      "completed": false,
+      "date_completed": null,
+      "date_deleted": null,
+      "project": "3",
+      "owner": 5,
+      "ownerDetails": {
+        "id": 5,
+        "first_name": "Kimmy",
+        "last_name": "Bird",
+        "title": "Lead On-Site Manager",
+        "email": "Kimmy@Bird.com",
+        "image": "img/kimmy.png",
+        "date_created": "May 19, 2018",
+        "date_deleted": null,
+        "organization": 1,
+        "permission": 2
+      },
+      "id": 13
+    },
+    {
+      "name": "testing",
+      "date_created": "June 22, 2018",
+      "date_sort": "2018-12-21",
+      "date_due": "December 21, 2018",
+      "completed": false,
+      "date_completed": null,
+      "date_deleted": null,
+      "project": "3",
+      "owner": 6,
+      "ownerDetails": {
+        "id": 6,
+        "first_name": "Meghan",
+        "last_name": "Debity",
+        "title": "Volunteer Manager",
+        "email": "Meghan@Debity.com",
+        "image": "img/meghan.png",
+        "date_created": "May 29, 2018",
+        "date_deleted": null,
+        "organization": 1,
+        "permission": 2
+      },
+      "id": 14
     }
   ],
   "locations": [
