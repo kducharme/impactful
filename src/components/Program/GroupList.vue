@@ -1,13 +1,15 @@
 <template>
-      <div class="groups">
-        <div class="groups__header">
+      <div class="groupList">
+        <div class="groupList__header">
           <p>Groups</p>
           <button
-            class="button__primary groups__button"
+            class="button__primary groupList__button"
           >New group</button>
         </div>
-        <div class="groups__list">
-          
+        <div class="groupList__list">
+          <router-link
+            :to="'/programs/' + programActive + '/projects/'" class='col col2'
+          >All Projects</router-link>
         </div>
       </div>
 </template>
@@ -34,7 +36,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(["programActive", "projectActive"])
+    ...mapState(["programActive"])
   }
 };
 </script>
@@ -43,12 +45,12 @@ export default {
 @import "../../styles/variables";
 @import "../../styles/mixins";
 
-.groups {
+.groupList {
   background-color: white;
   border-right: 1px solid $grayBorder;
   width: 300px;
   height: 100%;
-  .groups__header {
+  .groupList__header {
     @include display-flex(space-between, center, row);
     height: 70px;
     border-bottom: 1px solid $grayBorder;
@@ -57,15 +59,32 @@ export default {
       font-size: 18px;
       font-weight: $weightHeavy;
     }
-    .groups__button {
+    .groupList__button {
       height: 34px;
       width: 88px;
       font-size: 12px;
       color: white !important;
       background-color: $colorFontDark;
     }
-    .groups__button:hover {
+    .groupList__button:hover {
       opacity: 0.8;
+    }
+  }
+  .groupList__list {
+    height: calc(100vh - 44px - 40px - 70px);
+    a {
+      @include display-flex(flex-start, center, row);
+      padding: 0 30px;
+      width: 100%;
+      height: 39px;
+      font-size: 14px;
+      border-bottom: 1px solid $grayBorder;
+    }
+    .router-link-active {
+      background-color: $colorBackground;
+      font-weight: $weightMedium;
+      color: $colorAccent;
+      opacity: 1 !important;
     }
   }
 }
