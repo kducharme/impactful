@@ -1,0 +1,1 @@
+from .project_type_view import ProjectTypeViewSet
