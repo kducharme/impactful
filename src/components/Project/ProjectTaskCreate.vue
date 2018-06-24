@@ -95,12 +95,15 @@ export default {
     createTask(e) {
       e.preventDefault();
       if(!this.taskName) {
+        e.preventDefault();
         this.warningName = true;
       }
       if(!this.taskDate) {
+        e.preventDefault();
         this.warningDate = true;
       }
       if (this.taskName && this.taskDate) {
+        e.preventDefault();
         const newTask = {
           name: this.taskName,
           date_created: this.getDate().fullDate,
