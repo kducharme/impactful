@@ -5,14 +5,19 @@
     :subButton="this.button"
     />
     <div class="content">
-      <Groups />
+      <GroupList />
       <div class="content__right">
-        <ProgramHeader />
+        <TableHeader
+          :selected='this.selectedProjects'
+        />
 
         <div class="table">
 
           <div class="table__header">
-            <input type='checkbox' class='col col1'>
+            <input
+              v-on:click="selectAllProjects"
+              type='checkbox'
+              class='col col1'>
             <p class='col col2'>Project name</p>
             <p class='col col3'>Manager</p>
             <p class='col col4'>Location</p>
@@ -23,14 +28,19 @@
 
           <div class="table__body">
             <div class='row' v-for="project in projects" :key="project.id" :id="project.id">
-              <input type='checkbox' class='col col1'>
+              <input
+                v-model="selectedProjects"
+                type='checkbox'
+                :id='project.id'
+                :value='project.id'
+                class='col col1'>
               <router-link :to="'/programs/' + programActive + '/projects/' + project.id" class='col col2'>{{project.name}}
             </router-link>
               <p class="col col3">{{ project.manager }}</p>
               <p class="col col4">{{ project.location }}</p>
               <p class="col col5">${{ project.budget }}</p>
-              <p class="col col6">{{ project.created }}</p>
-              <p class="col col7">{{ project.updated }}</p>
+              <p class="col col6">{{ project.date_created }}</p>
+              <p class="col col7">{{ project.date_updated }}</p>
             </div>
           </div>
 
@@ -44,14 +54,14 @@
 <script>
 import { mapState, mapActions } from "vuex";
 import SubNavigation from "../components/SubNavigation.vue";
-import ProgramHeader from "../components/ProgramHeader.vue";
-import Groups from "../components/Groups.vue";
+import TableHeader from "../components/Program/TableHeader.vue";
+import GroupList from "../components/Program/GroupList.vue";
 export default {
   name: "program",
   components: {
     SubNavigation,
-    ProgramHeader,
-    Groups
+    TableHeader,
+    GroupList
   },
   data() {
     return {
@@ -63,7 +73,7 @@ export default {
         text: "Create project",
         action: this.addProgram
       },
-      expandedProjects: []
+      selectedProjects: []
     };
   },
   methods: {
@@ -75,16 +85,19 @@ export default {
     getActiveProgramData: function(id) {
       this.getActiveProgram(id);
     },
-    expandData() {
-      this.expandedProjects.forEach(project => {
-        fetch(`http://localhost:3000/locations?id=${project.locationId}`)
-          .then(r => r.json())
-          .then(l => (project.location = l[0]));
-
-        fetch(`http://localhost:3000/users?id=${project.managerId}`)
-          .then(r => r.json())
-          .then(m => (project.manager = m[0]));
-      });
+    selectAllProjects() {
+      if(this.selectedProjects.length === 0) {
+        this.projects.forEach(p => {
+          this.selectedProjects.push(p.id)
+          p.checked = true;
+        })
+      }
+      else {
+        this.selectedProjects = [];
+        this.projects.forEach(p => {
+          p.checked = false;
+        })
+      }
     }
   },
   beforeMount() {
@@ -93,35 +106,6 @@ export default {
       .split("programs/")[1];
     this.getProjectData(id);
     this.setActiveProgramOnLoad(id);
-
-    // fetch(`http://localhost:3000/projects?program=${id}`)
-    //   .then(r => r.json())
-    //   .then(proj => {
-    //     proj.forEach(p => {
-    //       const project = {
-    //         name: p.name,
-    //         description: p.description,
-    //         type: p.type,
-    //         created: p.date_created,
-    //         due: p.date_due,
-    //         updated: p.date_updated,
-    //         deleted: p.date_deleted,
-    //         budget: p.budget,
-    //         managerId: p.manager,
-    //         locationId: p.location
-    //       };
-    //       this.expandedProjects.push(project);
-    //     });
-    //     this.expandedProjects.forEach(project => {
-    //       fetch(`http://localhost:3000/locations?id=${project.locationId}`)
-    //         .then(r => r.json())
-    //         .then(l => (project.location = l[0]));
-
-    //       fetch(`http://localhost:3000/users?id=${project.managerId}`)
-    //         .then(r => r.json())
-    //         .then(m => (project.manager = m[0].first_name));
-    //     });
-    //   });
   },
   computed: {
     ...mapState(["projects", "programActive"])
@@ -130,39 +114,14 @@ export default {
 </script>
 
 <style lang='scss'>
-@import "../styles/card";
+@import "../styles/table";
 @import "../styles/variables";
 @import "../styles/mixins";
 .content {
-  background-color: white;
+  background-color: $colorBackground;
   @include display-flex(flex-start, flex-start, row);
   height: calc(100vh - 44px - 40px); // Height of screen minus 2 navs
-  .groups {
-    background-color: white;
-    border-right: 1px solid $grayBorder;
-    width: 300px;
-    height: 100%;
-    .groups__header {
-      @include display-flex(space-between, center, row);
-      height: 70px;
-      border-bottom: 1px solid $grayBorder;
-      padding: 0 30px 0 30px;
-      p {
-        font-size: 18px;
-        font-weight: $weightHeavy;
-      }
-      .groups__button {
-        height: 34px;
-        width: 88px;
-        font-size: 12px;
-        color: white !important;
-        background-color: $colorFontDark;
-      }
-      .groups__button:hover {
-        opacity: 0.8;
-      }
-    }
-  }
+  
   .content__right {
     @include display-flex(space-between, flex-start, column);
     width: calc(100vw - 300px);

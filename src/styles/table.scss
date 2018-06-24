@@ -55,6 +55,7 @@
   }
   .table__body {
     height: calc(100vh - 84px - 120px);
+    background-color: white;
     overflow: scroll;
     .row {
       width: 100%;

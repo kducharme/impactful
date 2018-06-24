@@ -3,15 +3,7 @@
     <div class="header__title">
       <h2>All Projects <span>({{ projects.length }})</span></h2>
       <div class="header__select">
-        <p class="header__select--selected">{{ selected }} selected</p>
-        <span><svg width="5px" height="5px" viewBox="0 0 5 5" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                          <g id="Discovery-(v2)" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                          <g id="Program-(Projects)" transform="translate(-518.000000, -157.000000)" fill="#E2E2E2">
-                          <circle id="Oval" cx="520.5" cy="159.5" r="2.5"></circle>
-                          </g>
-                          </g>
-                      </svg></span>
-        <a class="header__select--all">Select all</a>
+        <p class="header__select--selected">{{ this.selected.length }} selected</p>
       </div>
     </div>
     <input placeholder='Search projects...'>
@@ -26,10 +18,10 @@
   
   export default {
     name: "pageheader",
+    props: ['selected'],
     data() {
       return {
-        totalProjects: 12,
-        selected: 0
+        totalProjects: 12
       };
     },
     computed: {
@@ -39,9 +31,10 @@
 </script>
 
 <style lang='scss'>
-  @import "../styles/variables";
-  @import "../styles/mixins";
+  @import "../../styles/variables";
+  @import "../../styles/mixins";
   .header {
+    background-color: white;
     height: 70px;
     width: 100%;
     @include display-flex(space-between, center, row);
