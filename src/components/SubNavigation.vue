@@ -29,9 +29,18 @@
       </router-link>
     </div>
     <div class="sub__tabs">
-      <router-link class='sub__tabs--link active' to=''>{{ subLinks.linkOne }}</router-link>
-      <router-link class='sub__tabs--link' to=''>{{ subLinks.linkTwo }}</router-link>
-      <router-link class='sub__tabs--link' to=''>{{ subLinks.linkThree }}</router-link>
+      <router-link 
+        class='sub__tabs--link'
+        :to="'/programs/' + programActive + '/projects/' + projectActive"
+      >{{ subLinks.linkOne }}</router-link>
+      <router-link 
+        class='sub__tabs--link'
+        :to="'/programs/' + programActive + '/projects/' + projectActive +  subDestination.two"
+      >{{ subLinks.linkTwo }}</router-link>
+      <router-link 
+        class='sub__tabs--link'
+        :to="'/programs/' + programActive + '/projects/' + projectActive +  subDestination.three"
+      >{{ subLinks.linkThree }}</router-link>
     </div>
   
     <div class="sub__actions">
@@ -55,141 +64,145 @@
 </template>
 
 <script>
-  import {
-    mapState,
-    mapActions
-  } from "vuex";
-  
-  export default {
-    name: "programs",
-    props: {
-      subLinks: {
-        type: Object
-      },
-      subButton: {
-        type: Object
-      }
+import { mapState, mapActions } from "vuex";
+
+export default {
+  name: "programs",
+  props: {
+    subLinks: {
+      type: Object
     },
-    data() {
-      return {
-        levelOne: "All Programs"
-      };
+    subButton: {
+      type: Object
     },
-    methods: {
-      ...mapActions(["resetActiveProgram", "resetActiveProject"]),
-      resetActive: function() {
-        this.resetActiveProgram();
-        this.resetActiveProject();
-      },
-      resetProjectOnly: function() {
-        this.resetActiveProject();
-      }
-    },
-    computed: {
-      ...mapState([
-        "programActive",
-        "projectActive",
-        "programActiveName",
-        "projectActiveName"
-      ])
+    subDestination: {
+      type: Object
     }
-  };
+  },
+  data() {
+    return {
+      levelOne: "All Programs"
+    };
+  },
+  methods: {
+    ...mapActions(["resetActiveProgram", "resetActiveProject"]),
+    resetActive: function() {
+      this.resetActiveProgram();
+      this.resetActiveProject();
+    },
+    resetProjectOnly: function() {
+      this.resetActiveProject();
+    }
+  },
+  computed: {
+    ...mapState([
+      "programActive",
+      "projectActive",
+      "programActiveName",
+      "projectActiveName"
+    ])
+  }
+};
 </script>
 
-<style lang='scss'>
-  @import "../styles/variables";
-  @import "../styles/mixins";
-  .sub {
-    @include display-flex(space-between, center, row);
-    background-color: white;
-    border-bottom: 1px solid $grayBorder;
-    height: 40px;
-    width: 100vw;
-    padding: 0 30px 0 30px;
-    font-size: 13px;
-    .sub__breadcrumbs {
-      @include display-flex(flex-start, center, row);
-      width: calc(100vw - 100px - 50%);
-      .sub__overflow--program {
-        max-width: 110px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      .sub__overflow--project {
-        max-width: 110px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      a {
-        margin-top: -2px;
-        color: $colorPrimaryDark;
-      }
-      svg {
-        height: 18px;
-        width: auto;
-        margin: 0 6px 0 4px;
-      }
-      .sub__active {
-        color: $colorAccent;
-        font-weight: 600;
-      }
-      .sub__active:hover {
-        text-decoration: underline;
-      }
-      .sub__divider {
-        fill: $colorArrow;
-      }
+<style scoped lang='scss'>
+@import "../styles/variables";
+@import "../styles/mixins";
+.sub {
+  @include display-flex(space-between, center, row);
+  background-color: white;
+  border-bottom: 1px solid $grayBorder;
+  height: 40px;
+  width: 100vw;
+  padding: 0 30px 0 30px;
+  font-size: 13px;
+  .sub__breadcrumbs {
+    @include display-flex(flex-start, center, row);
+    width: calc(100vw - 100px - 50%);
+    .sub__overflow--program {
+      max-width: 110px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
-    .sub__tabs {
-      min-width: 170px;
-      @include display-flex(space-between, center, row);
-      text-align: center;
-      a {
-        width: 100px;
-        color: $colorPrimaryLight;
-        font-size: 13px;
-        margin: 0 5% 0 5%;
-      }
-      .active {
-        color: $colorPrimaryDark;
-        font-weight: $weightHeavy;
-        padding: 10px;
-        border-bottom: 2px solid $colorAccent;
-      }
+    .sub__overflow--project {
+      max-width: 110px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
-    .sub__actions {
-      @include display-flex(flex-end, center, row);
-      width: calc(100vw - 100px - 50%);
-      button {
-        background-color: $colorAccent;
-        height: 30px;
-        min-width: 100px;
-        padding: 0 10px 0 10px;
-        font-size: 13px;
-      }
-      button:hover {
-        background-color: $colorAccentHover;
-      }
-      .sub__settings {
-        @include display-flex(flex-end, center, row);
-        margin-right: 24px;
-        svg { margin-right: 5px; }
-        p { font-weight: $weightMedium; }
-      }
-      .sub__settings:hover {
-        text-decoration: underline;
-        cursor: pointer;
-      }
+    a {
+      margin-top: -2px;
+      color: $colorPrimaryDark;
     }
-    // Hides arrow depending on depth of pagination
-    .sub__divider--hide {
-      display: none !important;
+    svg {
+      height: 18px;
+      width: auto;
+      margin: 0 6px 0 4px;
     }
-    // Hides pagination link depending on page
-    .sub__hide {
-      display: none !important;
+    .sub__active {
+      color: $colorAccent;
+      font-weight: 600;
+    }
+    .sub__active:hover {
+      text-decoration: underline;
+    }
+    .sub__divider {
+      fill: $colorArrow;
     }
   }
+  .sub__tabs {
+    min-width: 170px;
+    @include display-flex(space-between, center, row);
+    text-align: center;
+    a {
+      width: 100px;
+      color: $colorPrimaryLight;
+      font-size: 13px;
+      margin: 0 5% 0 5%;
+    }
+    .router-link-exact-active {
+      color: $colorPrimaryDark;
+      font-weight: $weightHeavy;
+      padding: 10px;
+      border-bottom: 2px solid $colorAccent;
+    }
+  }
+  .sub__actions {
+    @include display-flex(flex-end, center, row);
+    width: calc(100vw - 100px - 50%);
+    button {
+      background-color: $colorAccent;
+      height: 30px;
+      min-width: 100px;
+      padding: 0 10px 0 10px;
+      font-size: 13px;
+    }
+    button:hover {
+      background-color: $colorAccentHover;
+    }
+    .sub__settings {
+      @include display-flex(flex-end, center, row);
+      margin-right: 24px;
+      svg {
+        margin-right: 5px;
+      }
+      p {
+        font-weight: $weightMedium;
+      }
+    }
+    .sub__settings:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+  // Hides arrow depending on depth of pagination
+  .sub__divider--hide {
+    display: none !important;
+  }
+  // Hides pagination link depending on page
+  .sub__hide {
+    display: none !important;
+  }
+}
 </style>

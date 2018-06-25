@@ -4,6 +4,7 @@
       <SubNavigation
       :subLinks="this.links"
       :subButton="this.button"
+      :subDestination="this.destination"
       />
     </div>
     <div class="content">
@@ -68,8 +69,14 @@ export default {
         linkOne: 'Programs',
         linkTwo: 'Media'
       },
+      destination: {
+        one: '/',
+        two: '/media',
+        three: null,
+      },
       button: {
-        text: 'Create program'
+        text: 'Create program',
+        action: this.addProgram
       }
     }
   },
@@ -88,6 +95,9 @@ export default {
     hideOverlay: function(e) {
       const overlay = e.currentTarget.children[0];
       overlay.classList.add("hide");
+    },
+    addProgram() {
+      console.log('add program')
     }
   },
   computed: {
