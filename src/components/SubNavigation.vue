@@ -31,6 +31,7 @@
     <div class="sub__tabs">
       <router-link class='sub__tabs--link active' to=''>{{ subLinks.linkOne }}</router-link>
       <router-link class='sub__tabs--link' to=''>{{ subLinks.linkTwo }}</router-link>
+      <router-link class='sub__tabs--link' to=''>{{ subLinks.linkThree }}</router-link>
     </div>
   
     <div class="sub__actions">

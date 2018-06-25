@@ -9,9 +9,10 @@ import Settings from './views/Settings.vue'
 Vue.use(Router)
 
 export default new Router({
+  base: '/dashboard',
   routes: [
     {
-      path: '/home',
+      path: '/',
       name: 'dashboard',
       component: Dashboard
     },

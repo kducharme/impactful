@@ -77,7 +77,7 @@ export default {
       padding: 0 30px;
       width: 100%;
       height: 39px;
-      font-size: 14px;
+      font-size: 13px;
       border-bottom: 1px solid $grayBorder;
     }
     .router-link-active {

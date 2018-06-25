@@ -32,8 +32,9 @@ export default {
   data() {
     return {
       links: {
-        linkOne: 'Overview',
-        linkTwo: 'Media'
+        linkOne: 'Manage',
+        linkTwo: 'Details',
+        linkThree: 'Media',
       },
       button: {
         text: 'Edit project',

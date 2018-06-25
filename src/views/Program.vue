@@ -71,7 +71,8 @@ export default {
     return {
       links: {
         linkOne: "Projects",
-        linkTwo: "Media"
+        linkTwo: "Details",
+        linkThree: 'Media'
       },
       button: {
         text: "Create project",
