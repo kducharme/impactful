@@ -49,7 +49,6 @@
         class="button__primary"
         v-on:click="subButton.action"
       >
-        
       {{ subButton.text }}</button>
     </div>
   </div>
