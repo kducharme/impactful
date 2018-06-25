@@ -14,7 +14,7 @@
                 </g>
             </g>
         </svg>
-        <router-link @click.native="resetActive" to='/home'>Dashboard
+        <router-link @click.native="resetActive" to='/' exact>Dashboard
         </router-link>
         <router-link @click.native="resetActive" to='/programs'>Programs
         </router-link>

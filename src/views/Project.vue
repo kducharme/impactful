@@ -7,47 +7,34 @@
       />
     </div>
     <div class="content">
-        <ProjectOverview
-          :editProject="this.edit"
-          class='col1'
-          @edit='editProject'
-        />
-        <ProjectTimeline class='col2 feature'/>
-        <ProjectTaskList class='col3 feature'/>
+      <ProjectManage />
     </div>
   </div>
 </template>
 
 <script>
 import { mapState, mapActions } from "vuex";
-import Card from "../components/Card.vue";
+import ProjectManage from "./ProjectManage.vue";
 import SubNavigation from "../components/SubNavigation.vue";
-import ProjectOverview from "../components/Project/ProjectOverview.vue";
-import ProjectTimeline from "../components/Project/ProjectTimeline.vue";
-import ProjectTaskList from "../components/Project/ProjectTaskList.vue";
-import ProjectMedia from "../components/Project/ProjectMedia.vue";
 
 export default {
   name: "project",
   data() {
     return {
       links: {
-        linkOne: 'Overview',
-        linkTwo: 'Media'
+        linkOne: 'Manage',
+        linkTwo: 'Details',
+        linkThree: 'Media',
       },
       button: {
         text: 'Edit project',
         action: this.editProject
-      },
-      edit: false
+      }
     }
   },
   components: {
     SubNavigation,
-    ProjectOverview,
-    ProjectTimeline,
-    ProjectTaskList,
-    ProjectMedia,
+    ProjectManage
   },
   methods: {
     ...mapActions([
@@ -56,6 +43,7 @@ export default {
         "setActiveProjectOnLoad"
     ]),
     editProject() {
+      console.log('hey')
       this.edit = !this.edit;
     }
   },

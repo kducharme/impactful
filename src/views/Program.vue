@@ -27,7 +27,11 @@
           </div>
 
           <div class="table__body">
-            <div class='row' v-for="project in projects" :key="project.id" :id="project.id">
+            <div
+              class='row'
+              v-for="project in projects"
+              :key="project.id"
+              :id="project.id">
               <input
                 v-model="selectedProjects"
                 type='checkbox'
@@ -67,7 +71,8 @@ export default {
     return {
       links: {
         linkOne: "Projects",
-        linkTwo: "Media"
+        linkTwo: "Details",
+        linkThree: 'Media'
       },
       button: {
         text: "Create project",
@@ -126,5 +131,9 @@ export default {
     @include display-flex(space-between, flex-start, column);
     width: calc(100vw - 300px);
   }
+}
+
+.checked {
+  background-color: red;
 }
 </style>

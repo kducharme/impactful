@@ -23,8 +23,4 @@ export default {
 @import "../../styles/variables";
 @import "../../styles/mixins";
 
-.media {
-
-  
-}
 </style>

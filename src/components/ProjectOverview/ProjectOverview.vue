@@ -86,7 +86,7 @@ export default {
     }
   },
   beforeMount() {
-    const id = window.location.href.split("projects/")[1];
+    const id = window.location.href.split("projects/")[1].split('/')[0];
     fetch(`http://localhost:3000/projects?id=${id}`)
       .then(r => r.json())
       .then(proj => {
