@@ -4,9 +4,6 @@ import Dashboard from './views/Dashboard.vue'
 import ProgramList from './views/ProgramList.vue'
 import Program from './views/Program.vue'
 import Project from './views/Project.vue'
-import ProjectManage from './views/ProjectManage.vue'
-import ProjectDetails from './views/ProjectDetails.vue'
-import ProjectMedia from './views/ProjectMedia.vue'
 import Settings from './views/Settings.vue'
 
 Vue.use(Router)

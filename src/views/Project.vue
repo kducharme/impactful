@@ -2,12 +2,15 @@
   <div class="programs" id='programs'>
     <div class="subnav">
       <SubNavigation 
-        :subLinks="this.links"
+        :subLinks="this.link"
+        :subDestination="this.destination"
         :subButton="this.button"
       />
     </div>
-    <div class="content">
+    <div>
       <ProjectManage />
+      <ProjectDetails />
+      <ProjectMedia />
     </div>
   </div>
 </template>
@@ -15,16 +18,23 @@
 <script>
 import { mapState, mapActions } from "vuex";
 import ProjectManage from "./ProjectManage.vue";
+import ProjectDetails from "./ProjectDetails.vue";
+import ProjectMedia from "./ProjectMedia.vue";
 import SubNavigation from "../components/SubNavigation.vue";
 
 export default {
   name: "project",
   data() {
     return {
-      links: {
+      link: {
         linkOne: 'Manage',
         linkTwo: 'Details',
         linkThree: 'Media',
+      },
+      destination: {
+        one: '/',
+        two: '/details',
+        three: '/media',
       },
       button: {
         text: 'Edit project',
@@ -34,7 +44,9 @@ export default {
   },
   components: {
     SubNavigation,
-    ProjectManage
+    ProjectManage,
+    ProjectDetails,
+    ProjectMedia
   },
   methods: {
     ...mapActions([
@@ -43,16 +55,16 @@ export default {
         "setActiveProjectOnLoad"
     ]),
     editProject() {
-      console.log('hey')
       this.edit = !this.edit;
+    },
+    showComponent() {
+
     }
   },
   beforeMount() {
-    const programId = window.location.href.split("programs/")[1].split("/")[0];
-    this.setActiveProgramOnLoad(programId);
-
-    const projectId = window.location.href.split("projects/")[1]
-    this.setActiveProjectOnLoad(projectId);
+    console.log(this.$route)
+    this.setActiveProgramOnLoad(this.$route.params.programId);
+    this.setActiveProjectOnLoad(this.$route.params.projectId);
   }
 };
 </script>

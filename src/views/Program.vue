@@ -3,6 +3,7 @@
     <SubNavigation
     :subLinks="this.links"
     :subButton="this.button"
+    :subDestination="this.destination"
     />
     <div class="content">
       <GroupList />
@@ -73,6 +74,11 @@ export default {
         linkOne: "Projects",
         linkTwo: "Details",
         linkThree: 'Media'
+      },
+      destination: {
+        one: '/',
+        two: '/details',
+        three: '/media',
       },
       button: {
         text: "Create project",
