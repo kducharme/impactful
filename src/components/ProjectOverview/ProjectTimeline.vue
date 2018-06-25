@@ -101,8 +101,7 @@ export default {
       this.countNoteTypes();
     },
     loadNotes() {
-      const id = window.location.href.split("/projects/")[1];
-      fetch(`http://localhost:3000/project_notes?project=${id}`)
+      fetch(`http://localhost:3000/project_notes?project=${this.$route.params.projectId}`)
         .then(r => r.json())
         .then(notes => {
           notes.forEach(note => {

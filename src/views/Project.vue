@@ -9,8 +9,8 @@
     </div>
     <div>
       <ProjectManage />
-      <ProjectDetails />
-      <ProjectMedia />
+      <!-- <ProjectDetails /> -->
+      <!-- <ProjectMedia /> -->
     </div>
   </div>
 </template>
