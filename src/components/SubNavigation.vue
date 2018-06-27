@@ -31,15 +31,18 @@
     <div class="sub__tabs">
       <router-link 
         class='sub__tabs--link'
-        :to="'/programs/' + programActive + '/projects/' + projectActive"
+        :to="'/programs/' + programActive + '/projects/' + projectActive + subDestination.one"
+        :click="this.$emit('active')"
       >{{ subLinks.linkOne }}</router-link>
       <router-link 
         class='sub__tabs--link'
         :to="'/programs/' + programActive + '/projects/' + projectActive +  subDestination.two"
+        :click="this.$emit('active')"
       >{{ subLinks.linkTwo }}</router-link>
       <router-link 
         class='sub__tabs--link'
         :to="'/programs/' + programActive + '/projects/' + projectActive +  subDestination.three"
+        :click="this.$emit('active')"
       >{{ subLinks.linkThree }}</router-link>
     </div>
   

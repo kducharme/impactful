@@ -459,6 +459,18 @@
       "image": null,
       "author": 2,
       "id": 12
+    },
+    {
+      "note": true,
+      "text": "testing\n",
+      "date_created": "June 27, 2018",
+      "date_sort": "2018-06-27T18:02:28.214Z",
+      "date_deleted": null,
+      "read": false,
+      "project": "3/manage",
+      "image": null,
+      "author": 2,
+      "id": 13
     }
   ],
   "project_images": [

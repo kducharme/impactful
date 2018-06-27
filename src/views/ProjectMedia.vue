@@ -1,6 +1,6 @@
 <template>
     <div class="content">
-
+      media page
     </div>
 </template>
 

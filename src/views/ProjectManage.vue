@@ -35,7 +35,6 @@ export default {
     this.setActiveProgramOnLoad(programId);
 
     const projectId = window.location.href.split("projects/")[1].split('/')[0];
-    console.log(projectId)
     this.setActiveProjectOnLoad(projectId);
   }
 };

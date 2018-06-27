@@ -39,7 +39,7 @@
                 :id='project.id'
                 :value='project.id'
                 class='col col1'>
-              <router-link :to="'/programs/' + programActive + '/projects/' + project.id" class='col col2'>{{project.name}}
+              <router-link :to="'/programs/' + programActive + '/projects/' + project.id + '/manage'" class='col col2'>{{project.name}}
             </router-link>
               <p class="col col3">{{ project.manager }}</p>
               <p class="col col4">{{ project.location }}</p>

@@ -32,9 +32,19 @@ export default new Router({
       component: Program
     },
     {
-      path: '/programs/:programId/projects/:projectId',
-      name: 'project',
+      path: '/programs/:programId/projects/:projectId/manage',
+      name: 'manage',
       component: Project
-    }
+    },
+    {
+      path: '/programs/:programId/projects/:projectId/details',
+      name: 'details',
+      component: Project
+    },
+    {
+      path: '/programs/:programId/projects/:projectId/media',
+      name: 'media',
+      component: Project
+    },
   ]
 })
