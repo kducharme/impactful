@@ -11,8 +11,20 @@
         </div>
         <div class="block">
           <label for='objective' class='block__label'>Objectives</label>
-         <span><div class='bullet'></div><input id="objectiveOne" :value="activeProject.objective_one"></span>
-         <span><div class='bullet'></div><input id="objectiveTwo" :value="activeProject.objective_two"></span>
+         <span class='objective'><div class='bullet'></div><input id="objectiveOne" :value="activeProject.objective_one"></span>
+         <span class='objective'><div class='bullet'></div><input id="objectiveTwo" :value="activeProject.objective_two"></span>
+        </div>
+        <div class="block">
+          <label for='budget'>Budget</label>
+          <span class="budget">
+            <div>$</div>
+            <input id="budget" :value="activeProject.budget" />
+          </span>
+        </div>
+        <h3 class="details__title">Location</h3>
+        <div class="block">
+          <label for='location' class='block__label'>Address</label>
+          <input id="location" :value="activeProject.location">
         </div>
     </div>
 </template>
@@ -32,12 +44,27 @@ export default {
       "getProjects",
       "setActiveProgramOnLoad",
       "setActiveProjectOnLoad"
-    ])
+    ]),
+    getLocation(location) {
+      console.log(location)
+      fetch(`http://localhost:3000/locations?id=${location}`)
+        .then(r => r.json())
+        .then(l => {
+          console.log(l)
+          const address = `${l[0].street_address} ${l[0].city}, ${l[0].state} ${
+            l[0].zip
+          }`;
+          this.activeProject.location = address;
+        });
+    }
   },
   beforeMount() {
     fetch(`http://localhost:3000/projects?id=${this.$route.params.projectId}`)
       .then(r => r.json())
-      .then(proj => (this.activeProject = proj[0]));
+      .then(proj => {
+        this.activeProject = proj[0]
+        this.getLocation(proj[0].location)
+        })
   }
 };
 </script>
@@ -47,7 +74,7 @@ export default {
 @import "../styles/mixins";
 
 .details {
-  padding: 48px 24% 0 24%;
+  padding: 32px 24% 32px 24%;
   height: calc(100vh - 44px - 40px);
   @include display-flex(flex-start, flex-start, column);
   background-color: $colorBackground;
@@ -55,7 +82,7 @@ export default {
   .details__title {
     font-size: 20px;
     font-weight: $weightHeavy;
-    margin-bottom: 32px;
+    margin: 16px 0 32px 0;
     border-bottom: 1px solid $grayBorder;
     width: 100%;
     padding-bottom: 16px;
@@ -63,24 +90,42 @@ export default {
   .block {
     width: 100%;
     margin-bottom: 16px;
-    span {
+    .objective {
       @include display-flex(flex-start, center, row);
       margin-bottom: 8px;
       div {
         content: "";
         width: 10px;
         height: 10px;
-        margin-right: 15px;
+        margin-right: 10px;
         border-radius: 100%;
         background: $grayBorder;
         margin-top: 12px;
       }
       input {
-        width: calc(100% - 30px);
+        width: calc(100% - 25px);
+      }
+    }
+    .budget {
+      @include display-flex(flex-start, center, row);
+      border: 1px solid $grayBorder;
+      background-color: white;
+      margin-top: 12px;
+      div {
+        @include display-flex(center, center, row);
+        border-right: 1px solid $grayBorder;
+        font-size: 15px;
+        color: $colorPrimaryLight;
+        height: 36px;
+        width: 36px;
+      }
+      input {
+        border: none;
+        margin: 0px;
       }
     }
     label {
-      letter-spacing: .5px;
+      letter-spacing: 0.5px;
       font-size: 11px;
       color: $colorPrimaryLight;
       font-weight: $weightMedium;
@@ -101,14 +146,13 @@ export default {
       height: 36px;
     }
     textarea {
-      padding-top: 8px;
+      padding: 8px 12px;
     }
     input:active,
     input:focus,
     textarea:active,
     textarea:focus {
-      border: 1px solid $colorAccent;
-      padding-left: 13px;
+      border-color: $colorAccent;
     }
   }
 }
