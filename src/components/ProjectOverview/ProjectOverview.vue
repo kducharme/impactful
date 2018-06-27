@@ -84,8 +84,7 @@ export default {
     }
   },
   beforeMount() {
-    const id = window.location.href.split("projects/")[1].split('/')[0];
-    fetch(`http://localhost:3000/projects?id=${id}`)
+    fetch(`http://localhost:3000/projects?id=${this.$route.params.projectId}`)
       .then(r => r.json())
       .then(proj => {
         this.projectData = {

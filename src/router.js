@@ -28,32 +28,32 @@ export default new Router({
     },
     {
       path: '/programs/:programId/projects',
-      name: 'projects',
+      name: 'program-projects',
       component: Program
     },
     {
       path: '/programs/:programId/details',
-      name: 'details',
+      name: 'program-details',
       component: Program
     },
     {
       path: '/programs/:programId/media',
-      name: 'media',
+      name: 'program-media',
       component: Program
     },
     {
       path: '/programs/:programId/projects/:projectId/manage',
-      name: 'manage',
+      name: 'project-manage',
       component: Project
     },
     {
       path: '/programs/:programId/projects/:projectId/details',
-      name: 'details',
+      name: 'project-details',
       component: Project
     },
     {
       path: '/programs/:programId/projects/:projectId/media',
-      name: 'media',
+      name: 'project-media',
       component: Project
     },
   ]

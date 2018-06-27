@@ -28,14 +28,11 @@ export default {
       "getProjects",
       "setActiveProgramOnLoad",
       "setActiveProjectOnLoad"
-    ]),
+    ])
   },
   beforeMount() {
-    const programId = window.location.href.split("programs/")[1].split("/")[0];
-    this.setActiveProgramOnLoad(programId);
-
-    const projectId = window.location.href.split("projects/")[1].split('/')[0];
-    this.setActiveProjectOnLoad(projectId);
+    this.setActiveProgramOnLoad(this.$route.params.programId);
+    this.setActiveProjectOnLoad(this.$route.params.projectId);
   }
 };
 </script>

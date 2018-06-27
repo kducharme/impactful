@@ -55,21 +55,22 @@ export default {
   methods: {
     addProgram() {},
     ...mapActions([
-        "getProjects",
-        "setActiveProgramOnLoad"
+      "getProjects",
+      "setActiveProgramOnLoad",
+      "setActiveProjectOnLoad"
     ]),
     showComponent() {
       const view = this.$route.path.split("/").pop();
+      console.log(this.$route)
+      this.activeView = view;
       switch (view) {
         case "projects":
           this.activeView = "projects";
           break;
         case "details":
-        console.log('program details')
           this.activeView = "details";
           break;
         case "media":
-        console.log('program media')
           this.activeView = "media";
         default:
       }
@@ -77,6 +78,11 @@ export default {
   },
   computed: {
     ...mapState(["projects", "programActive"])
+  },
+  beforeMount() {
+    this.showComponent();
+    this.setActiveProgramOnLoad(this.$route.params.programId);
+    this.setActiveProjectOnLoad(this.$route.params.projectId);
   }
 };
 </script>
