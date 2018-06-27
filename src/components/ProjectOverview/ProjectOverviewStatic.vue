@@ -5,28 +5,24 @@
     </div>
     <div class="overview__bottom">
       <div class="block">
+        <p class='block__label'>Manager</p>
+        <p class='block__data'>{{ this.project.manager }}</p>
+      </div>
+      <div class="block">
+        <p class='block__label'>Description</p>
+        <p class='block__data description'>{{ this.project.description }}</p>
+      </div>
+      <div class="block">
+        <p class='block__label'>Budget</p>
+        <p class='block__data'>${{ this.project.budget }}</p>
+      </div>
+      <div class="block">
         <p class='block__label'>Date created</p>
         <p class='block__data'>{{ this.project.created }}</p>
       </div>
       <div class="block">
         <p class='block__label'>Last updated</p>
         <p class='block__data'>{{ this.getUpdate() }}</p>
-      </div>
-      <div class="block">
-        <p class='block__label'>Manager</p>
-        <p class='block__data'>{{ this.project.manager }}</p>
-      </div>
-      <div class="block">
-        <p class='block__label'>Location</p>
-        <p class='block__data'>{{ this.project.location }}</p>
-      </div>
-      <div class="block">
-        <p class='block__label'>Description</p>
-        <p class='block__data'>{{ this.project.description }}</p>
-      </div>
-      <div class="block">
-        <p class='block__label'>Budget</p>
-        <p class='block__data'>${{ this.project.budget }}</p>
       </div>
     </div>
   </div>
@@ -93,6 +89,13 @@ export default {
         font-weight: $weightMedium;
         text-transform: uppercase;
         margin-bottom: 7px;
+      }
+      .description {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
       }
       .block__data {
         font-size: 13px;

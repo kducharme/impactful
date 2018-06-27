@@ -15,7 +15,7 @@
                   <input type="checkbox" checked={this.state.checked} />
                   <span class="select__checkbox" />
                 </span>
-                <router-link :to="'/programs/' + program.id + '/projects/'" class='card__button'>
+                <router-link :to="'/programs/' + program.id + '/projects'" class='card__button'>
                 <button class='card__hover--button button__primary' v-on:click="getActiveProgramData">
                   View program
                 </button>

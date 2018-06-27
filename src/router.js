@@ -27,8 +27,18 @@ export default new Router({
       component: Settings
     },
     {
-      path: '/programs/:programId/projects/',
-      name: 'program',
+      path: '/programs/:programId/projects',
+      name: 'projects',
+      component: Program
+    },
+    {
+      path: '/programs/:programId/details',
+      name: 'details',
+      component: Program
+    },
+    {
+      path: '/programs/:programId/media',
+      name: 'media',
       component: Program
     },
     {

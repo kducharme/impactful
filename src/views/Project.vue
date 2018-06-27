@@ -40,9 +40,9 @@ export default {
         linkThree: "Media"
       },
       destination: {
-        one: "/manage",
-        two: "/details",
-        three: "/media"
+        one: "manage",
+        two: "details",
+        three: "media"
       },
       button: {
         text: "Edit project",
@@ -95,12 +95,12 @@ export default {
 .content {
   height: calc(100vh - 44px - 40px);
   @include display-flex(center, flex-start, row);
-  padding: 30px 8% 0 8%;
+  padding: 30px 7% 0 7%;
   .col1 {
-    width: 15%;
     min-width: 200px;
+    width: 15%;
     max-width: 300px;
-    margin: 16px 25px 0 0;
+    margin: 16px 32px 0 0;
     background-color: transparent;
   }
   .col2 {
