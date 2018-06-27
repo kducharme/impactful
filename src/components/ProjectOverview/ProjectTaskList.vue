@@ -56,8 +56,7 @@ export default {
   },
   methods: {
     loadTasks() {
-      const id = window.location.href.split("/projects/")[1];
-      fetch(`http://localhost:3000/tasks?project=${id}`)
+      fetch(`http://localhost:3000/tasks?project=${this.$route.params.projectId}`)
         .then(r => r.json())
         .then(t => {
           t.forEach(task => {
