@@ -5,12 +5,19 @@
         :subLinks="this.link"
         :subDestination="this.destination"
         :subButton="this.button"
+        @active="showComponent"
       />
     </div>
     <div>
-      <ProjectManage />
-      <!-- <ProjectDetails /> -->
-      <!-- <ProjectMedia /> -->
+      <ProjectManage
+        :class="[activeView === 'manage' ? '' : 'feature__hide']"
+      />
+      <ProjectDetails
+        :class="[activeView === 'details' ? '' : 'feature__hide']"
+      />
+      <ProjectMedia
+        :class="[activeView === 'media' ? '' : 'feature__hide']"
+      />
     </div>
   </div>
 </template>
@@ -26,21 +33,22 @@ export default {
   name: "project",
   data() {
     return {
+      activeView: null,
       link: {
-        linkOne: 'Manage',
-        linkTwo: 'Details',
-        linkThree: 'Media',
+        linkOne: "Manage",
+        linkTwo: "Details",
+        linkThree: "Media"
       },
       destination: {
-        one: '/',
-        two: '/details',
-        three: '/media',
+        one: "manage",
+        two: "details",
+        three: "media"
       },
       button: {
-        text: 'Edit project',
+        text: "Edit project",
         action: this.editProject
       }
-    }
+    };
   },
   components: {
     SubNavigation,
@@ -50,19 +58,30 @@ export default {
   },
   methods: {
     ...mapActions([
-        "getProjects",
-        "setActiveProgramOnLoad",
-        "setActiveProjectOnLoad"
+      "getProjects",
+      "setActiveProgramOnLoad",
+      "setActiveProjectOnLoad"
     ]),
     editProject() {
       this.edit = !this.edit;
     },
     showComponent() {
-
+      const view = this.$route.path.split("/").pop();
+      switch (view) {
+        case "manage":
+          this.activeView = "manage";
+          break;
+        case "details":
+          this.activeView = "details";
+          break;
+        case "media":
+          this.activeView = "media";
+        default:
+      }
     }
   },
   beforeMount() {
-    console.log(this.$route)
+    this.showComponent();
     this.setActiveProgramOnLoad(this.$route.params.programId);
     this.setActiveProjectOnLoad(this.$route.params.projectId);
   }
@@ -76,29 +95,32 @@ export default {
 .content {
   height: calc(100vh - 44px - 40px);
   @include display-flex(center, flex-start, row);
-  padding: 30px 8% 0 8%;
+  padding: 30px 7% 0 7%;
   .col1 {
-      width: 15%;
-      min-width: 200px;
-      max-width: 300px;
-      margin: 16px 25px 0 0;
-      background-color: transparent;
+    min-width: 200px;
+    width: 15%;
+    max-width: 300px;
+    margin: 16px 32px 0 0;
+    background-color: transparent;
   }
   .col2 {
-      width: 60%;
-      min-width: 500px;
-      height: 100%;
+    width: 60%;
+    min-width: 500px;
+    height: 100%;
   }
   .col3 {
-      width: 25%;
-      min-width: 320px;
-      margin: 0 20px 0 20px;
+    width: 25%;
+    min-width: 320px;
+    margin: 0 20px 0 20px;
   }
   .feature {
-      border: 1px solid $grayBorder;
-      background-color: white;
-      border-radius: 5px;
+    border: 1px solid $grayBorder;
+    background-color: white;
+    border-radius: 5px;
   }
+}
+.feature__hide {
+  display: none!important;
 }
 </style>
 

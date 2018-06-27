@@ -8,7 +8,7 @@
 import { mapState, mapActions } from "vuex";
 
 export default {
-  name: "projectmedia",
+  name: "programmedia",
   components: {
 
   },

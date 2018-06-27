@@ -13,7 +13,7 @@
                         d='M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z'
                     />
                 </svg>
-      <router-link class='sub__overflow--program' @click.native="resetProjectOnly" v-bind:class="[programActive ? 'sub__active' : 'sub__hide']" :to="'/programs/' + programActive + '/projects/'">{{ programActiveName }}
+      <router-link class='sub__overflow--program' @click.native="resetProjectOnly" v-bind:class="[programActive ? 'sub__active' : 'sub__hide']" :to="'/programs/' + programActive + '/projects'">{{ programActiveName }}
       </router-link>
       <svg v-bind:class="[programActive && projectActive? 'sub__active' : 'sub__hide']" class='sub__svg' xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'>
                     <path
@@ -31,15 +31,18 @@
     <div class="sub__tabs">
       <router-link 
         class='sub__tabs--link'
-        :to="'/programs/' + programActive + '/projects/' + projectActive"
+        :to="'/programs/' + link.one + link.two + link.three + subDestination.one"
+        :click="this.$emit('active')"
       >{{ subLinks.linkOne }}</router-link>
       <router-link 
         class='sub__tabs--link'
-        :to="'/programs/' + programActive + '/projects/' + projectActive +  subDestination.two"
+        :to="'/programs/' + link.one + link.two + link.three +  subDestination.two"
+        :click="this.$emit('active')"
       >{{ subLinks.linkTwo }}</router-link>
       <router-link 
         class='sub__tabs--link'
-        :to="'/programs/' + programActive + '/projects/' + projectActive +  subDestination.three"
+        :to="'/programs/' + link.one + link.two + link.three +  subDestination.three"
+        :click="this.$emit('active')"
       >{{ subLinks.linkThree }}</router-link>
     </div>
   
@@ -81,7 +84,13 @@ export default {
   },
   data() {
     return {
-      levelOne: "All Programs"
+      levelOne: "All Programs",
+      link: {
+        one: '',
+        two: '',
+        three: '',
+        four: '',
+      }
     };
   },
   methods: {
@@ -92,6 +101,16 @@ export default {
     },
     resetProjectOnly: function() {
       this.resetActiveProject();
+    },
+    setLinks() {
+      this.link.one = this.programActive;
+      if(this.projectActive) {
+        this.link.two = '/projects'
+        this.link.three = `/${this.projectActive}/`;
+      }
+      if(!this.projectActive) {
+        this.link.two = ``;
+      }
     }
   },
   computed: {
@@ -101,6 +120,9 @@ export default {
       "programActiveName",
       "projectActiveName"
     ])
+  },
+  beforeMount() {
+    this.setLinks();
   }
 };
 </script>

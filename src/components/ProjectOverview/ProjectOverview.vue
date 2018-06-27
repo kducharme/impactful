@@ -37,12 +37,10 @@ export default {
         this.$emit('edit')
     },
     updateProject(update) {
-        console.log(update)
         this.projectData.name = update.name;
         this.projectData.description = update.description;
         this.projectData.budget = update.budget;
         this.projectData.updated = update.date_updated;
-        console.log(this.projectData)
     },
     getManager(id) {
       fetch(`http://localhost:3000/users?id=${id}`)

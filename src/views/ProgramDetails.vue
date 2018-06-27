@@ -1,6 +1,6 @@
 <template>
     <div class="content">
-      media page
+      details page
     </div>
 </template>
 
@@ -8,7 +8,7 @@
 import { mapState, mapActions } from "vuex";
 
 export default {
-  name: "projectmedia",
+  name: "programdetails",
   components: {
 
   },
