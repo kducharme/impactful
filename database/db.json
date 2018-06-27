@@ -151,6 +151,8 @@
       "id": 1,
       "name": "Davidson's Home Update: Back Porch New Stairs",
       "description": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati",
+      "objective_one": "Build new back porch as safe second exit",
+      "objective_two": "Repair underpinning to make home warmer",
       "location": 2,
       "budget": "1,000",
       "date_created": "June 4, 2018",
