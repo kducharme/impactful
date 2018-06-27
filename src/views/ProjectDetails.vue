@@ -21,11 +21,25 @@
             <input id="budget" :value="activeProject.budget" />
           </span>
         </div>
-        <h3 class="details__title">Location</h3>
+        <h3 class="details__title">Contact information</h3>
+        <div class="block">
+          <label for='client_name' class='block__label'>Client name</label>
+          <input id="client_name" :value="activeProject.client_name">
+        </div>
+        <div class="block">
+          <label for='client_email' class='block__label'>Client email</label>
+          <input id="client_email" :value="activeProject.client_email">
+        </div>
+        <div class="block">
+          <label for='client_phone' class='block__label'>Client phone</label>
+          <input id="client_phone" :value="activeProject.client_phone">
+        </div>
         <div class="block">
           <label for='location' class='block__label'>Address</label>
           <input id="location" :value="activeProject.location">
+          <div class="location__map" id='map'></div>
         </div>
+        
     </div>
 </template>
 
@@ -46,25 +60,36 @@ export default {
       "setActiveProjectOnLoad"
     ]),
     getLocation(location) {
-      console.log(location)
       fetch(`http://localhost:3000/locations?id=${location}`)
         .then(r => r.json())
         .then(l => {
-          console.log(l)
-          const address = `${l[0].street_address} ${l[0].city}, ${l[0].state} ${
-            l[0].zip
-          }`;
-          this.activeProject.location = address;
+          this.activeProject.location = `${l[0].street_address} ${l[0].city}, ${
+            l[0].state
+          } ${l[0].zip}`;
         });
+    },
+    addMap() {
+      var mapboxgl = require("mapbox-gl/dist/mapbox-gl.js");
+
+      mapboxgl.accessToken = "pk.eyJ1Ijoia2R1Y2hhcm1lIiwiYSI6ImNqaXhra2Q2bDAwcDIzcWx1YXVvdWp1dmwifQ.p-MYLDrti9jsh9g319P4og";
+      var map = new mapboxgl.Map({
+        container: "map",
+        style: "mapbox://styles/mapbox/streets-v10",
+        center: [-86.75656420000001, 36.1325338],
+        zoom: 12
+      });
     }
   },
   beforeMount() {
     fetch(`http://localhost:3000/projects?id=${this.$route.params.projectId}`)
       .then(r => r.json())
       .then(proj => {
-        this.activeProject = proj[0]
-        this.getLocation(proj[0].location)
-        })
+        this.activeProject = proj[0];
+        this.getLocation(proj[0].location);
+      });
+  },
+  mounted() {
+    this.addMap();
   }
 };
 </script>
@@ -74,7 +99,7 @@ export default {
 @import "../styles/mixins";
 
 .details {
-  padding: 32px 24% 32px 24%;
+  padding: 0px 24% 32px 24%;
   height: calc(100vh - 44px - 40px);
   @include display-flex(flex-start, flex-start, column);
   background-color: $colorBackground;
@@ -82,7 +107,7 @@ export default {
   .details__title {
     font-size: 20px;
     font-weight: $weightHeavy;
-    margin: 16px 0 32px 0;
+    margin: 32px 0 32px 0;
     border-bottom: 1px solid $grayBorder;
     width: 100%;
     padding-bottom: 16px;
@@ -154,6 +179,10 @@ export default {
     textarea:focus {
       border-color: $colorAccent;
     }
+  }
+  .location__map {
+    height: 300px;
+    width: 100%;
   }
 }
 </style>
