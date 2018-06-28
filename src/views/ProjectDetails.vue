@@ -69,15 +69,9 @@ export default {
         });
     },
     addMap() {
-      var mapboxgl = require("mapbox-gl/dist/mapbox-gl.js");
-
-      mapboxgl.accessToken = "pk.eyJ1Ijoia2R1Y2hhcm1lIiwiYSI6ImNqaXhra2Q2bDAwcDIzcWx1YXVvdWp1dmwifQ.p-MYLDrti9jsh9g319P4og";
-      var map = new mapboxgl.Map({
-        container: "map",
-        style: "mapbox://styles/mapbox/streets-v10",
-        center: [-86.75656420000001, 36.1325338],
-        zoom: 12
-      });
+      mapfit.apikey = "591dccc4e499ca0001a4c6a4ec3c6908d10a46219da7d9e970f88853";
+      let map = mapfit.MapView("map", { theme: "day" });
+      map.setZoom(13);
     }
   },
   beforeMount() {
@@ -89,12 +83,13 @@ export default {
       });
   },
   mounted() {
+    document.querySelector('#map').innerHTML = '';
     this.addMap();
   }
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 @import "../styles/variables";
 @import "../styles/mixins";
 
@@ -107,7 +102,7 @@ export default {
   .details__title {
     font-size: 20px;
     font-weight: $weightHeavy;
-    margin: 32px 0 32px 0;
+    margin: 32px 0 24px 0;
     border-bottom: 1px solid $grayBorder;
     width: 100%;
     padding-bottom: 16px;
@@ -115,6 +110,11 @@ export default {
   .block {
     width: 100%;
     margin-bottom: 16px;
+    .location__map {
+      position: relative;
+      width: 100% !important;
+      height: 300px !important;
+    }
     .objective {
       @include display-flex(flex-start, center, row);
       margin-bottom: 8px;
@@ -179,10 +179,6 @@ export default {
     textarea:focus {
       border-color: $colorAccent;
     }
-  }
-  .location__map {
-    height: 300px;
-    width: 100%;
   }
 }
 </style>

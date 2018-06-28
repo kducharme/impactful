@@ -84,7 +84,7 @@ export default {
     this.showComponent();
     this.setActiveProgramOnLoad(this.$route.params.programId);
     this.setActiveProjectOnLoad(this.$route.params.projectId);
-  }
+  },
 };
 </script>
 
