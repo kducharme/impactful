@@ -61,7 +61,6 @@ export default {
     ]),
     showComponent() {
       const view = this.$route.path.split("/").pop();
-      console.log(this.$route)
       this.activeView = view;
       switch (view) {
         case "projects":
@@ -82,7 +81,6 @@ export default {
   beforeMount() {
     this.showComponent();
     this.setActiveProgramOnLoad(this.$route.params.programId);
-    this.setActiveProjectOnLoad(this.$route.params.projectId);
   }
 };
 </script>
