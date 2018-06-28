@@ -5,6 +5,7 @@ import ProgramList from './views/ProgramList.vue'
 import Program from './views/Program.vue'
 import Project from './views/Project.vue'
 import Settings from './views/Settings.vue'
+import CreateProject from './components/CreateProject/CreateProject'
 
 Vue.use(Router)
 
@@ -55,6 +56,11 @@ export default new Router({
       path: '/programs/:programId/projects/:projectId/media',
       name: 'project-media',
       component: Project
+    },
+    {
+      path: '/programs/:programId/create',
+      name: 'project-create',
+      component: CreateProject
     },
   ]
 })
