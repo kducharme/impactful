@@ -2,37 +2,67 @@
   <div class='progress'>
     <span class='progress__bar'></span>
     <div class='progress__left'>
-        <button>Back</button>
+        <button
+            :class="[button.previous ? '' : 'progress__button--disabled']"
+            :disabled="!button.previous"
+            @click="previous"
+        >Back</button>
     </div>
     <div class='progress__center'>
         <p>Step {{step.activeStep}} of {{step.totalSteps}}</p>
     </div>
     <div class='progress__right'>
-        <button>Continue</button>
+        <button
+            :class="[button.continue ? '' : 'progress__button--disabled']"
+            :disabled="!button.continue"
+            @click="next"
+        >Continue</button>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import { mapState, mapActions } from "vuex";
 
 export default {
-  name: 'create-progress',
+  name: "create-progress",
   props: {
     step: {
       type: Object
+    },
+    button: {
+      type: Object
+    }
+  },
+  data() {
+    return {};
+  },
+  methods: {
+    next() {
+      this.$emit("next");
+      this.updateProgress();
+    },
+    previous() {
+      this.$emit("previous");
+      this.updateProgress();
+    },
+    updateProgress() {
+      const progress =
+        1 -
+        (this.step.totalSteps - this.step.activeStep) / this.step.totalSteps;
+      document.querySelector(".progress__bar").style.width =
+        parseFloat(progress * 100) + "%";
     }
   },
   mounted() {
-      const progress = (1 - ((this.step.totalSteps - this.step.activeStep) / this.step.totalSteps));
-      document.querySelector('.progress__bar').style.width = parseFloat(progress * 100) + '%';
+    this.updateProgress();
   }
 };
 </script>
 
 <style lang='scss'>
-@import '../styles/variables';
-@import '../styles/mixins';
+@import "../styles/variables";
+@import "../styles/mixins";
 
 .progress {
   @include display-flex(space-between, center, row);
@@ -41,18 +71,22 @@ export default {
   padding: 0 30px;
   background: white;
   border-top: 1px solid $grayBorder;
-//   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.3);
+  //   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.3);
   position: absolute;
   bottom: 0;
   left: 0;
+  .progress__button--disabled {
+      opacity: .2;
+      cursor: default;
+  }
   .progress__bar {
-      position: absolute;
-      margin-left: -30px;
-      top: -2px;
-      background-color: $colorAccent;
-      height: 1.5px;
-      width: 0%;
-      border-radius: 10px;
+    position: absolute;
+    margin-left: -30px;
+    top: -2px;
+    background-color: $colorAccent;
+    height: 1.5px;
+    width: 0%;
+    border-radius: 10px;
   }
   .progress__left {
     button {
@@ -65,7 +99,7 @@ export default {
       color: $colorPrimaryMedium;
     }
     button:hover {
-        background: rgba(133, 149, 165, 0.15)
+      background: rgba(133, 149, 165, 0.15);
     }
   }
   .progress__center {
@@ -82,7 +116,7 @@ export default {
       color: white;
     }
     button:hover {
-        background: $colorAccentHover;
+      background: $colorAccentHover;
     }
   }
 }
