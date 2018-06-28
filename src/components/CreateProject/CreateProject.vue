@@ -22,7 +22,7 @@ export default {
     return {
       step: {
         activeStep: 1,
-        totalSteps: 12
+        totalSteps: 5
       }
     };
   },

@@ -1,36 +1,38 @@
 <template>
-  <div class="progress">
-    <div class="progress__left">
+  <div class='progress'>
+    <span class='progress__bar'></span>
+    <div class='progress__left'>
         <button>Back</button>
     </div>
-    <div class="progress__center">
+    <div class='progress__center'>
         <p>Step {{step.activeStep}} of {{step.totalSteps}}</p>
     </div>
-    <div class="progress__right">
+    <div class='progress__right'>
         <button>Continue</button>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions } from 'vuex';
 
 export default {
-  name: "create-progress",
+  name: 'create-progress',
   props: {
     step: {
       type: Object
     }
   },
-  data() {
-    return {};
+  mounted() {
+      const progress = (1 - ((this.step.totalSteps - this.step.activeStep) / this.step.totalSteps));
+      document.querySelector('.progress__bar').style.width = parseFloat(progress * 100) + '%';
   }
 };
 </script>
 
 <style lang='scss'>
-@import "../styles/variables";
-@import "../styles/mixins";
+@import '../styles/variables';
+@import '../styles/mixins';
 
 .progress {
   @include display-flex(space-between, center, row);
@@ -38,19 +40,32 @@ export default {
   height: 56px;
   padding: 0 30px;
   background: white;
-  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.3);
+  border-top: 1px solid $grayBorder;
+//   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.3);
   position: absolute;
   bottom: 0;
   left: 0;
+  .progress__bar {
+      position: absolute;
+      margin-left: -30px;
+      top: -2px;
+      background-color: $colorAccent;
+      height: 1.5px;
+      width: 0%;
+      border-radius: 10px;
+  }
   .progress__left {
     button {
       font-size: 14px;
       font-weight: $weightMedium;
       height: 36px;
       width: 100px;
-      border: 1px solid $colorFontMedium;
+      border: 1px solid $colorPrimaryLight;
       border-radius: 3px;
-      color: $colorFontMedium;
+      color: $colorPrimaryMedium;
+    }
+    button:hover {
+        background: rgba(133, 149, 165, 0.15)
     }
   }
   .progress__center {
@@ -65,6 +80,9 @@ export default {
       background: $colorAccent;
       border-radius: 3px;
       color: white;
+    }
+    button:hover {
+        background: $colorAccentHover;
     }
   }
 }
