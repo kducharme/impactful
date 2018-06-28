@@ -48,12 +48,14 @@ export default {
       },
       button: {
         text: "Create project",
-        action: this.addProgram
+        action: 'this.newProject'
       }
     };
   },
   methods: {
-    addProgram() {},
+    newProject() {
+
+    },
     ...mapActions([
       "getProjects",
       "setActiveProgramOnLoad",

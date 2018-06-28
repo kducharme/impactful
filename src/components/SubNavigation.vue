@@ -57,11 +57,9 @@
         </svg>
         <p>Page settings</p>
       </div>
-      <button
-        class="button__primary"
-        v-on:click="subButton.action"
-      >
-      {{ subButton.text }}</button>
+      <router-link :to="'/programs/' + programActive + '/create'">
+        <button class='button__primary'>{{ subButton.text }}</button>
+      </router-link>
     </div>
   </div>
 </template>
@@ -86,10 +84,10 @@ export default {
     return {
       levelOne: "All Programs",
       link: {
-        one: '',
-        two: '',
-        three: '',
-        four: '',
+        one: "",
+        two: "",
+        three: "",
+        four: ""
       }
     };
   },
@@ -104,11 +102,11 @@ export default {
     },
     setLinks() {
       this.link.one = this.programActive;
-      if(this.projectActive) {
-        this.link.two = '/projects'
+      if (this.projectActive) {
+        this.link.two = "/projects";
         this.link.three = `/${this.projectActive}/`;
       }
-      if(!this.projectActive) {
+      if (!this.projectActive) {
         this.link.two = ``;
       }
     }

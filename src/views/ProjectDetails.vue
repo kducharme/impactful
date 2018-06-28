@@ -68,11 +68,7 @@ export default {
           } ${l[0].zip}`;
         });
     },
-    addMap() {
-      mapfit.apikey = "591dccc4e499ca0001a4c6a4ec3c6908d10a46219da7d9e970f88853";
-      let map = mapfit.MapView("map", { theme: "day" });
-      map.setZoom(13);
-    }
+    addMap() {}
   },
   beforeMount() {
     fetch(`http://localhost:3000/projects?id=${this.$route.params.projectId}`)
@@ -83,8 +79,9 @@ export default {
       });
   },
   mounted() {
-    document.querySelector('#map').innerHTML = '';
-    this.addMap();
+    mapfit.apikey = "591dccc4e499ca0001a4c6a4ec3c6908d10a46219da7d9e970f88853";
+    let map = mapfit.MapView("map", { theme: "day" });
+    map.setZoom(13);
   }
 };
 </script>
