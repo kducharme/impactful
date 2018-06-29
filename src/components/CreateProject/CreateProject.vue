@@ -3,6 +3,9 @@
     <Questions />
     <Progress
     :step="this.step"
+    :button="this.button"
+    @next="next"
+    @previous="previous"
     />
   </div>
 </template>
@@ -22,13 +25,48 @@ export default {
     return {
       step: {
         activeStep: 1,
-        totalSteps: 12
+        totalSteps: 5
+      },
+      button: {
+        continue: true,
+        previous: false
       }
     };
   },
-  methods: {},
+  methods: {
+    next() {
+      if (this.step.activeStep < this.step.totalSteps) {
+        this.step.activeStep = this.step.activeStep + 1;
+        this.button.continue = true;
+      }
+      if (this.step.activeStep === this.step.totalSteps) {
+        this.button.continue = false;
+      }
+      if(this.step.activeStep > 1) {
+        this.button.previous = true;
+      }
+      if(this.step.activeStep === 1) {
+        this.button.previous = false;
+      }
+    },
+    previous() {
+      if (this.step.activeStep > 1) {
+        this.step.activeStep = this.step.activeStep - 1;
+        this.button.previous = true;
+      }
+      if (this.step.activeStep === 1) {
+        this.button.previous = false;
+      }
+      if (this.step.activeStep >= 1) {
+        this.button.continue = true;
+      }
+    }
+  },
   computed: {
     ...mapState(["projects", "programActive"])
+  },
+  mounted() {
+    console.log(this.button)
   }
 };
 </script>
@@ -43,5 +81,4 @@ export default {
   background-color: white;
   margin: 0;
 }
-
 </style>
