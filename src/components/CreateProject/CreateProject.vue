@@ -1,6 +1,8 @@
 <template>
   <div class="create">
-    <Questions />
+    <Questions
+    :questions="this.questions"
+    />
     <Progress
     :step="this.step"
     :button="this.button"
@@ -23,8 +25,9 @@ export default {
   },
   data() {
     return {
+      questions: [],
       step: {
-        activeStep: 1,
+        activeStep: 0,
         totalSteps: 5
       },
       button: {
@@ -34,24 +37,35 @@ export default {
     };
   },
   methods: {
+    getQuestions(action) {
+      if(action === 'prev') {
+        this.step.activeStep--;
+      }
+      if(action !== 'prev') {
+        this.step.activeStep++
+      }
+      fetch(`http://localhost:3000/questions?page=${this.step.activeStep}`)
+        .then(r => r.json())
+        .then(q => this.questions = q);
+    },
     next() {
+      this.getQuestions();
       if (this.step.activeStep < this.step.totalSteps) {
-        this.step.activeStep = this.step.activeStep + 1;
         this.button.continue = true;
       }
       if (this.step.activeStep === this.step.totalSteps) {
         this.button.continue = false;
       }
-      if(this.step.activeStep > 1) {
+      if (this.step.activeStep > 1) {
         this.button.previous = true;
       }
-      if(this.step.activeStep === 1) {
+      if (this.step.activeStep === 1) {
         this.button.previous = false;
       }
     },
     previous() {
+      this.getQuestions('prev');
       if (this.step.activeStep > 1) {
-        this.step.activeStep = this.step.activeStep - 1;
         this.button.previous = true;
       }
       if (this.step.activeStep === 1) {
@@ -65,8 +79,8 @@ export default {
   computed: {
     ...mapState(["projects", "programActive"])
   },
-  mounted() {
-    console.log(this.button)
+  beforeMount() {
+    this.getQuestions();
   }
 };
 </script>

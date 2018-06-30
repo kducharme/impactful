@@ -984,5 +984,31 @@
       "state": "MA",
       "zip": "01534"
     }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "page": 1,
+      "label": "What's the name of your project?",
+      "placeholder": "Project name"
+    },
+    {
+      "id": 2,
+      "page": 1,
+      "label": "How would you describe the project in 2-3 sentences?",
+      "placeholder": "Project description"
+    },
+    {
+      "id": 3,
+      "page": 2,
+      "label": "Where is the project located?",
+      "placeholder": "Project location"
+    },
+    {
+      "id": 3,
+      "page": 3,
+      "label": "What are the key objectives of this project?",
+      "placeholder": "Project description"
+    }
   ]
 }

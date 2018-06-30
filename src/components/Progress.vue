@@ -82,9 +82,9 @@ export default {
   .progress__bar {
     position: absolute;
     margin-left: -30px;
-    top: -2px;
+    top: -1.7px;
     background-color: $colorAccent;
-    height: 1.5px;
+    height: 2px;
     width: 0%;
     border-radius: 10px;
   }
