@@ -71,7 +71,6 @@ export default {
   padding: 0 30px;
   background: white;
   border-top: 1px solid $grayBorder;
-  //   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.3);
   position: absolute;
   bottom: 0;
   left: 0;

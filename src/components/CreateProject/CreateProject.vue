@@ -2,6 +2,7 @@
   <div class="create">
     <Questions
     :questions="this.questions"
+    :step="this.step"
     />
     <Progress
     :step="this.step"
@@ -81,6 +82,9 @@ export default {
   },
   beforeMount() {
     this.getQuestions();
+  },
+  beforeUpdate() {
+    // console.log('update')
   }
 };
 </script>
