@@ -29,7 +29,7 @@ export default {
       questions: [],
       step: {
         activeStep: 0,
-        totalSteps: 5
+        totalSteps: 4
       },
       button: {
         continue: true,

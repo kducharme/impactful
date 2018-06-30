@@ -990,7 +990,7 @@
       "id": 1,
       "page": 1,
       "label": "What's the name of your project?",
-      "placeholder": "Project name",
+      "placeholder": "Enter name",
       "type": "text",
       "style": "name"
     },
@@ -998,15 +998,46 @@
       "id": 2,
       "page": 2,
       "label": "Where is the project located?",
-      "placeholder": "Project location",
-      "type": "text"
+      "placeholder": "Enter address",
+      "type": "text",
+      "style": "location"
     },
     {
       "id": 3,
       "page": 3,
       "label": "What are the key objectives of this project?",
-      "placeholder": "Project description",
-      "type": "text"
+      "placeholder": "Obective one",
+      "type": "text",
+      "style": "objective"
+    },
+    {
+      "id": 4,
+      "page": 3,
+      "placeholder": "Objective two",
+      "type": "text",
+      "style": "objective"
+    },
+    {
+      "id": 5,
+      "page": 3,
+      "placeholder": "Objective three",
+      "type": "text",
+      "style": "objective"
+    },
+    {
+      "id": 6,
+      "page": 3,
+      "placeholder": "Objective four",
+      "type": "text",
+      "style": "objective"
+    },
+    {
+      "id": 7,
+      "page": 4,
+      "label": "What is the estimated budget for this project?",
+      "placeholder": "Enter budget",
+      "type": "number",
+      "style": "budget"
     }
   ]
 }
