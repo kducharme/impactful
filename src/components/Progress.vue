@@ -71,7 +71,6 @@ export default {
   padding: 0 30px;
   background: white;
   border-top: 1px solid $grayBorder;
-  //   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.3);
   position: absolute;
   bottom: 0;
   left: 0;
@@ -82,9 +81,9 @@ export default {
   .progress__bar {
     position: absolute;
     margin-left: -30px;
-    top: -2px;
+    top: -1.7px;
     background-color: $colorAccent;
-    height: 1.5px;
+    height: 2px;
     width: 0%;
     border-radius: 10px;
   }
